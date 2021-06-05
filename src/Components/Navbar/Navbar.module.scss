@@ -1,0 +1,174 @@
+@import "../../Styles/variables";
+@import "../../Styles/mixins";
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  transition: all 0.5s ease;
+  z-index: 10;
+}
+
+.navbar {
+  display: block;
+  background-color: $DarkGrey;
+  padding: 2rem;
+
+  &__container {
+    max-width: 130rem;
+    margin: 0 auto;
+    @include flexbox(row, space-between, center);
+  }
+
+  &__logo {
+    color: $Yellow;
+    margin-right: 3vw;
+    width: 14rem;
+    @include flexbox(row, center, center);
+    text-decoration: none;
+
+    @include respond(tablet) {
+      margin-right: 0;
+      width: 12rem;
+      margin-top: -1rem;
+    }
+  }
+
+  &__list {
+    flex: 1;
+    transition: all 0.2s ease;
+    @include flexbox(row, flex-start, center);
+    z-index: 100;
+
+    @include respond(tablet) {
+      position: absolute;
+      padding: 2rem;
+      top: 100%;
+      background-color: $DarkGrey;
+      left: 0;
+      height: 100vh;
+      width: 70%;
+      @include flexbox(column, flex-start, flex-start);
+    }
+
+    li {
+      @include respond(tablet) {
+        margin-bottom: 6rem;
+      }
+
+      &:not(:last-child) {
+        margin-right: 3vw;
+
+        @include respond(tablet) {
+          margin-right: 0rem;
+        }
+      }
+    }
+  }
+
+  &__menu {
+    display: none;
+    order: -1;
+
+    @include respond(tablet) {
+      display: block;
+    }
+
+    button {
+      display: block;
+      font-size: 2.8rem;
+      background-color: transparent;
+      color: $white;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $white;
+    font-weight: map-get($font-weight, Medium);
+    font-size: $font-sm;
+    text-transform: capitalize;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $Yellow;
+    }
+  }
+
+  &__active {
+    color: $Yellow;
+  }
+
+  &__right {
+    @include flexbox(row, center, center);
+  }
+
+  &__search {
+    display: block;
+    background-color: transparent;
+    font-size: 2.4rem;
+    color: $white;
+    margin-bottom: -0.5rem;
+    cursor: pointer;
+  }
+
+  &__username {
+    &--link {
+      font-size: $font-sm;
+      margin-right: 2vw;
+      text-decoration: none;
+      cursor: pointer;
+      color: $white;
+      font-weight: map-get($font-weight, Medium);
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: $Yellow;
+      }
+    }
+
+    @include respond(tablet) {
+      display: none;
+    }
+  }
+}
+
+.searchComponent {
+  width: 100%;
+  display: flex;
+  background-color: $white;
+  padding: 1.2rem 2rem;
+  box-shadow: 0px 5px 10px rgba(17, 17, 17, 0.1);
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: 0px 5px 10px rgba(17, 17, 17, 0.2);
+  }
+
+  span {
+    color: $DarkGrey;
+    font-size: $font-sm;
+    margin-right: 1rem;
+    margin-bottom: -1rem;
+  }
+
+  input {
+    background-color: transparent;
+    flex: 1;
+    font-weight: map-get($font-weight, Medium);
+    font-size: $font-xsm;
+
+    &:placeholder-shown {
+      font-family: inherit;
+      font-weight: map-get($font-weight, Medium);
+    }
+  }
+}
+
+.account__link {
+  display: none;
+
+  @include respond(tablet) {
+    display: block;
+  }
+}

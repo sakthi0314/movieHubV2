@@ -1,0 +1,47 @@
+@import "../../Styles/mixins";
+@import "../../Styles/variables";
+
+.singleSlide {
+  text-decoration: none;
+  margin-right: 1rem;
+  &__img {
+    width: 16rem;
+
+    @include respond(tablet) {
+      width: 14rem;
+    }
+
+    @media (max-width: 484px) {
+      width: 10rem;
+    }
+
+    img {
+      border-radius: 0.2rem;
+    }
+  }
+
+  &__info {
+    h4 {
+      width: 100%;
+      color: $white;
+      font-size: $font-md;
+      font-weight: map-get($font-weight, Medium);
+
+      @media (max-width: 484px) {
+        font-size: $font-sm;
+      }
+    }
+
+    P {
+      margin: 0.3rem 0;
+      font-size: $font-xsm;
+      color: $lightGrey;
+      opacity: 0.5;
+      font-weight: map-get($font-weight, Light);
+
+      @media (max-width: 484px) {
+        font-size: $font-xsm;
+      }
+    }
+  }
+}

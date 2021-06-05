@@ -1,0 +1,11 @@
+@import "../Styles/variables";
+@import "../Styles/mixins";
+
+.primary {
+  padding: 1rem 2rem;
+  background-color: $Yellow;
+  color: $DarkGrey;
+  font-weight: map-get($font-weight, bold);
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+}

@@ -1,0 +1,22 @@
+//flexbox
+@mixin flexbox($direction, $justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+// Media Querys
+@mixin respond($breakpoint) {
+  @if $breakpoint==tablet {
+    @media only screen and (max-width: 799px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==mobile {
+    @media only screen and (max-width: 480px) {
+      @content;
+    }
+  }
+}

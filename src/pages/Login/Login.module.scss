@@ -1,0 +1,117 @@
+@import "../../Styles/mixins";
+@import "../../Styles/variables";
+
+.login {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(17, 17, 17, 0.4),
+      rgba(17, 17, 17, 0.6)
+    ),
+    url("https://cdn.mos.cms.futurecdn.net/98GnqFKaUMYU3GG5HxhLWZ.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  &__container {
+    max-width: 130rem;
+    margin: 0 auto;
+    height: 100vh;
+    @include flexbox(column, center, center);
+  }
+
+  &__title {
+    margin-bottom: 2rem;
+
+    h1 {
+      text-transform: uppercase;
+      font-size: $font-l;
+      color: $DarkGrey;
+      font-weight: map-get($font-weight, bold);
+    }
+  }
+
+  &__form {
+    width: 50rem;
+    max-width: 90%;
+    background-color: $white;
+    padding: 4rem 2rem;
+    border-radius: 0.4rem;
+    box-shadow: 0 10px 20px rgb(0, 0, 0);
+  }
+
+  &__input {
+    width: 100%;
+    @include flexbox(row, space-between, center);
+    padding: 1rem 0;
+    border-bottom: 1px solid $lightGrey;
+    margin-bottom: 2rem;
+
+    span {
+      color: $DarkGrey;
+      font-size: $font-sm;
+      cursor: pointer;
+    }
+
+    input {
+      flex: 1;
+      max-width: 100%;
+      background-color: transparent;
+      font-size: $font-sm;
+    }
+  }
+
+  &__button {
+    width: 100%;
+
+    button {
+      padding: 1rem 2rem;
+      background-color: $Yellow;
+      color: $DarkGrey;
+      font-weight: map-get($font-weight, bold);
+      border-radius: 0.4rem;
+      font-size: 1.4rem;
+      width: 100%;
+      text-transform: uppercase;
+    }
+  }
+
+  &__bottom {
+    @include flexbox(row, space-between, center);
+    margin: 2rem 0;
+  }
+
+  &__link {
+    font-size: $font-xsm;
+    text-decoration: none;
+    color: $DarkGrey;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__message {
+    p {
+      color: red;
+      font-size: $font-xsm;
+      margin-top: 1rem;
+      font-weight: map-get($font-weight, Medium);
+    }
+
+    h6 {
+      font-size: $font-xsm;
+      color: green;
+      font-weight: map-get($font-weight, Medium);
+    }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
