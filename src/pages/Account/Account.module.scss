@@ -1,0 +1,46 @@
+@import "../../Styles/mixins";
+@import "../../Styles/variables";
+
+.account {
+  color: $white;
+  padding-top: 7rem;
+  margin: 1rem 0;
+
+  &__container {
+    width: 60rem;
+    border-radius: 0.2rem;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 1rem;
+    height: 50rem;
+    @include flexbox(column, center, center);
+
+    h1 {
+      font-weight: map-get($font-weight, Medium);
+      font-size: $font-md;
+      margin: 1rem 0;
+    }
+  }
+
+  &__profile {
+    height: 10rem;
+    width: 10rem;
+    position: relative;
+    @include flexbox(row, center, center);
+
+    img {
+      max-width: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  &__button {
+    padding: 1rem 2rem;
+    background-color: $Yellow;
+    color: $DarkGrey;
+    font-weight: map-get($font-weight, bold);
+    border-radius: 0.4rem;
+    font-size: 1.4rem;
+    width: 100%;
+  }
+}

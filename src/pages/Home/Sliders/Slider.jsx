@@ -62,9 +62,8 @@ const Slider = ({ title, types, defaultType }) => {
         >
           {popular &&
             popular.map((el) => (
-              <SwiperSlide>
+              <SwiperSlide key={el.id}>
                 <SingleSlide
-                  key={el.id}
                   id={el.id}
                   title={el.name}
                   date={el.first_air_date || el.relesed_date}

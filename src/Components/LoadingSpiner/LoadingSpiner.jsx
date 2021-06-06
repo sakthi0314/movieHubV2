@@ -1,5 +1,5 @@
 import React from "react";
-import BounceLoader from "react-spinners/BounceLoader";
+import Loader from "react-spinners/PulseLoader";
 
 const LoadingSpiner = () => {
   return (
@@ -11,7 +11,7 @@ const LoadingSpiner = () => {
         backgroundColor: "rgb(0, 0, 0)",
       }}
     >
-      <BounceLoader color="rgb(245, 197, 24)" size={60} loading={true} />
+      <Loader color="rgb(245, 197, 24)" size={20} margin={2} loading={true} />
     </div>
   );
 };

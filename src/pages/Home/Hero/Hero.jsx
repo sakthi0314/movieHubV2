@@ -27,8 +27,6 @@ const Hero = () => {
   const { coverImage } = useSelector((state) => state.heroImages);
   const dispatch = useDispatch();
 
-  console.log(coverImage);
-
   useEffect(() => {
     dispatch(HeroCoverImageAction());
     // eslint-disable-next-line
@@ -51,7 +49,7 @@ const Hero = () => {
     >
       {coverImage &&
         coverImage.map((el) => (
-          <SwiperSlide className={classes["hero__container"]}>
+          <SwiperSlide className={classes["hero__container"]} key={el.id}>
             <div
               className={classes["hero__cover"]}
               style={{

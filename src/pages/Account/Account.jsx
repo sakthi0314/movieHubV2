@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router";
+import { Redirect } from "react-router";
 import { logoutAction } from "../../store/actions/authAction";
+import classes from "./Account.module.scss";
+import avatar from "../../Assets/avatar.png";
 
 const Account = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const { auth } = useSelector((state) => state.firebase);
+
+  const { auth, profile } = useSelector((state) => state.firebase);
 
   const handleSubmit = () => {
     dispatch(logoutAction());
-    history.push("/login");
+    return <Redirect to="/login" />;
   };
 
   useEffect(() => {
@@ -22,23 +24,16 @@ const Account = () => {
   }
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        backgroundColor: "yellowgreen",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-      }}
-    >
-      <h1>Hello</h1>
-      <button
-        style={{ margin: "1rem", padding: "1rem 3rem" }}
-        onClick={handleSubmit}
-      >
-        Logout
-      </button>
+    <div className={classes.account}>
+      <div className={classes["account__container"]}>
+        <div className={classes["account__profile"]}>
+          <img src={avatar} alt="Profile" />
+        </div>
+        <h1>{profile.userName}</h1>
+        <button className={classes["account__button"]} onClick={handleSubmit}>
+          Logout
+        </button>
+      </div>
     </div>
   );
 };

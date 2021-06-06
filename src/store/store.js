@@ -27,6 +27,8 @@ export const rrfProps = {
   firebase,
   config: {
     attachAuthIsReady: true,
+    useFirestoreForProfile: true,
+    userProfile: "users",
   },
   dispatch: store.dispatch,
   createFirebaseInstance,

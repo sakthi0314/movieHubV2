@@ -4,6 +4,8 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import classes from "../Login/Login.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { signupAction } from "../../store/actions/authAction";
+import { motion } from "framer-motion";
+import { pageVariant } from "../../animations/Animation";
 
 const Signup = () => {
   const [isHide, setIshide] = useState(true);
@@ -45,7 +47,6 @@ const Signup = () => {
   };
 
   useEffect(() => {
-    userNameRef.current.focus();
     document.title = "Moviehub - Signup";
   }, []);
 
@@ -54,8 +55,18 @@ const Signup = () => {
     return <Redirect to="/" />;
   }
 
+  if (auth.uid) {
+    return <Redirect to="/sign_up" />;
+  }
+
   return (
-    <div className={classes.login}>
+    <motion.div
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={pageVariant}
+      className={classes.login}
+    >
       <div className={classes["login__container"]}>
         <form className={classes["login__form"]} onSubmit={handleSubmit}>
           <div className={classes["login__title"]}>
@@ -108,7 +119,7 @@ const Signup = () => {
           </div>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

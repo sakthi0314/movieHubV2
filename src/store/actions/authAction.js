@@ -55,4 +55,25 @@ const signupAction = (creds) => {
   };
 };
 
-export { loginAction, logoutAction, signupAction };
+const forgetPasswordAction = (email) => {
+  return (dispatch, getState, { getFirebase }) => {
+    const firebase = getFirebase();
+
+    firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        dispatch({
+          type: actionTypes.FORGET_PASSWORD,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: actionTypes.FORGET_PASSWORD_ERROR,
+          payload: err.message,
+        });
+      });
+  };
+};
+
+export { loginAction, logoutAction, signupAction, forgetPasswordAction };

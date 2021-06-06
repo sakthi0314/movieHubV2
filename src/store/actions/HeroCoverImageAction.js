@@ -12,7 +12,6 @@ const HeroCoverImageAction = () => {
     try {
       // Fetch Data from db
       const { data } = await axios.get(request.fetchNetflixOrignals);
-      console.log(data);
 
       dispatch({
         type: actionTypes.FETCH_COVER_IMG,

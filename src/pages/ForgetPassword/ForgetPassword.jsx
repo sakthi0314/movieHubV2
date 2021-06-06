@@ -1,13 +1,22 @@
-import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { pageVariant } from "../../animations/Animation";
+import { forgetPasswordAction } from "../../store/actions/authAction";
 import classes from "../Login/Login.module.scss";
 
 const ForgetPassword = () => {
   const emailRef = useRef();
+  const dispatch = useDispatch();
+  const { authError } = useSelector((state) => state.auth);
+  const [succesMsg, setSuccessMsg] = useState(null);
 
   // Forget password functinality
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(forgetPasswordAction(emailRef.current.value));
+    setSuccessMsg("Cheak your email to reset your Pasword");
   };
 
   useEffect(() => {
@@ -16,7 +25,13 @@ const ForgetPassword = () => {
   }, []);
 
   return (
-    <div className={classes.login}>
+    <motion.div
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={pageVariant}
+      className={classes.login}
+    >
       <div className={classes["login__container"]}>
         <form className={classes["login__form"]} onSubmit={handleSubmit}>
           <div className={classes["login__title"]}>
@@ -37,12 +52,12 @@ const ForgetPassword = () => {
           </div>
 
           <div className={classes["login__message"]}>
-            {/* <p>{error}</p>
-            <h6>{message}</h6> */}
+            <p>{authError}</p>
+            <p>{succesMsg}</p>
           </div>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

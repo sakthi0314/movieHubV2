@@ -4,6 +4,9 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import classes from "./Login.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../store/actions/authAction";
+import { motion } from "framer-motion";
+import { pageVariant } from "../../animations/Animation";
+import Loader from "react-spinners/PulseLoader";
 
 const Login = () => {
   const [isHide, setIshide] = useState(true);
@@ -12,6 +15,9 @@ const Login = () => {
   const dispatch = useDispatch();
   const { authError } = useSelector((state) => state.auth);
   const { auth } = useSelector((state) => state.firebase);
+  const [loading, setLoading] = useState(false);
+
+  console.log(authError);
 
   // hide password
   const handleHidePassword = () => {
@@ -21,6 +27,7 @@ const Login = () => {
   // Login Funcationilty
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(false);
 
     const creds = {
       email: emailRef.current.value,
@@ -28,6 +35,12 @@ const Login = () => {
     };
 
     dispatch(loginAction(creds));
+    setLoading(true);
+
+    // Cheaking wether is Error occur's Loading will stop
+    if (authError !== null) {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -39,8 +52,18 @@ const Login = () => {
     return <Redirect to="/" />;
   }
 
+  if (auth.uid) {
+    return <Redirect to="/login" />;
+  }
+
   return (
-    <div className={classes.login}>
+    <motion.div
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={pageVariant}
+      className={classes.login}
+    >
       <div className={classes["login__container"]}>
         <form className={classes["login__form"]} onSubmit={handleSubmit}>
           <div className={classes["login__title"]}>
@@ -70,8 +93,22 @@ const Login = () => {
             </Link>
           </div>
 
-          <div className={classes["login__button"]}>
-            <button>Login</button>
+          <div
+            className={classes["login__button"]}
+            style={{ opacity: loading && ".6" }}
+          >
+            <button>
+              {loading ? (
+                <Loader
+                  color="rgb(18, 18, 18);"
+                  size={10}
+                  margin={2}
+                  loading={true}
+                />
+              ) : (
+                "Login"
+              )}
+            </button>
           </div>
 
           <div className={classes["login__message"]}>
@@ -79,7 +116,7 @@ const Login = () => {
           </div>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
