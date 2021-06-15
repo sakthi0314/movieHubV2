@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
-import Logo from "../../Assets/Logo.svg";
+import Logo from "../../assets/Logo.svg";
 import classes from "./Navbar.module.scss";
 import { useSelector } from "react-redux";
 
@@ -12,7 +12,7 @@ const Navbar = () => {
   const [searchMenu, setSearchMenu] = useState(true);
   const [navbarHide, setNavbarHide] = useState("0");
   const searchRef = useRef();
-  const { auth } = useSelector((state) => state.firebase);
+  const { auth, profile } = useSelector((state) => state.firebase);
 
   // Toggle menu
   const toggleMenuHandler = () => {
@@ -125,6 +125,11 @@ const Navbar = () => {
                 Account
               </NavLink>
             </li>
+
+            <li className={classes["navbar__avatar"]}>
+              <span>{profile.initial}</span>
+            </li>
+
             <li>
               <button
                 className={classes["navbar__search"]}

@@ -2,7 +2,7 @@ import axios from "../../Services/axios";
 import actionTypes from "./actionTypes";
 import { APP_KEY } from "../../Services/request";
 
-const TrendingAction = (type, time) => {
+const TrendingAction = (type) => {
   return async (dispatch) => {
     // Send request to db
     dispatch({
@@ -12,7 +12,7 @@ const TrendingAction = (type, time) => {
     try {
       // Get Data from db
       const { data } = await axios.get(
-        `/trending/${type}/${time}?api_key=${APP_KEY}`
+        `/trending/all/${type}?api_key=${APP_KEY}`
       );
       dispatch({
         type: actionTypes.FETCH_TRENDING,

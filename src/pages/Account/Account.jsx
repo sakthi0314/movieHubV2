@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router";
 import { logoutAction } from "../../store/actions/authAction";
 import classes from "./Account.module.scss";
-import avatar from "../../Assets/avatar.png";
+import avatar from "../../assets/avatar.png";
 
 const Account = () => {
   const dispatch = useDispatch();

@@ -17,8 +17,6 @@ const Login = () => {
   const { auth } = useSelector((state) => state.firebase);
   const [loading, setLoading] = useState(false);
 
-  console.log(authError);
-
   // hide password
   const handleHidePassword = () => {
     setIshide(!isHide);

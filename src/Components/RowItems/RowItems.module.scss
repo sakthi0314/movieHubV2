@@ -1,20 +1,10 @@
 @import "../../Styles/mixins";
 @import "../../Styles/variables";
 
-.singleSlide {
+.RowItems {
   text-decoration: none;
-  margin-right: 1rem;
+
   &__img {
-    width: 16rem;
-
-    @include respond(tablet) {
-      width: 14rem;
-    }
-
-    @media (max-width: 484px) {
-      width: 10rem;
-    }
-
     img {
       border-radius: 0.2rem;
     }
@@ -24,8 +14,9 @@
     h4 {
       width: 100%;
       color: $white;
-      font-size: $font-md;
+      font-size: $font-sm;
       font-weight: map-get($font-weight, Medium);
+      margin-top: 0.6rem;
 
       @media (max-width: 484px) {
         font-size: $font-sm;

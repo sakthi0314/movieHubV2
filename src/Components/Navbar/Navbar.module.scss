@@ -155,6 +155,25 @@
       display: none;
     }
   }
+
+  &__avatar {
+    margin-right: 2vw;
+    border-radius: 50%;
+    padding: 1.5rem;
+    height: 1.6rem;
+    width: 1.6rem;
+    background-color: $Yellow;
+
+    @include flexbox(row, center, center);
+
+    span {
+      font-size: $font-sm;
+      color: $DarkGrey;
+      line-height: 0;
+      font-weight: map-get($font-weight, Medium);
+      text-transform: uppercase;
+    }
+  }
 }
 
 .searchComponent {

@@ -19,6 +19,7 @@ import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
+import trancate from "../../../utilities/trancate";
 
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
@@ -31,11 +32,6 @@ const Hero = () => {
     dispatch(HeroCoverImageAction());
     // eslint-disable-next-line
   }, []);
-
-  //  for string slicing
-  const trancate = (str, n) => {
-    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
-  };
 
   return (
     <Swiper
