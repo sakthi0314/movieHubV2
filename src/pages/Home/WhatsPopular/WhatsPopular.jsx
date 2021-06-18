@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import DropDown from "../../../Components/Dropdown/Downdown";
 import RowItems from "../../../Components/RowItems/RowItems";
 import classes from "./slider.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,12 +11,12 @@ import "swiper/components/scrollbar/scrollbar.scss";
 import { useDispatch, useSelector } from "react-redux";
 import PopularAction from "../../../store/actions/PopularAction";
 
-const WhatsPopular = ({ title, types, defaultType }) => {
+const WhatsPopular = () => {
   const { popular } = useSelector((state) => state.popular);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(PopularAction(defaultType));
+    dispatch(PopularAction("popular"));
     // eslint-disable-next-line
   }, []);
 
@@ -25,8 +24,7 @@ const WhatsPopular = ({ title, types, defaultType }) => {
     <div className={classes.slider}>
       <div className={classes["slider__container"]}>
         <div className={classes["slider__header"]}>
-          <h1>{title}</h1>
-          <DropDown options={types} defaultType={defaultType} />
+          <h1>What's Popular</h1>
         </div>
 
         <Swiper

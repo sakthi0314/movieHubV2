@@ -27,17 +27,7 @@ const Home = () => {
       variants={pageVariant}
       style={{ paddingTop: "7rem" }}
     >
-      {/* <Hero />
-      <WhatsPopular
-        types={["popular", "airing_today", "on_the_air"]}
-        defaultType="popular"
-        title={"What's Popular"}
-      /> */}
-      <Trendings
-        types={["day", "week"]}
-        defaultType="day"
-        title={"Trendings"}
-      />
+      <WhatsPopular />
     </motion.div>
   );
 };
