@@ -10,7 +10,7 @@ const PopularAction = (type) => {
     try {
       // Get Data from db
       const { data } = await axios.get(
-        `/tv/${type}?api_key=${APP_KEY}&language=en-US&page=1`
+        `/movie/${type}?api_key=${APP_KEY}&language=en-US&page=1`
       );
       dispatch({
         type: actionTypes.FETCH_POPULAR,

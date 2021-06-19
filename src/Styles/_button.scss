@@ -10,4 +10,9 @@
   font-size: 1.4rem;
   width: 100%;
   text-transform: uppercase;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }

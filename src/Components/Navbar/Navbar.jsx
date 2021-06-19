@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
@@ -50,9 +50,9 @@ const Navbar = () => {
     >
       <nav className={classes.navbar}>
         <div className={classes["navbar__container"]}>
-          <NavLink to="/" className={classes["navbar__logo"]}>
+          <Link to="/" className={classes["navbar__logo"]}>
             <img src={Logo} alt="Logo" />
-          </NavLink>
+          </Link>
 
           <div className={classes["navbar__menu"]}>
             <button onClick={toggleMenuHandler}>

@@ -1,0 +1,70 @@
+@import "../../../Styles/mixins";
+@import "../../../Styles/variables";
+
+.slider {
+  margin: 2rem 0;
+  padding: 0 2rem;
+
+  &__container {
+    max-width: 130rem;
+    margin: 0 auto;
+  }
+
+  &__header {
+    @include flexbox(row, space-between, center);
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 2.3rem;
+      font-weight: map-get($font-weight, Medium);
+    }
+  }
+
+  &__tab {
+    &--list {
+      @include flexbox(row, center, center);
+      border: 1px solid $Yellow;
+      border-radius: 3rem;
+      height: 100%;
+
+      li {
+        padding: 2vh 3vw;
+        height: 100%;
+        transition: all 0.3 ease-out;
+      }
+
+      a {
+        cursor: pointer;
+        height: 100%;
+        font-size: $font-xsm;
+        font-weight: map-get($font-weight, bold);
+        color: $Yellow;
+      }
+    }
+  }
+
+  &__content {
+    @include flexbox(row, center, center);
+  }
+
+  &__slide {
+    width: 14rem;
+
+    @include respond(mobile) {
+      width: 10rem;
+    }
+  }
+}
+
+// Active class
+
+.active {
+  background-color: $Yellow;
+  border-radius: 3rem;
+  color: $DarkGrey;
+  box-shadow: 0 0 2rem $DarkGrey;
+}
+
+.active a {
+  color: $DarkGrey;
+}

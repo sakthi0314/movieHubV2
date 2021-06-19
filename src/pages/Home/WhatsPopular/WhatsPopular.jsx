@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import RowItems from "../../../Components/RowItems/RowItems";
-import classes from "./slider.module.scss";
+import "./slider.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -14,35 +14,81 @@ import PopularAction from "../../../store/actions/PopularAction";
 const WhatsPopular = () => {
   const { popular } = useSelector((state) => state.popular);
   const dispatch = useDispatch();
+  const [select, setSelect] = useState("popular");
+
+  // Tab Functionalities
+  const slideOne = (e) => {
+    [...e.target.parentNode.parentNode.children].forEach((sibling) =>
+      sibling.classList.remove("active")
+    );
+    e.target.parentNode.classList.add("active");
+    setSelect("popular");
+  };
+
+  const slideTwo = (e) => {
+    [...e.target.parentNode.parentNode.children].forEach((sibling) =>
+      sibling.classList.remove("active")
+    );
+    e.target.parentNode.classList.add("active");
+    setSelect("now_playing");
+  };
+
+  const slideThree = (e) => {
+    [...e.target.parentNode.parentNode.children].forEach((sibling) =>
+      sibling.classList.remove("active")
+    );
+    e.target.parentNode.classList.add("active");
+    setSelect("top_rated");
+  };
 
   useEffect(() => {
-    dispatch(PopularAction("popular"));
+    dispatch(PopularAction(select));
     // eslint-disable-next-line
-  }, []);
+  }, [select]);
 
   return (
-    <div className={classes.slider}>
-      <div className={classes["slider__container"]}>
-        <div className={classes["slider__header"]}>
+    <div className="slider">
+      <div className="slider__container">
+        <div className="slider__header">
           <h1>What's Popular</h1>
+
+          <div className="slider__tab">
+            <ul className="slider__tab--list">
+              <li className="slider__tab--item active" onClick={slideOne}>
+                <a className="popular">Popular</a>
+              </li>
+
+              <li className="slider__tab--item">
+                <a className="now_playing" onClick={slideTwo}>
+                  Now Playing
+                </a>
+              </li>
+
+              <li className="slider__tab--item">
+                <a className="top_rated" onClick={slideThree}>
+                  Top Rated
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <Swiper
           slidesPerView={"auto"}
           spaceBetween={20}
-          className={classes["slider__content"]}
+          className="slider__content"
         >
           {popular &&
             popular.map((el) => (
               <SwiperSlide
                 draggable={true}
                 key={el.id}
-                className={classes["slider__slide"]}
+                className="slider__slide"
               >
                 <RowItems
                   id={el.id}
-                  title={el.name}
-                  date={el.first_air_date || el.relesed_date}
+                  title={el.title || el.orginal_name}
+                  date={el.release_date}
                   poster={el.poster_path}
                 />
               </SwiperSlide>
