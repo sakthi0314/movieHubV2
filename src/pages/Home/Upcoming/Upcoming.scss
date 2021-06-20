@@ -1,0 +1,34 @@
+@import "../../../Styles/mixins";
+@import "../../../Styles/variables";
+
+.upcoming {
+  padding: 0 2rem;
+  margin: 2rem 0;
+
+  &__container {
+    max-width: 130rem;
+    margin: 0 auto;
+  }
+
+  &__header {
+    @include flexbox(row, space-between, center);
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 2.3rem;
+      font-weight: map-get($font-weight, Medium);
+    }
+  }
+
+  &__content {
+    @include flexbox(row, center, center);
+  }
+
+  &__slide {
+    width: 30rem;
+
+    @include respond(mobile) {
+      width: 24rem;
+    }
+  }
+}

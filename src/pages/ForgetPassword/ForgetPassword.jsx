@@ -1,8 +1,6 @@
-import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { pageVariant } from "../../animations/Animation";
 import { forgetPasswordAction } from "../../store/actions/authAction";
 import classes from "../Login/Login.module.scss";
 
@@ -25,13 +23,7 @@ const ForgetPassword = () => {
   }, []);
 
   return (
-    <motion.div
-      initial="out"
-      animate="in"
-      exit="out"
-      variants={pageVariant}
-      className={classes.login}
-    >
+    <div className={classes.login}>
       <div className={classes["login__container"]}>
         <form className={classes["login__form"]} onSubmit={handleSubmit}>
           <div className={classes["login__title"]}>
@@ -57,7 +49,7 @@ const ForgetPassword = () => {
           </div>
         </form>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

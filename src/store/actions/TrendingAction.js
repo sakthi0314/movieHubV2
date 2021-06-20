@@ -12,7 +12,7 @@ const TrendingAction = (type) => {
     try {
       // Get Data from db
       const { data } = await axios.get(
-        `/trending/all/${type}?api_key=${APP_KEY}`
+        `/trending/${type}/day?api_key=${APP_KEY}`
       );
       dispatch({
         type: actionTypes.FETCH_TRENDING,

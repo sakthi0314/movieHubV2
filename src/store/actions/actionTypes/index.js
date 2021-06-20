@@ -13,6 +13,7 @@ const actionTypes = {
   FETCH_COVER_IMG: "FETCH_COVER_IMG",
   FETCH_POPULAR: "FETCH_POPULAR",
   FETCH_TRENDING: "FETCH_TRENDING",
+  FETCH_UPCOMING: "FETCH_UPCOMING",
 };
 
 export default actionTypes;

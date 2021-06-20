@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router";
+import Trendings from "./Trendings/Trendings";
 import Hero from "./Hero/Hero";
+import Upcoming from "./Upcoming/Upcoming";
 import WhatsPopular from "./WhatsPopular/WhatsPopular";
 
 const Home = () => {
@@ -19,7 +21,9 @@ const Home = () => {
   return (
     <>
       <Hero />
+      <Upcoming />
       <WhatsPopular />
+      <Trendings />
     </>
   );
 };
