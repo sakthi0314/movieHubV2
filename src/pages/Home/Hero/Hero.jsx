@@ -57,7 +57,7 @@ const Hero = () => {
               }}
             ></div>
             <div className={classes["hero__content"]}>
-              <h1>{el.name}</h1>
+              <h1>{el.title || el.original_name}</h1>
               <p>{trancate(el.overview, 180)}</p>
             </div>
           </SwiperSlide>

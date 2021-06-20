@@ -1,24 +1,26 @@
-import actionTypes from "./actionTypes";
 import axios from "../../Services/axios";
 import { request } from "../../Services/request";
+import actionTypes from "./actionTypes";
 
-const HeroCoverImageAction = () => {
+const randomAction = () => {
   return async (dispatch) => {
-    // Send Request to db
+    // Requesting to db
     dispatch({
       type: actionTypes.SEND_REQUEST,
     });
 
     try {
       // Fetch Data from db
-      const { data } = await axios.get(request.fetchTrending);
+      const { data } = await axios.get(request.fetchNetflixOrignals);
 
+      // Data from db
       dispatch({
-        type: actionTypes.FETCH_COVER_IMG,
-        payload: data.results,
+        type: actionTypes.FETCH_RANDOM_NETFLIX_IMAGE,
+        payload:
+          data.results[Math.floor(Math.random() * data.results.length - 1)],
       });
     } catch (error) {
-      // Failure to Fetch Data
+      // failure to fetch
       dispatch({
         type: actionTypes.REQUEST_FAILURE,
         payload: error.message,
@@ -27,4 +29,4 @@ const HeroCoverImageAction = () => {
   };
 };
 
-export default HeroCoverImageAction;
+export default randomAction;

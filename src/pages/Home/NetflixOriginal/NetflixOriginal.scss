@@ -1,0 +1,38 @@
+@import "../../../Styles/variables";
+@import "../../../Styles/mixins";
+
+.netflixOriginal {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 0 2rem;
+
+  &__container {
+    max-width: 130rem;
+    margin: 0 auto;
+    padding: 0 0 8rem 0;
+    @include flexbox(column, center, flex-start);
+  }
+
+  &__header {
+    &--logo {
+      width: 12rem;
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__content {
+    @include flexbox(row, center, center);
+  }
+
+  &__slide {
+    width: 28rem;
+
+    @include respond(mobile) {
+      width: 20rem;
+    }
+  }
+}

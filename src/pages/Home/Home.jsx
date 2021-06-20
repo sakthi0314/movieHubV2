@@ -5,6 +5,7 @@ import Trendings from "./Trendings/Trendings";
 import Hero from "./Hero/Hero";
 import Upcoming from "./Upcoming/Upcoming";
 import WhatsPopular from "./WhatsPopular/WhatsPopular";
+import NetflixOriginal from "./NetflixOriginal/NetflixOriginal";
 
 const Home = () => {
   const { auth } = useSelector((state) => state.firebase);
@@ -23,6 +24,7 @@ const Home = () => {
       <Hero />
       <Upcoming />
       <WhatsPopular />
+      <NetflixOriginal />
       <Trendings />
     </>
   );

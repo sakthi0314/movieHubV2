@@ -39,7 +39,7 @@ const Trendings = () => {
   }, [select]);
 
   return (
-    <div className="slider">
+    <div className="slider" style={{ marginTop: "4rem" }}>
       <div className="slider__container">
         <div className="slider__header">
           <h1>Trendings</h1>

@@ -6,6 +6,7 @@ import heroCoverImageReducer from "../heroCoverImageReducer";
 import PopularReducer from "../PopularReducer";
 import TrendingReducer from "../TrendingReducer";
 import upcomingReducer from "../upcomingReducer";
+import randomReducer from "../randomReducer";
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   popular: PopularReducer,
   trend: TrendingReducer,
   upcoming: upcomingReducer,
+  random: randomReducer,
 });
 
 export default rootReducer;
