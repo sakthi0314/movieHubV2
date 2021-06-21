@@ -1,0 +1,117 @@
+@import "../../Styles/variables";
+@import "../../Styles/mixins";
+@import "../../Styles/button";
+
+.footer {
+  padding: 5rem 2rem;
+  background-color: $DarkGrey;
+
+  &__container {
+    max-width: 130rem;
+    @include flexbox(row, space-between, flex-start);
+
+    @include respond(tablet) {
+      @include flexbox(column, flex-start, flex-start);
+    }
+  }
+
+  &__logo {
+    width: 14rem;
+  }
+
+  &__links {
+    @include flexbox(row, flex-start, center);
+    margin-top: 1rem;
+
+    li {
+      a {
+        font-size: $font-md;
+        color: $white;
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: $Yellow;
+          outline: none;
+          border: none;
+        }
+      }
+      &:not(:last-child) {
+        margin-right: 2vw;
+      }
+    }
+  }
+
+  &__power {
+    margin-top: 2rem;
+
+    h1 {
+      font-weight: map-get($font-weight, Medium);
+      font-size: $font-sm;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      color: $lightGrey;
+      font-size: $font-xsm;
+      line-height: 1.5;
+      min-width: 100%;
+      max-width: 50rem;
+      margin-bottom: 1rem;
+
+      a {
+        color: $white;
+        transition: all 0.2s ease;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    span {
+      font-size: $font-xsm;
+      color: $lightGrey;
+      text-transform: uppercase;
+    }
+  }
+
+  &__two {
+    width: 50rem;
+    max-width: 100%;
+
+    @include respond(tablet) {
+      margin-top: 2rem;
+    }
+
+    h1 {
+      font-size: $font-md;
+      font-weight: map-get($font-weight, Medium);
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__input {
+    display: flex;
+    background-color: $white;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 0.4rem;
+
+    & > * {
+      flex: 1;
+      width: 100%;
+      background-color: transparent;
+      font-family: inherit;
+      font-size: $font-xsm;
+    }
+  }
+
+  &__btn {
+    button {
+      @extend .button-wide;
+    }
+  }
+}

@@ -7,6 +7,7 @@ import PopularReducer from "../PopularReducer";
 import TrendingReducer from "../TrendingReducer";
 import upcomingReducer from "../upcomingReducer";
 import randomReducer from "../randomReducer";
+import submitMessageReducer from "../submitMessageReducer";
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   trend: TrendingReducer,
   upcoming: upcomingReducer,
   random: randomReducer,
+  contact: submitMessageReducer,
 });
 
 export default rootReducer;

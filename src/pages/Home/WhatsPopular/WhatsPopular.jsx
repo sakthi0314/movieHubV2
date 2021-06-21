@@ -55,19 +55,19 @@ const WhatsPopular = () => {
           <div className="slider__tab">
             <ul className="slider__tab--list">
               <li className="slider__tab--item active" onClick={slideOne}>
-                <a className="popular">Popular</a>
+                <span className="popular">Popular</span>
               </li>
 
               <li className="slider__tab--item">
-                <a className="now_playing" onClick={slideTwo}>
+                <span className="now_playing" onClick={slideTwo}>
                   Now Playing
-                </a>
+                </span>
               </li>
 
               <li className="slider__tab--item">
-                <a className="top_rated" onClick={slideThree}>
+                <span className="top_rated" onClick={slideThree}>
                   Top Rated
-                </a>
+                </span>
               </li>
             </ul>
           </div>

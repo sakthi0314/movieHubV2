@@ -12,6 +12,8 @@ const PopularAction = (type) => {
       const { data } = await axios.get(
         `/movie/${type}?api_key=${APP_KEY}&language=en-US&page=1`
       );
+
+     
       dispatch({
         type: actionTypes.FETCH_POPULAR,
         payload: data.results,

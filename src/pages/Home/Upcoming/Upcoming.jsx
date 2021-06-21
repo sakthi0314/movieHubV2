@@ -15,8 +15,6 @@ const Upcoming = () => {
   const dispatch = useDispatch();
   const { upcomings } = useSelector((state) => state.upcoming);
 
-  console.log(upcomings);
-
   useEffect(() => {
     dispatch(upcomingAction());
     // eslint-disable-next-line

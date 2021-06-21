@@ -29,8 +29,14 @@
 
       li {
         padding: 2vh 3vw;
+
+        @include respond(mobile) {
+          padding: 1vh 2vw;
+        }
+
         height: 100%;
         transition: all 0.3 ease-out;
+        cursor: pointer;
       }
 
       a {

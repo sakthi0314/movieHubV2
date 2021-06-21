@@ -47,13 +47,13 @@ const Trendings = () => {
           <div className="slider__tab">
             <ul className="slider__tab--list">
               <li className="slider__tab--item active" onClick={slideOne}>
-                <a className="popular">Movies</a>
+                <span className="popular">Movies</span>
               </li>
 
               <li className="slider__tab--item">
-                <a className="now_playing" onClick={slideTwo}>
+                <span className="now_playing" onClick={slideTwo}>
                   Tv Series
-                </a>
+                </span>
               </li>
             </ul>
           </div>
