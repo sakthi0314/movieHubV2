@@ -114,4 +114,16 @@
       @extend .button-wide;
     }
   }
+
+  &__success {
+    width: 100%;
+    p {
+      color: $green;
+      font-size: $font-xsm;
+      font-weight: map-get($font-weight, Medium);
+      text-align: left;
+      margin-top: 1rem;
+      transition: all 0.2s ease;
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Logo from "../../assets/Logo.svg";
 import {
   AiFillGithub,
@@ -7,32 +7,38 @@ import {
 } from "react-icons/ai";
 import "./Footer.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { useRef } from "react";
-import submitMessageAction from "../../store/actions/submitMessageAction";
+import contactAction from "../../store/actions/contactAction";
 
 const Footer = () => {
-  const dispatch = useDispatch();
-  const { isSumited } = useSelector((state) => state.contact);
   const nameRef = useRef();
   const messageRef = useRef();
+  const { auth, profile } = useSelector((state) => state.firebase);
+  const { isSumited } = useSelector((state) => state.contact);
 
-  console.log(isSumited);
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const creds = {
+
+    const contact = {
       name: nameRef.current.value,
       message: messageRef.current.value,
+      uid: auth.uid,
     };
 
-    // dispatch(submitMessageAction(creds));
+    dispatch(contactAction(contact));
 
     nameRef.current.value = "";
     messageRef.current.value = "";
   };
 
   return (
-    <div className="footer">
+    <div
+      className="footer"
+      style={{
+        display: auth.uid ? "block" : "none",
+      }}
+    >
       <div className="footer__container">
         <div className="footer__one">
           <div className="footer__logo">
@@ -69,7 +75,7 @@ const Footer = () => {
                 rel="noreferrer"
               >
                 TMDB
-              </a>
+              </a>{" "}
               api. All you seen movies, tv series and etc. This Data provided by
               TMDB database. This application is only for testing and learing
               stuffs NOT for commercial use.
@@ -91,6 +97,10 @@ const Footer = () => {
 
             <div className="footer__btn">
               <button>Submit</button>
+            </div>
+
+            <div className="footer__success">
+              {isSumited && <p>Thanks for contact us {profile.userName}</p>}
             </div>
           </form>
         </div>

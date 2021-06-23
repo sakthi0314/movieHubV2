@@ -6,7 +6,8 @@ import ForgetPassword from "../pages/ForgetPassword/ForgetPassword";
 import Login from "../pages/Login/Login";
 import Navbar from "./Navbar/Navbar";
 import Signup from "../pages/Signup/SignUp";
-import Footer from '../Components/Footer/Footer';
+import Footer from "../Components/Footer/Footer";
+import Details from "../pages/Details/Details";
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/sign_up" component={Signup} />
         <Route path="/forgetpassword" component={ForgetPassword} />
+        <Route path="/forgetpassword" component={ForgetPassword} />
+        <Route path="/:id" component={Details} />
       </Switch>
-      <Footer/>
+      <Footer />
     </Router>
   );
 }

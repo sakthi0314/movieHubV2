@@ -33,7 +33,7 @@ const NetflixOriginal = () => {
           to right,
           rgba(245, 197, 24, 1),
           rgba(245, 197, 24, 0.3)
-        ) ,url("${request.IMG_URL}${randomData.backdrop_path}")`,
+        ) ,url("${request.IMG_URL}${randomData?.backdrop_path}")`,
       }}
     >
       <div className="netflixOriginal__container">

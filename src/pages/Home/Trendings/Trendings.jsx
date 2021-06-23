@@ -76,6 +76,7 @@ const Trendings = () => {
                   title={el.title || el.orginal_name || el.name}
                   date={el.release_date || el.first_air_date}
                   poster={el.poster_path}
+                  media_type={el.media_type}
                 />
               </SwiperSlide>
             ))}

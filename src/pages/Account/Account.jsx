@@ -10,6 +10,8 @@ const Account = () => {
 
   const { auth, profile } = useSelector((state) => state.firebase);
 
+  console.log(profile);
+
   const handleSubmit = () => {
     dispatch(logoutAction());
     return <Redirect to="/login" />;
