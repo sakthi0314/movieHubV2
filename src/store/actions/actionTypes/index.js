@@ -17,6 +17,7 @@ const actionTypes = {
   FETCH_RANDOM_NETFLIX_IMAGE: "FETCH_RANDOM_NETFLIX_IMAGE",
   SUBMIT_MESSAGE: "SUBMIT_MESSAGE",
   GET_DETAIL: "GET_DETAIL",
+  CAST: "CAST",
 };
 
 export default actionTypes;

@@ -2,7 +2,7 @@ import actionType from "../actions/actionTypes";
 import axios from "../../Services/axios";
 import { APP_KEY } from "../../Services/request";
 
-const DetailsAction = (id = 520763) => {
+const DetailsAction = (id, type) => {
   return async (dispatch) => {
     // Request tp db
     dispatch({
@@ -11,10 +11,9 @@ const DetailsAction = (id = 520763) => {
 
     try {
       const { data } = await axios.get(
-        `/movie/${id}?api_key=${APP_KEY}&language=en-US`
+        `/${type}/${id}?api_key=${APP_KEY}&language=en-US`
       );
 
-      console.log(data);
       // Date from db
       dispatch({ type: actionType.GET_DETAIL, payload: data });
     } catch (error) {

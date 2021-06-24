@@ -42,6 +42,7 @@ const Upcoming = () => {
                 title={el.title || el.orginal_name}
                 date={el.release_date}
                 poster={el.backdrop_path}
+                media_type={"movie"}
               />
             </SwiperSlide>
           ))}

@@ -8,6 +8,7 @@ import Navbar from "./Navbar/Navbar";
 import Signup from "../pages/Signup/SignUp";
 import Footer from "../Components/Footer/Footer";
 import Details from "../pages/Details/Details";
+import CastAndCrew from "../pages/CastAndCrew/CastAndCrew";
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
         <Route path="/sign_up" component={Signup} />
         <Route path="/forgetpassword" component={ForgetPassword} />
         <Route path="/forgetpassword" component={ForgetPassword} />
-        <Route path="/:id" component={Details} />
+        <Route path="/:media_type/:id" component={Details} />
+        <Route path="/cast/:id/:media_type" component={CastAndCrew} />
       </Switch>
       <Footer />
     </Router>

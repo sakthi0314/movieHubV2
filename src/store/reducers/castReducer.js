@@ -1,11 +1,12 @@
 import actionTypes from "../actions/actionTypes";
 
-const initailState = {
+const initialState = {
   isLoading: false,
-  detail: {},
+  casts: {},
   error: "",
 };
-const detailReducer = (state = initailState, action) => {
+
+const castReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SEND_REQUEST:
       return {
@@ -13,10 +14,10 @@ const detailReducer = (state = initailState, action) => {
         isLoading: true,
       };
 
-    case actionTypes.GET_DETAIL:
+    case actionTypes.CAST:
       return {
         ...state,
-        detail: action.payload,
+        casts: action.payload,
         isLoading: false,
       };
 
@@ -31,4 +32,4 @@ const detailReducer = (state = initailState, action) => {
   }
 };
 
-export default detailReducer;
+export default castReducer;

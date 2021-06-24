@@ -6,9 +6,9 @@ import { request } from "../../Services/request";
 import trancate from "../../utilities/trancate";
 import classes from "./RowItems.module.scss";
 
-const SingleSlide = ({ title, date, poster, id }) => {
+const SingleSlide = ({ title, date, poster, id, media_type }) => {
   return (
-    <Link to={`/${id}`} className={classes.RowItems}>
+    <Link to={`/${media_type}/${id}`} className={classes.RowItems}>
       <div className={classes["RowItems__img"]}>
         <LazyLoadImage
           alt={title}
