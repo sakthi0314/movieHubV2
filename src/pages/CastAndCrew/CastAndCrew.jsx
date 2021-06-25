@@ -22,6 +22,7 @@ const CastAndCrew = () => {
     window.scroll(0, 0);
     dispatch(DetailsAction(id, media_type));
     dispatch(castAction(id, media_type));
+    // eslint-disable-next-line
   }, []);
 
   return (
