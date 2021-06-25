@@ -21,8 +21,8 @@ function App() {
         <Route path="/sign_up" component={Signup} />
         <Route path="/forgetpassword" component={ForgetPassword} />
         <Route path="/forgetpassword" component={ForgetPassword} />
+        <Route path="/cast/:media_type/:id" component={CastAndCrew} />
         <Route path="/:media_type/:id" component={Details} />
-        <Route path="/cast/:id/:media_type" component={CastAndCrew} />
       </Switch>
       <Footer />
     </Router>

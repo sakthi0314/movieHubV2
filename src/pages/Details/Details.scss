@@ -168,6 +168,18 @@
         color: $lightGrey;
         font-size: $font-xsm;
         font-weight: map-get($font-weight, Medium);
+        width: 100%;
+      }
+    }
+
+    &--detail {
+      @include flexbox(row, flex-start, flex-start);
+      flex-wrap: wrap;
+
+      & > * {
+        &:not(:last-child) {
+          margin-right: 3vw;
+        }
       }
     }
   }

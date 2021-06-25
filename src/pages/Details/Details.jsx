@@ -20,9 +20,9 @@ const Details = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    window.scroll(0, 0);
     dispatch(DetailsAction(id, media_type));
     dispatch(castAction(id, media_type));
-    window.scroll(0, 0);
     // eslint-disable-next-line
   }, []);
 
@@ -84,52 +84,54 @@ const Details = () => {
                   ))}
               </ul>
 
-              <div className="info__rowtwo--date">
-                <h1>Released Date</h1>
-                <p>{detail.release_date || detail.first_air_date}</p>
-              </div>
+              <ul className="info__rowtwo--detail">
+                <div className="info__rowtwo--date">
+                  <h1>Released Date</h1>
+                  <p>{detail.release_date || detail.first_air_date}</p>
+                </div>
 
-              <div className="info__rowtwo--rating">
-                <h1>Vote Avenger</h1>
-                <Rating
-                  initialRating={detail.vote_average / 2 || 4.3}
-                  readonly
-                  emptySymbol={<AiOutlineStar />}
-                  fullSymbol={<AiFillStar />}
-                />
-              </div>
+                <div className="info__rowtwo--rating">
+                  <h1>Vote Avenger</h1>
+                  <Rating
+                    initialRating={detail.vote_average / 2 || 4.3}
+                    readonly
+                    emptySymbol={<AiOutlineStar />}
+                    fullSymbol={<AiFillStar />}
+                  />
+                </div>
 
-              <div className="info__rowtwo--status">
-                <h1>Status</h1>
-                <p>{detail.status}</p>
-              </div>
+                <div className="info__rowtwo--status">
+                  <h1>Status</h1>
+                  <p>{detail.status}</p>
+                </div>
 
-              <div className="info__rowtwo--status">
-                <h1>Original Language</h1>
+                <div className="info__rowtwo--status">
+                  <h1>Original Language</h1>
 
-                {detail.spoken_languages &&
-                  detail.spoken_languages.map((lan) => <p>{lan.name}</p>)}
-              </div>
+                  {detail.spoken_languages &&
+                    detail.spoken_languages.map((lan) => <p>{lan.name}</p>)}
+                </div>
 
-              <div className="info__rowtwo--status">
-                <h1>Budget</h1>
+                <div className="info__rowtwo--status">
+                  <h1>Budget</h1>
 
-                {detail.budget ? (
-                  <p>$ {`${numeral(detail.budget).format("0,0")}`}</p>
-                ) : (
-                  "not mentioned"
-                )}
-              </div>
+                  {detail.budget ? (
+                    <p>$ {`${numeral(detail.budget).format("0,0")}`}</p>
+                  ) : (
+                    "Not mentioned"
+                  )}
+                </div>
 
-              <div className="info__rowtwo--status">
-                <h1>Revenue</h1>
+                <div className="info__rowtwo--status">
+                  <h1>Revenue</h1>
 
-                {detail.budget ? (
-                  <p>$ {`${numeral(detail.revenue).format("0,0")}`}</p>
-                ) : (
-                  "not mentioned"
-                )}
-              </div>
+                  {detail.budget ? (
+                    <p>$ {`${numeral(detail.revenue).format("0,0")}`}</p>
+                  ) : (
+                    "Not mentioned"
+                  )}
+                </div>
+              </ul>
             </div>
           </div>
         </div>
@@ -144,7 +146,7 @@ const Details = () => {
 
           <div className="cast__rowtwo">
             <h1>
-              <Link to={`/cast/${id}/${media_type}`}>Full Cast & Crew</Link>
+              <Link to={`/cast/${media_type}/${id}`}>Full Cast & Crew</Link>
             </h1>
           </div>
         </div>

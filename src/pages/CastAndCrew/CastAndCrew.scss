@@ -1,0 +1,126 @@
+@import "../../Styles/mixins";
+@import "../../Styles/variables";
+@import "../../Styles/button";
+
+.castHeader {
+  padding: 0 2rem;
+  margin-top: 7rem;
+  height: 15rem;
+  background-color: $Yellow;
+
+  &__container {
+    max-width: 130rem;
+    margin: 0 auto;
+    height: 100%;
+    @include flexbox(row, flex-start, center);
+  }
+
+  &__movieImg {
+    width: 8rem;
+
+    img {
+      border-radius: 0.4rem;
+    }
+  }
+
+  &__info {
+    margin-left: 2vw;
+    h1 {
+      font-size: $font-xl;
+      color: $DarkGrey;
+    }
+
+    p {
+      @include flexbox(row, flex-start, center);
+      cursor: pointer;
+      font-size: $font-xsm;
+      color: $DarkGrey;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      p {
+        margin-left: 0.3rem;
+      }
+    }
+  }
+}
+
+.castAndCrew {
+  margin-top: 4rem;
+  padding: 0 2rem;
+
+  &__container {
+    max-width: 130rem;
+    margin: 0 auto;
+    @include flexbox(row, space-between, flex-start);
+
+    @include respond(mobile) {
+      @include flexbox(column, center, flex-start);
+    }
+  }
+
+  &__col--one {
+    flex: 0.5;
+
+    @include respond(mobile) {
+      flex: 1;
+    }
+  }
+
+  &__col {
+    &--one {
+      h1 {
+        font-size: $font-l;
+        margin-bottom: 2rem;
+
+        span {
+          font-weight: map-get($font-weight, Light);
+          color: $lightGrey;
+        }
+      }
+
+      ul {
+        @include flexbox(column, flex-start, flex-start);
+
+        li {
+          @include flexbox(row, center, center);
+
+          .cast__img {
+            width: 7rem;
+
+            img {
+              border-radius: 0.4rem;
+            }
+          }
+
+          .cast__info {
+            margin-left: 3vw;
+            h1 {
+              font-size: $font-sm;
+              color: $white;
+              font-weight: map-get($font-weight, bold);
+            }
+
+            p {
+              font-size: $font-xsm;
+              color: $lightGrey;
+              font-weight: map-get($font-weight, Medium);
+            }
+          }
+        }
+
+        li {
+          &:not(:last-child) {
+            margin-bottom: 2rem;
+          }
+        }
+      }
+    }
+
+    &--two {
+      background-color: gray;
+    }
+  }
+}
