@@ -11,4 +11,6 @@ const fbconfig = firebase.initializeApp({
   appId: "1:302379201861:web:946357fa416d8a3b77ba2c",
 });
 
+fbconfig.firestore().settings({ timestampsInSnapshots: true });
+
 export default fbconfig;

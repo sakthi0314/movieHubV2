@@ -63,6 +63,7 @@
 
   &__col--one {
     flex: 0.5;
+    margin-bottom: 2rem;
 
     @include respond(mobile) {
       flex: 1;

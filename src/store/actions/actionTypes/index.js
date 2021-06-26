@@ -18,6 +18,9 @@ const actionTypes = {
   SUBMIT_MESSAGE: "SUBMIT_MESSAGE",
   GET_DETAIL: "GET_DETAIL",
   CAST: "CAST",
+  GET_REVIEW: "GET_REVIEW",
+  CREATE_REVIEW: "CREATE_REVIEW",
+  ADD_REVIEW: "ADD_REVIEW",
 };
 
 export default actionTypes;

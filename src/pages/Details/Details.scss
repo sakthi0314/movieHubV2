@@ -203,9 +203,11 @@
   }
 
   &__rowtwo {
+    border-bottom: 1px solid rgba(221, 221, 221, 0.582);
     h1 {
-      font-size: $font-l;
+      font-size: $font-md;
       font-weight: map-get($font-weight, Medium);
+      padding: 1rem 0;
 
       & > * {
         text-decoration: none;
@@ -216,5 +218,60 @@
         }
       }
     }
+  }
+}
+
+.review {
+  margin-top: 3rem;
+  padding: 0 2rem;
+
+  &__container {
+    max-width: 130rem;
+    margin: 0 auto;
+  }
+
+  &__header {
+    h1 {
+      font-size: $font-md;
+      font-weight: map-get($font-weight, Medium);
+    }
+  }
+
+  &__form {
+    margin: 2rem 0;
+
+    form {
+      width: 100%;
+      @include flexbox(row, flex-start, center);
+      transition: 0.2s ease;
+    }
+
+    &--input {
+      width: 100%;
+      display: flex;
+      border-bottom: 1px solid $lightGrey;
+      padding: 1rem 0;
+
+      input {
+        flex: 1;
+        max-width: 100%;
+        background-color: transparent;
+        font-family: inherit;
+        color: $white;
+      }
+    }
+
+    &--button {
+      button {
+        background-color: transparent;
+        color: $Yellow;
+        font-size: $font-l;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__list {
+    margin-top: 4rem;
   }
 }

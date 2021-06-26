@@ -21,6 +21,10 @@ html {
   scroll-behavior: smooth;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+
+  @include respond(mobile) {
+    font-size: 58.5%;
+  }
 }
 
 body {
@@ -40,6 +44,7 @@ input,
 textarea {
   border: none;
   outline: none;
+  font-family: inherit;
 
   &:active {
     border: none;
