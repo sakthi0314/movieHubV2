@@ -1,11 +1,8 @@
 import React from "react";
-import { useState } from "react";
 import moment from "moment";
 import "./Review.scss";
 
 const Review = ({ user, profile, review, timestamp }) => {
-  const [showReview, setShowReview] = useState(false);
-
   return (
     <>
       <li className="reviews">

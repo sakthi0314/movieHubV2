@@ -49,7 +49,7 @@ const NetflixOriginal = () => {
           className="netflixOriginal__content"
         >
           {coverImage &&
-            coverImage.map((el) => (
+            coverImage?.map((el) => (
               <SwiperSlide
                 draggable={true}
                 key={el.id}

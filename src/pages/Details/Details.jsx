@@ -17,7 +17,15 @@ import { AiOutlineSend } from "react-icons/ai";
 import Review from "../../Components/Review/Review";
 import getReview from "../../store/actions/getReview";
 import createReview from "../../store/actions/createReview";
-import { useState } from "react";
+import recommededAction from "../../store/actions/recommededAction";
+import { Swiper, SwiperSlide } from "swiper/react";
+import RowItems from "../../Components/RowItems/RowItems";
+
+// Import Swiper styles
+import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.scss";
+import "swiper/components/pagination/pagination.scss";
+import "swiper/components/scrollbar/scrollbar.scss";
 
 const Details = () => {
   const { id, media_type } = useParams();
@@ -27,7 +35,7 @@ const Details = () => {
   const reviewRef = useRef();
   const { profile, auth } = useSelector((state) => state.firebase);
   const { reviews, isLoading } = useSelector((state) => state.review);
-  const [showReviews, setShowReviews] = useState(false);
+  const { recommededs } = useSelector((state) => state.recommened);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,16 +53,11 @@ const Details = () => {
     reviewRef.current.value = "";
   };
 
-  const handleShowReview = () => {
-    setShowReviews(!showReviews);
-  };
-
   useEffect(() => {
     window.scroll(0, 0);
-    dispatch(DetailsAction(id, media_type));
     dispatch(castAction(id, media_type));
     dispatch(getReview(id));
-
+    dispatch(recommededAction(id, media_type));
     // eslint-disable-next-line
   }, []);
 
@@ -64,7 +67,13 @@ const Details = () => {
       (detail.title && detail.title) ||
       (detail.original_title && detail.original_title)
     }`;
+    // eslint-disable-next-line
   }, [detail]);
+
+  useEffect(() => {
+    dispatch(DetailsAction(id, media_type));
+    // eslint-disable-next-line
+  }, [id, media_type]);
 
   return (
     <>
@@ -85,6 +94,15 @@ const Details = () => {
               effect="blur"
               alt={detail.id}
             />
+          </div>
+
+          <div className="header__scroll">
+            <div className="header__scroll--mouse">
+              <span></span>
+            </div>
+            <div className="header__scroll--arrow">
+              <span></span>
+            </div>
           </div>
         </div>
       </header>
@@ -141,7 +159,9 @@ const Details = () => {
                   <h1>Original Language</h1>
 
                   {detail.spoken_languages &&
-                    detail.spoken_languages.map((lan) => <p>{lan.name}</p>)}
+                    detail.spoken_languages.map((lan, id) => (
+                      <p key={id}>{lan.name}</p>
+                    ))}
                 </div>
 
                 <div className="info__rowtwo--status">
@@ -201,7 +221,7 @@ const Details = () => {
                 <input
                   type="text"
                   ref={reviewRef}
-                  placeholder="Leave your favarable review..."
+                  placeholder="Leave your favorable review..."
                 />
               </div>
 
@@ -211,12 +231,7 @@ const Details = () => {
             </form>
           </div>
 
-          <ul
-            className="review__list"
-            style={{
-              display: showReviews ? "block" : "none",
-            }}
-          >
+          <ul className="review__list">
             {reviews.map((review, id) => (
               <Review
                 key={id}
@@ -227,12 +242,41 @@ const Details = () => {
               />
             ))}
           </ul>
-          <button
-            onClick={handleShowReview}
-            style={{ textAlign: "center", width: "100%" }}
+        </div>
+      </div>
+
+      <div className="recommeded">
+        <div className="recommeded__container">
+          <div className="recommeded__header">
+            <h1>Recommeded</h1>
+          </div>
+
+          <Swiper
+            slidesPerView={"auto"}
+            spaceBetween={20}
+            className="recommeded__content"
           >
-            Show All
-          </button>
+            {recommededs &&
+              recommededs.map((recommeded) => (
+                <SwiperSlide
+                  draggable={true}
+                  key={recommeded.id}
+                  onClick={() => {
+                    document.documentElement.scroll(0, 0);
+                  }}
+                  className="recommeded__slide"
+                >
+                  <RowItems
+                    id={recommeded.id}
+                    title={recommeded.title || recommeded.orginal_name}
+                    date={recommeded.release_date}
+                    poster={recommeded.backdrop_path}
+                    media_type={"movie"}
+                    isLoading={isLoading}
+                  />
+                </SwiperSlide>
+              ))}
+          </Swiper>
         </div>
       </div>
     </>

@@ -4,11 +4,12 @@ const getReview = (movieId) => {
   return (dispatch, getState, { getFirebase }) => {
     const firestore = getFirebase().firestore();
 
-    // send request..
+    // send request...
     dispatch({
       type: actionTypes.SEND_REQUEST,
     });
 
+    // Get data from db...
     firestore
       .collection("reviews")
       .where("movieId", "==", movieId)
@@ -20,6 +21,7 @@ const getReview = (movieId) => {
           reviews.push({ ...document.data() });
         });
 
+        // Failure to get...
         dispatch({
           type: actionTypes.GET_REVIEW,
           payload: reviews,

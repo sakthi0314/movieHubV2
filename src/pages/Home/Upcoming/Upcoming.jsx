@@ -13,7 +13,7 @@ import "swiper/components/scrollbar/scrollbar.scss";
 
 const Upcoming = () => {
   const dispatch = useDispatch();
-  const { upcomings } = useSelector((state) => state.upcoming);
+  const { upcomings, isLoading } = useSelector((state) => state.upcoming);
 
   useEffect(() => {
     dispatch(upcomingAction());
@@ -43,6 +43,7 @@ const Upcoming = () => {
                 date={el.release_date}
                 poster={el.backdrop_path}
                 media_type={"movie"}
+                isLoading={isLoading}
               />
             </SwiperSlide>
           ))}

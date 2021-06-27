@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Redirect } from "react-router-dom";
 import { request } from "../../Services/request";
 import castAction from "../../store/actions/castAction";
 import DetailsAction from "../../store/actions/DetailsAction";
@@ -16,6 +16,7 @@ const CastAndCrew = () => {
   const dispatch = useDispatch();
   const { id, media_type } = useParams();
   const history = useHistory();
+  const { auth } = useSelector((state) => state.firebase);
 
   useEffect(() => {
     document.title = "Cast & Crew";
@@ -24,6 +25,11 @@ const CastAndCrew = () => {
     dispatch(castAction(id, media_type));
     // eslint-disable-next-line
   }, []);
+
+  // Routing guard
+  if (!auth.uid) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <>

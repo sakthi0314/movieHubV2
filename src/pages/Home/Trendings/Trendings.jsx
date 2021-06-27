@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "../WhatsPopular/slider.scss";
 
 const Trendings = () => {
-  const { trendings } = useSelector((state) => state.trend);
+  const { trendings, isLoading } = useSelector((state) => state.trend);
   const dispatch = useDispatch();
   const [select, setSelect] = useState("movie");
 
@@ -77,6 +77,7 @@ const Trendings = () => {
                   date={el.release_date || el.first_air_date}
                   poster={el.poster_path}
                   media_type={el.media_type}
+                  isLoading={isLoading}
                 />
               </SwiperSlide>
             ))}

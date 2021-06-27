@@ -13,6 +13,10 @@
   border-radius: 0.4rem;
   overflow: hidden;
 
+  @include respond(mobile) {
+    width: 8rem;
+  }
+
   p {
     color: $font-sm;
     color: $lightGrey;

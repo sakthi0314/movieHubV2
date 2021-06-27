@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PopularAction from "../../../store/actions/PopularAction";
 
 const WhatsPopular = () => {
-  const { popular } = useSelector((state) => state.popular);
+  const { popular, isLoading } = useSelector((state) => state.popular);
   const dispatch = useDispatch();
   const [select, setSelect] = useState("popular");
 
@@ -81,6 +81,7 @@ const WhatsPopular = () => {
           {popular &&
             popular.map((el) => (
               <SwiperSlide
+                onClick={() => console.log("Helllo")}
                 draggable={true}
                 key={el.id}
                 className="slider__slide"
@@ -91,6 +92,7 @@ const WhatsPopular = () => {
                   date={el.release_date}
                   poster={el.poster_path}
                   media_type={"movie"}
+                  isLoading={isLoading}
                 />
               </SwiperSlide>
             ))}
