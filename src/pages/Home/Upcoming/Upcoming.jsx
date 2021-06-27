@@ -21,34 +21,37 @@ const Upcoming = () => {
   }, []);
 
   return (
-    <div className="upcoming">
-      <div className="upcoming__header">
-        <h1>Upcoming Movies</h1>
-      </div>
-      <Swiper
-        slidesPerView={"auto"}
-        spaceBetween={20}
-        className="upcoming__content"
-      >
-        {upcomings &&
-          upcomings.map((el) => (
-            <SwiperSlide
-              draggable={true}
-              key={el.id}
-              className="upcoming__slide"
-            >
-              <RowItems
-                id={el.id}
-                title={el.title || el.orginal_name}
-                date={el.release_date}
-                poster={el.backdrop_path}
-                media_type={"movie"}
-                isLoading={isLoading}
-              />
-            </SwiperSlide>
-          ))}
-      </Swiper>
-    </div>
+    <>
+      {!isLoading && (
+        <div className="upcoming">
+          <div className="upcoming__header">
+            {upcomings.length >= 1 && <h1>Upcoming Movies</h1>}
+          </div>
+          <Swiper
+            slidesPerView={"auto"}
+            spaceBetween={20}
+            className="upcoming__content"
+          >
+            {upcomings.length >= 1 &&
+              upcomings.map((el) => (
+                <SwiperSlide
+                  draggable={true}
+                  key={el.id}
+                  className="upcoming__slide"
+                >
+                  <RowItems
+                    id={el.id}
+                    title={el.title || el.orginal_name}
+                    date={el.release_date}
+                    poster={el.backdrop_path}
+                    media_type={"movie"}
+                  />
+                </SwiperSlide>
+              ))}
+          </Swiper>
+        </div>
+      )}
+    </>
   );
 };
 

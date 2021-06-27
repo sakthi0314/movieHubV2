@@ -25,6 +25,7 @@ const getReviewReducer = (state = initailState, action) => {
       return {
         ...state,
         error: action.payload,
+        isLoading: false,
       };
 
     default:

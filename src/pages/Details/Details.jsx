@@ -55,9 +55,6 @@ const Details = () => {
 
   useEffect(() => {
     window.scroll(0, 0);
-    dispatch(castAction(id, media_type));
-    dispatch(getReview(id));
-    dispatch(recommededAction(id, media_type));
     // eslint-disable-next-line
   }, []);
 
@@ -71,6 +68,9 @@ const Details = () => {
   }, [detail]);
 
   useEffect(() => {
+    dispatch(castAction(id, media_type));
+    dispatch(getReview(id));
+    dispatch(recommededAction(id, media_type));
     dispatch(DetailsAction(id, media_type));
     // eslint-disable-next-line
   }, [id, media_type]);
@@ -155,13 +155,14 @@ const Details = () => {
                   <p>{detail.status}</p>
                 </div>
 
-                <div className="info__rowtwo--status">
+                <div className="info__rowtwo--lang">
                   <h1>Original Language</h1>
-
-                  {detail.spoken_languages &&
-                    detail.spoken_languages.map((lan, id) => (
-                      <p key={id}>{lan.name}</p>
-                    ))}
+                  <ul>
+                    {detail.spoken_languages &&
+                      detail.spoken_languages.map((lan, id) => (
+                        <p key={id}>{lan.name}</p>
+                      ))}
+                  </ul>
                 </div>
 
                 <div className="info__rowtwo--status">
@@ -247,9 +248,11 @@ const Details = () => {
 
       <div className="recommeded">
         <div className="recommeded__container">
-          <div className="recommeded__header">
-            <h1>Recommeded</h1>
-          </div>
+          {recommededs.length >= 1 && (
+            <div className="recommeded__header">
+              <h1>Recommeded</h1>
+            </div>
+          )}
 
           <Swiper
             slidesPerView={"auto"}

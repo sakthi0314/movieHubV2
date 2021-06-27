@@ -47,58 +47,61 @@ const WhatsPopular = () => {
   }, [select]);
 
   return (
-    <div className="slider">
-      <div className="slider__container">
-        <div className="slider__header">
-          <h1>What's Popular</h1>
+    <>
+      {!isLoading && (
+        <div className="slider">
+          <div className="slider__container">
+            <div className="slider__header">
+              <h1>What's Popular</h1>
 
-          <div className="slider__tab">
-            <ul className="slider__tab--list">
-              <li className="slider__tab--item active" onClick={slideOne}>
-                <span className="popular">Popular</span>
-              </li>
+              <div className="slider__tab">
+                <ul className="slider__tab--list">
+                  <li className="slider__tab--item active" onClick={slideOne}>
+                    <span className="popular">Popular</span>
+                  </li>
 
-              <li className="slider__tab--item">
-                <span className="now_playing" onClick={slideTwo}>
-                  Now Playing
-                </span>
-              </li>
+                  <li className="slider__tab--item">
+                    <span className="now_playing" onClick={slideTwo}>
+                      Now Playing
+                    </span>
+                  </li>
 
-              <li className="slider__tab--item">
-                <span className="top_rated" onClick={slideThree}>
-                  Top Rated
-                </span>
-              </li>
-            </ul>
+                  <li className="slider__tab--item">
+                    <span className="top_rated" onClick={slideThree}>
+                      Top Rated
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <Swiper
+              slidesPerView={"auto"}
+              spaceBetween={20}
+              className="slider__content"
+            >
+              {popular &&
+                popular.map((el) => (
+                  <SwiperSlide
+                    onClick={() => console.log("Helllo")}
+                    draggable={true}
+                    key={el.id}
+                    className="slider__slide"
+                  >
+                    <RowItems
+                      id={el.id}
+                      title={el.title || el.orginal_name}
+                      date={el.release_date}
+                      poster={el.poster_path}
+                      media_type={"movie"}
+                    />
+                  </SwiperSlide>
+                ))}
+            </Swiper>
           </div>
         </div>
-
-        <Swiper
-          slidesPerView={"auto"}
-          spaceBetween={20}
-          className="slider__content"
-        >
-          {popular &&
-            popular.map((el) => (
-              <SwiperSlide
-                onClick={() => console.log("Helllo")}
-                draggable={true}
-                key={el.id}
-                className="slider__slide"
-              >
-                <RowItems
-                  id={el.id}
-                  title={el.title || el.orginal_name}
-                  date={el.release_date}
-                  poster={el.poster_path}
-                  media_type={"movie"}
-                  isLoading={isLoading}
-                />
-              </SwiperSlide>
-            ))}
-        </Swiper>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

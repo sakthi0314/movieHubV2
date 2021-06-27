@@ -226,6 +226,20 @@
         }
       }
     }
+
+    &--lang {
+      margin-top: 2rem;
+      ul {
+        display: flex;
+        p {
+          font-size: $font-xsm;
+
+          &:not(:last-child) {
+            margin-right: 2rem;
+          }
+        }
+      }
+    }
   }
 }
 
