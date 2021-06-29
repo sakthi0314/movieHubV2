@@ -5,14 +5,19 @@ import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import Logo from "../../assets/Logo.svg";
 import classes from "./Navbar.module.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import getProfileAction from "../../store/actions/getProfileAction";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
   const [searchMenu, setSearchMenu] = useState(true);
   const [navbarHide, setNavbarHide] = useState("0");
   const searchRef = useRef();
+  const dispatch = useDispatch();
   const { auth, profile } = useSelector((state) => state.firebase);
+  const { profilePicture } = useSelector((state) => state.getProfile);
 
   // Toggle menu
   const toggleMenuHandler = () => {
@@ -38,6 +43,8 @@ const Navbar = () => {
 
   useEffect(() => {
     searchRef.current.focus();
+    dispatch(getProfileAction());
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -103,32 +110,16 @@ const Navbar = () => {
                 People
               </NavLink>
             </li>
-
-            <li className={classes["account__link"]}>
-              <NavLink
-                to="/account"
-                activeClassName="navbar__active"
-                className={classes["navbar__username--link"]}
-              >
-                Account
-              </NavLink>
-            </li>
           </ul>
 
           <ul className={classes["navbar__right"]}>
-            <li className={classes["navbar__username"]}>
-              <NavLink
-                to="/account"
-                activeClassName="navbar__active"
-                className={classes["navbar__username--link"]}
-              >
-                Account
-              </NavLink>
-            </li>
-
-            <li className={classes["navbar__avatar"]}>
-              <span>{profile.initial}</span>
-            </li>
+            <Link to="/account" className={classes["navbar__avatar"]}>
+              <LazyLoadImage
+                effect="blur"
+                src={profilePicture}
+                alt={profile.userName}
+              />
+            </Link>
 
             <li>
               <button

@@ -1,7 +1,7 @@
 import actionTypes from "../actions/actionTypes";
 
 const initailState = {
-  isLoading: false,
+  isLoadingRec: false,
   recommededs: [],
   error: "",
 };
@@ -11,13 +11,13 @@ const recommededReducer = (state = initailState, action) => {
     case actionTypes.SEND_REQUEST:
       return {
         ...state,
-        isLoading: true,
+        isLoadingRec: true,
       };
 
     case actionTypes.RECOMMMENDED:
       return {
         ...state,
-        isLoading: false,
+        isLoadingRec: false,
         recommededs: action.payload,
       };
 
@@ -25,6 +25,7 @@ const recommededReducer = (state = initailState, action) => {
       return {
         ...state,
         error: action.payload,
+        isLoadingRec: false,
       };
 
     default:

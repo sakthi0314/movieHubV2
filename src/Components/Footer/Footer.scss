@@ -4,7 +4,8 @@
 
 .footer {
   padding: 5rem 2rem;
-  background-color: $DarkGrey;
+  border: 1px solid transparent;
+  border-top-color: rgba(204, 204, 204, 0.219);
 
   &__container {
     max-width: 130rem;

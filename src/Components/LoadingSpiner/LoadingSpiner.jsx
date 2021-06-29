@@ -6,8 +6,9 @@ const LoadingSpiner = () => {
     <div
       style={{
         height: "100vh",
-        display: "grid",
-        placeItems: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         backgroundColor: "rgb(0, 0, 0)",
       }}
     >

@@ -69,10 +69,6 @@
     top: 50%;
     transform: translateY(-50%);
 
-    @include respond(mobile) {
-      width: 14rem;
-    }
-
     img {
       border-radius: 0.2rem;
     }
@@ -106,6 +102,7 @@
       font-size: $font-xl;
       color: $white;
       font-weight: map-get($font-weight, Medium);
+      width: 100%;
     }
 
     &--tagline {
@@ -125,13 +122,35 @@
       opacity: 0.7;
     }
 
-    &--trailer {
+    &--button {
       margin-top: 3rem;
       width: 100%;
 
       button {
-        @extend .button-wide;
+        padding: 1rem 2rem;
+        border-radius: 0.3rem;
+        font-size: $font-xsm;
+        font-weight: map-get($font-weight, Medium);
+        transition: al 0.3s ease;
 
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .btn-primary {
+        background-color: $Yellow;
+        margin-right: 3rem;
+        color: $DarkGrey;
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        border: 2px solid $Yellow;
+        color: $Yellow;
+      }
+
+      button {
         span {
           margin-right: 0.8rem;
         }
@@ -139,7 +158,7 @@
     }
 
     h4 {
-      font-size: $font-l;
+      font-size: $font-md;
       font-weight: map-get($font-weight, Medium);
       margin-bottom: 0.4rem;
     }
@@ -150,6 +169,7 @@
     &--genre {
       display: flex;
       flex-direction: column;
+      flex-wrap: wrap;
 
       h1 {
         font-size: $font-sm;
@@ -159,6 +179,7 @@
 
       ul {
         @include flexbox(row, flex-start, center);
+        flex-wrap: wrap;
 
         li {
           padding: 0.4rem 1rem;
@@ -166,6 +187,7 @@
           font-weight: map-get($font-weight, Light);
           background-color: $DarkGrey;
           border-radius: 0.4rem;
+          margin: 1rem 0;
 
           &:not(:last-child) {
             margin-right: 2vw;
@@ -231,6 +253,7 @@
       margin-top: 2rem;
       ul {
         display: flex;
+        flex-wrap: wrap;
         p {
           font-size: $font-xsm;
 
@@ -320,6 +343,10 @@
     }
 
     &--button {
+      display: none;
+      @include respond(mobile) {
+        display: block;
+      }
       button {
         background-color: transparent;
         color: $Yellow;

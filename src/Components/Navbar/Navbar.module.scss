@@ -130,48 +130,13 @@
     }
   }
 
-  &__username {
-    &--link {
-      font-size: $font-sm;
-      margin-right: 2vw;
-      text-decoration: none;
-      cursor: pointer;
-      color: $white;
-      font-weight: map-get($font-weight, Medium);
-      transition: all 0.2s ease;
-
-      &:hover {
-        color: $Yellow;
-      }
-
-      &:active,
-      &:focus {
-        outline: none;
-        border: none;
-      }
-    }
-
-    @include respond(tablet) {
-      display: none;
-    }
-  }
-
   &__avatar {
     margin-right: 2vw;
-    border-radius: 50%;
-    padding: 1.5rem;
-    height: 1.6rem;
-    width: 1.6rem;
-    background-color: $Yellow;
 
-    @include flexbox(row, center, center);
-
-    span {
-      font-size: $font-sm;
-      color: $DarkGrey;
-      line-height: 0;
-      font-weight: map-get($font-weight, Medium);
-      text-transform: uppercase;
+    img {
+      border-radius: 50%;
+      height: 4rem;
+      width: 4rem;
     }
   }
 }
@@ -205,13 +170,5 @@
       font-family: inherit;
       font-weight: map-get($font-weight, Medium);
     }
-  }
-}
-
-.account__link {
-  display: none;
-
-  @include respond(tablet) {
-    display: block;
   }
 }

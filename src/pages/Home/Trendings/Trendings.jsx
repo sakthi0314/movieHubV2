@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "../WhatsPopular/slider.scss";
 
 const Trendings = () => {
-  const { trendings, isLoading } = useSelector((state) => state.trend);
+  const { trendings } = useSelector((state) => state.trend);
   const dispatch = useDispatch();
   const [select, setSelect] = useState("movie");
 
@@ -40,52 +40,50 @@ const Trendings = () => {
 
   return (
     <>
-      {!isLoading && (
-        <div className="slider" style={{ marginTop: "4rem" }}>
-          <div className="slider__container">
-            <div className="slider__header">
-              <h1>Trendings</h1>
+      <div className="slider" style={{ marginTop: "4rem" }}>
+        <div className="slider__container">
+          <div className="slider__header">
+            <h1>Trendings</h1>
 
-              <div className="slider__tab">
-                <ul className="slider__tab--list">
-                  <li className="slider__tab--item active" onClick={slideOne}>
-                    <span className="popular">Movies</span>
-                  </li>
+            <div className="slider__tab">
+              <ul className="slider__tab--list">
+                <li className="slider__tab--item active" onClick={slideOne}>
+                  <span className="popular">Movies</span>
+                </li>
 
-                  <li className="slider__tab--item">
-                    <span className="now_playing" onClick={slideTwo}>
-                      Tv Series
-                    </span>
-                  </li>
-                </ul>
-              </div>
+                <li className="slider__tab--item">
+                  <span className="now_playing" onClick={slideTwo}>
+                    Tv Series
+                  </span>
+                </li>
+              </ul>
             </div>
-
-            <Swiper
-              slidesPerView={"auto"}
-              spaceBetween={20}
-              className="slider__content"
-            >
-              {trendings &&
-                trendings.map((el) => (
-                  <SwiperSlide
-                    draggable={true}
-                    key={el.id}
-                    className="slider__slide"
-                  >
-                    <RowItems
-                      id={el.id}
-                      title={el.title || el.orginal_name || el.name}
-                      date={el.release_date || el.first_air_date}
-                      poster={el.poster_path}
-                      media_type={el.media_type}
-                    />
-                  </SwiperSlide>
-                ))}
-            </Swiper>
           </div>
+
+          <Swiper
+            slidesPerView={"auto"}
+            spaceBetween={20}
+            className="slider__content"
+          >
+            {trendings &&
+              trendings.map((el) => (
+                <SwiperSlide
+                  draggable={true}
+                  key={el.id}
+                  className="slider__slide"
+                >
+                  <RowItems
+                    id={el.id}
+                    title={el.title || el.orginal_name || el.name}
+                    date={el.release_date || el.first_air_date}
+                    poster={el.poster_path}
+                    media_type={el.media_type}
+                  />
+                </SwiperSlide>
+              ))}
+          </Swiper>
         </div>
-      )}
+      </div>
     </>
   );
 };

@@ -14,6 +14,7 @@ const getReview = (movieId) => {
       .collection("reviews")
       .where("movieId", "==", movieId)
       .get()
+      // .orderBy("timestamp", "desc")
       .then((snapshots) => {
         const reviews = [];
 

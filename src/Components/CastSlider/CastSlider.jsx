@@ -1,14 +1,12 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { request } from "../../Services/request";
+import trancate from "../../utilities/trancate";
 import "./CastSlider.scss";
 
 // Import Swiper styles
 import "swiper/swiper.scss";
-import "swiper/components/navigation/navigation.scss";
-import "swiper/components/pagination/pagination.scss";
-import "swiper/components/scrollbar/scrollbar.scss";
-import { request } from "../../Services/request";
 
 const CastSlider = ({ cast }) => {
   return (
@@ -28,7 +26,7 @@ const CastSlider = ({ cast }) => {
               />
             </div>
             <p>{c.name}</p>
-            <i>{c.character}</i>
+            <i>{trancate(c.character, 10)}</i>
           </SwiperSlide>
         ))}
     </Swiper>

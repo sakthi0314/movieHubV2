@@ -6,29 +6,30 @@
   margin-bottom: 4rem;
 
   &__img {
-    width: 4rem;
-
     img {
       border-radius: 50%;
+      width: 4rem;
+      height: 4rem;
     }
   }
 
   &__info {
     margin-left: 2rem;
 
-    i {
+    span {
       font-size: 0.8rem;
+      margin-left: 1rem;
+      color: $lightGrey;
     }
 
     p {
       text-transform: capitalize;
       &:first-child {
         font-size: $font-xsm;
-        color: $lightGrey;
         margin-bottom: 0.3rem;
       }
       &:last-child {
-        margin-top: 1rem;
+        margin-top: 0.6rem;
         color: $lightGrey;
         opacity: 0.7;
         max-width: 60rem;
@@ -37,5 +38,9 @@
         font-size: $font-xsm;
       }
     }
+  }
+
+  &__header {
+    @include flexbox(row, flex-start, center);
   }
 }

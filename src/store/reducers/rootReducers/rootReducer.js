@@ -12,6 +12,8 @@ import detailReducer from "../detailReducer";
 import castReducer from "../castReducer";
 import getReviewReducer from "../getReviewReducer";
 import recommededReducer from "../recommededReducer";
+import uploadProfileReducer from "../uploadProfileReducer";
+import getProfileURLReducer from "../getProfileURLReducer";
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
@@ -27,6 +29,8 @@ const rootReducer = combineReducers({
   cast: castReducer,
   review: getReviewReducer,
   recommened: recommededReducer,
+  uploadProfile: uploadProfileReducer,
+  getProfile: getProfileURLReducer,
 });
 
 export default rootReducer;

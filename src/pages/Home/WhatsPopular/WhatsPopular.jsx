@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PopularAction from "../../../store/actions/PopularAction";
 
 const WhatsPopular = () => {
-  const { popular, isLoading } = useSelector((state) => state.popular);
+  const { popular } = useSelector((state) => state.popular);
   const dispatch = useDispatch();
   const [select, setSelect] = useState("popular");
 
@@ -48,59 +48,57 @@ const WhatsPopular = () => {
 
   return (
     <>
-      {!isLoading && (
-        <div className="slider">
-          <div className="slider__container">
-            <div className="slider__header">
-              <h1>What's Popular</h1>
+      <div className="slider">
+        <div className="slider__container">
+          <div className="slider__header">
+            <h1>What's Popular</h1>
 
-              <div className="slider__tab">
-                <ul className="slider__tab--list">
-                  <li className="slider__tab--item active" onClick={slideOne}>
-                    <span className="popular">Popular</span>
-                  </li>
+            <div className="slider__tab">
+              <ul className="slider__tab--list">
+                <li className="slider__tab--item active" onClick={slideOne}>
+                  <span className="popular">Popular</span>
+                </li>
 
-                  <li className="slider__tab--item">
-                    <span className="now_playing" onClick={slideTwo}>
-                      Now Playing
-                    </span>
-                  </li>
+                <li className="slider__tab--item">
+                  <span className="now_playing" onClick={slideTwo}>
+                    Now Playing
+                  </span>
+                </li>
 
-                  <li className="slider__tab--item">
-                    <span className="top_rated" onClick={slideThree}>
-                      Top Rated
-                    </span>
-                  </li>
-                </ul>
-              </div>
+                <li className="slider__tab--item">
+                  <span className="top_rated" onClick={slideThree}>
+                    Top Rated
+                  </span>
+                </li>
+              </ul>
             </div>
-
-            <Swiper
-              slidesPerView={"auto"}
-              spaceBetween={20}
-              className="slider__content"
-            >
-              {popular &&
-                popular.map((el) => (
-                  <SwiperSlide
-                    onClick={() => console.log("Helllo")}
-                    draggable={true}
-                    key={el.id}
-                    className="slider__slide"
-                  >
-                    <RowItems
-                      id={el.id}
-                      title={el.title || el.orginal_name}
-                      date={el.release_date}
-                      poster={el.poster_path}
-                      media_type={"movie"}
-                    />
-                  </SwiperSlide>
-                ))}
-            </Swiper>
           </div>
+
+          <Swiper
+            slidesPerView={"auto"}
+            spaceBetween={20}
+            className="slider__content"
+          >
+            {popular &&
+              popular.map((el) => (
+                <SwiperSlide
+                  onClick={() => console.log("Helllo")}
+                  draggable={true}
+                  key={el.id}
+                  className="slider__slide"
+                >
+                  <RowItems
+                    id={el.id}
+                    title={el.title || el.orginal_name}
+                    date={el.release_date}
+                    poster={el.poster_path}
+                    media_type={"movie"}
+                  />
+                </SwiperSlide>
+              ))}
+          </Swiper>
         </div>
-      )}
+      </div>
     </>
   );
 };
