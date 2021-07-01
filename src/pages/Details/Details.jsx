@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Redirect } from "react-router-dom";
 import { request } from "../../Services/request";
 import DetailsAction from "../../store/actions/DetailsAction";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -20,6 +20,7 @@ import createReview from "../../store/actions/createReview";
 import recommededAction from "../../store/actions/recommededAction";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RowItems from "../../Components/RowItems/RowItems";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 
 // Import Swiper styles
 import "swiper/swiper.scss";
@@ -36,6 +37,7 @@ const Details = () => {
   const { profile, auth } = useSelector((state) => state.firebase);
   const { reviews, isLoading } = useSelector((state) => state.review);
   const { recommededs } = useSelector((state) => state.recommened);
+  const [isFav, setIsFav] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,6 +53,11 @@ const Details = () => {
     dispatch(getReview(id));
 
     reviewRef.current.value = "";
+  };
+
+  // Add to fav
+  const handleFav = () => {
+    setIsFav(!isFav);
   };
 
   useEffect(() => {
@@ -74,6 +81,11 @@ const Details = () => {
     dispatch(DetailsAction(id, media_type));
     // eslint-disable-next-line
   }, [id, media_type]);
+
+  // Routing guard
+  if (!auth.uid) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <>
@@ -121,9 +133,8 @@ const Details = () => {
                 <span>{<FaPlay />}</span>
                 Watch Trailer
               </button>
-              <button onClick={() => alert("Hello")} className="btn-secondary">
-                <span>{<FaPlay />}</span>
-                Play Movie
+              <button onClick={handleFav} className="btn-secondary">
+                {isFav ? <MdFavorite /> : <MdFavoriteBorder />}
               </button>
             </div>
           </div>

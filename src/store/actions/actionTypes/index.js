@@ -25,6 +25,7 @@ const actionTypes = {
   PROGRESS_UPLOADING: "PROGRESS_UPLOADING",
   UPLOAD_ERROR: "UPLOAD_ERROR",
   GET_PROFILE_IMG: "GET_PROFILE_IMG",
+  ADD_FAV: "ADD_FAV",
 };
 
 export default actionTypes;

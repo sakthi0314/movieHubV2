@@ -11,8 +11,8 @@ const Review = ({ user, review, timestamp, uid }) => {
   const [profile, setProfile] = useState(null);
 
   const getProfile = async () => {
-    const firestore = await firebase.firestore();
-    firestore
+    await firebase
+      .firestore()
       .collection("users")
       .doc(uid)
       .onSnapshot((snapshot) => {

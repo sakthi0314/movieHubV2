@@ -5,19 +5,19 @@ import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import Logo from "../../assets/Logo.svg";
 import classes from "./Navbar.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import getProfileAction from "../../store/actions/getProfileAction";
+import { useSelector } from "react-redux";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import useProfile from "../../Hooks/useProfile";
+import Avatar from "../../assets/avatar.png";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
   const [searchMenu, setSearchMenu] = useState(true);
   const [navbarHide, setNavbarHide] = useState("0");
   const searchRef = useRef();
-  const dispatch = useDispatch();
   const { auth, profile } = useSelector((state) => state.firebase);
-  const { profilePicture } = useSelector((state) => state.getProfile);
+  const url = useProfile();
 
   // Toggle menu
   const toggleMenuHandler = () => {
@@ -43,7 +43,6 @@ const Navbar = () => {
 
   useEffect(() => {
     searchRef.current.focus();
-    dispatch(getProfileAction());
     // eslint-disable-next-line
   }, []);
 
@@ -58,7 +57,7 @@ const Navbar = () => {
       <nav className={classes.navbar}>
         <div className={classes["navbar__container"]}>
           <Link to="/" className={classes["navbar__logo"]}>
-            <img src={Logo} alt="Logo" />
+            <LazyLoadImage effect="blur" src={Logo} alt="Logo" />
           </Link>
 
           <div className={classes["navbar__menu"]}>
@@ -116,7 +115,7 @@ const Navbar = () => {
             <Link to="/account" className={classes["navbar__avatar"]}>
               <LazyLoadImage
                 effect="blur"
-                src={profilePicture}
+                src={url || Avatar}
                 alt={profile.userName}
               />
             </Link>

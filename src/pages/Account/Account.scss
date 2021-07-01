@@ -19,9 +19,9 @@
   &__container {
     max-width: 130rem;
     margin: 0 auto;
-    height: 50vh;
+    height: 100vh;
     width: 100%;
-    @include flexbox(column, flex-start, center);
+    @include flexbox(row, flex-start, center);
   }
 
   &__profile {
@@ -57,29 +57,106 @@
     }
   }
 
-  &__user {
-    margin-top: 2rem;
-    position: relative;
-    width: 40%;
-    background-color: $DarkGrey;
-    padding: 1rem;
-    border-radius: 0.4rem;
-    @include flexbox(row, center, center);
+  &__info {
+    width: 40rem;
+    &--userName {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      border-bottom: 1px solid $lightGrey;
 
-    input {
-      font-size: $font-md;
+      label {
+        font-size: $font-sm;
+        text-transform: capitalize;
+        margin-right: 1rem;
+      }
+
+      p {
+        font-size: $font-sm;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  &__columnOne {
+    width: 100%;
+    flex: 0.2;
+    @include flexbox(column, flex-start, flex-start);
+    border: 1px solid transparent;
+    border-right-color: rgba(238, 238, 238, 0.336);
+    height: 100%;
+    padding-right: 1rem;
+  }
+
+  &__userProfile {
+    margin: 2rem 0 3rem 0;
+
+    h1 {
+      font-weight: map-get($font-weight, Medium);
+      font-size: $font-l;
+      margin-bottom: 1rem;
+    }
+
+    h6 {
       text-transform: capitalize;
-      background-color: transparent;
-      flex: 1;
+      font-size: $font-xsm;
+      font-weight: map-get($font-weight, Medium);
       color: $lightGrey;
+      margin: 1rem 0;
+    }
+  }
+
+  &__Logout {
+    margin: 1rem 0;
+    width: 100%;
+    button {
+      @extend .button-wide;
+    }
+  }
+
+  &__fav {
+    margin-bottom: 2rem;
+    position: relative;
+    cursor: pointer;
+
+    h1 {
+      font-weight: map-get($font-weight, Medium);
+      font-size: $font-md;
+      margin-bottom: 1rem;
     }
 
-    span {
-      color: $Yellow;
-      font-size: $font-md;
+    &--overlay {
       position: absolute;
-      right: 4%;
-      cursor: pointer;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.267);
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      span {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3rem;
+      }
     }
+
+    &--grid {
+      display: grid;
+      grid-template-columns: repeat(2, 10rem);
+      grid-template-rows: repeat(2, 10rem);
+      border-radius: 0.4rem;
+      overflow: hidden;
+    }
+  }
+
+  &__columnTwo {
+    flex: 0.8;
   }
 }

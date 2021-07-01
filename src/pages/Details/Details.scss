@@ -125,29 +125,35 @@
     &--button {
       margin-top: 3rem;
       width: 100%;
+      @include flexbox(row, flex-start, center);
 
       button {
         padding: 1rem 2rem;
         border-radius: 0.3rem;
-        font-size: $font-xsm;
+
         font-weight: map-get($font-weight, Medium);
         transition: al 0.3s ease;
-
-        &:hover {
-          opacity: 0.8;
-        }
       }
 
       .btn-primary {
         background-color: $Yellow;
         margin-right: 3rem;
         color: $DarkGrey;
+        font-size: $font-xsm;
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
 
       .btn-secondary {
         background-color: transparent;
-        border: 2px solid $Yellow;
         color: $Yellow;
+        font-size: $font-xl;
+
+        span {
+          font-size: $font-md;
+        }
       }
 
       button {
