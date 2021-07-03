@@ -82,7 +82,6 @@ const WhatsPopular = () => {
             {popular &&
               popular.map((el) => (
                 <SwiperSlide
-                  onClick={() => console.log("Helllo")}
                   draggable={true}
                   key={el.id}
                   className="slider__slide"

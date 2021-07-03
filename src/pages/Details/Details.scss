@@ -93,6 +93,19 @@
     flex: 0.6;
     margin-right: 3rem;
 
+    &--favo {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    &--fav {
+      background-color: transparent;
+      color: $Yellow;
+      margin-left: 2rem;
+      font-size: $font-l;
+    }
+
     @include respond(tablet) {
       margin-right: 0;
       margin-bottom: 3rem;
@@ -102,7 +115,6 @@
       font-size: $font-xl;
       color: $white;
       font-weight: map-get($font-weight, Medium);
-      width: 100%;
     }
 
     &--tagline {
@@ -130,15 +142,8 @@
       button {
         padding: 1rem 2rem;
         border-radius: 0.3rem;
-
-        font-weight: map-get($font-weight, Medium);
+        font-weight: map-get($font-weight, bold);
         transition: al 0.3s ease;
-      }
-
-      .btn-primary {
-        background-color: $Yellow;
-        margin-right: 3rem;
-        color: $DarkGrey;
         font-size: $font-xsm;
 
         &:hover {
@@ -146,10 +151,17 @@
         }
       }
 
+      .btn-primary {
+        background-color: $Yellow;
+        margin-right: 3rem;
+        color: $DarkGrey;
+      }
+
       .btn-secondary {
         background-color: transparent;
+        margin-right: 3rem;
+        border: 1px solid $Yellow;
         color: $Yellow;
-        font-size: $font-xl;
 
         span {
           font-size: $font-md;

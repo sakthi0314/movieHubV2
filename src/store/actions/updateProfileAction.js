@@ -5,7 +5,6 @@ const updateProfileAction = (file) => {
     const firebase = getFirebase();
     const firestore = firebase.firestore();
     const storage = firebase.storage();
-
     const uploadTask = storage.ref(`profile/${file.name}`).put(file);
 
     uploadTask.on(

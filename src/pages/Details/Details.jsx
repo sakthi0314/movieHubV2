@@ -1,26 +1,29 @@
-import React, { useRef, useState } from "react";
-import { useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams, Redirect } from "react-router-dom";
 import { request } from "../../Services/request";
 import DetailsAction from "../../store/actions/DetailsAction";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
-import { FaPlay } from "react-icons/fa";
-import "./Details.scss";
 import CastSlider from "../../Components/CastSlider/CastSlider";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { AiOutlineSend } from "react-icons/ai";
+import { BsBookmarks, BsBookmarksFill } from "react-icons/bs";
+import { FaPlay } from "react-icons/fa";
 import Rating from "react-rating";
 import castAction from "../../store/actions/castAction";
 import numeral from "numeral";
-import { AiOutlineSend } from "react-icons/ai";
 import Review from "../../Components/Review/Review";
 import getReview from "../../store/actions/getReview";
 import createReview from "../../store/actions/createReview";
 import recommededAction from "../../store/actions/recommededAction";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RowItems from "../../Components/RowItems/RowItems";
-import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import addFavAction from "../../store/actions/addFavAction";
+import getFavAction from "../../store/actions/getFavAction";
+import getTrailerAction from "../../store/actions/getTrailerAction";
+import TrailerModel from "../../Components/TrailerModel/TrailerModel";
+import "./Details.scss";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 // Import Swiper styles
 import "swiper/swiper.scss";
@@ -37,10 +40,17 @@ const Details = () => {
   const { profile, auth } = useSelector((state) => state.firebase);
   const { reviews, isLoading } = useSelector((state) => state.review);
   const { recommededs } = useSelector((state) => state.recommened);
-  const [isFav, setIsFav] = useState(false);
+  const { isFavarited } = useSelector((state) => state.addFav);
+  const { favaraites } = useSelector((state) => state.getFav);
+  const { videoList, isTrailerLoading } = useSelector(
+    (state) => state.getTrailer
+  );
+  const [modelIsOpen, setModelIsOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Review Details
     const review = {
       reviewContent: reviewRef.current.value,
       displayName: profile.userName,
@@ -48,20 +58,37 @@ const Details = () => {
       timestamp: new Date(),
       movieId: id,
     };
+
+    // Creating New Review
     dispatch(createReview(review));
-
     dispatch(getReview(id));
-
     reviewRef.current.value = "";
   };
 
-  // Add to fav
+  // Add Favarite
   const handleFav = () => {
-    setIsFav(!isFav);
+    // MovieCreds for send favarite to db
+    const movieCreds = {
+      userId: auth.uid,
+      movieID: id,
+      imgURL: detail.poster_path,
+      title: detail.title || detail.name || detail.original_title,
+      movieType: media_type,
+      isFav: isFavarited,
+      createdTime: new Date(),
+    };
+    dispatch(addFavAction(movieCreds));
+  };
+
+  // PlayTrailer
+  const handleTrailer = () => {
+    setModelIsOpen(true);
+    dispatch(getTrailerAction(media_type, id));
   };
 
   useEffect(() => {
     window.scroll(0, 0);
+    dispatch(getFavAction(auth.uid));
     // eslint-disable-next-line
   }, []);
 
@@ -100,7 +127,7 @@ const Details = () => {
         }}
       >
         <div className="header__container">
-          <div className="header__image">
+          <div className="header__image" id="image">
             <LazyLoadImage
               src={`${request.IMG_URL}/${detail.poster_path}`}
               effect="blur"
@@ -122,20 +149,30 @@ const Details = () => {
       <div className="info">
         <div className="info__container">
           <div className="info__rowone">
-            <h1 className="info__rowone--title">
-              {detail.title || detail.name || detail.original_title}
-            </h1>
+            <div className="info__rowone--favo">
+              <h1 className="info__rowone--title">
+                {detail.title || detail.name || detail.original_title}
+              </h1>
+
+              <button
+                className="info__rowone--fav"
+                id="favarite"
+                onClick={handleFav}
+              >
+                <span>
+                  {isFavarited ? <BsBookmarksFill /> : <BsBookmarks />}
+                </span>
+              </button>
+            </div>
             <i className="info__rowone--tagline"> {detail.tagline}</i>
             <h4>Overview</h4>
             <p className="info__rowone--desc">{detail.overview}</p>
             <div className="info__rowone--button">
-              <button onClick={() => alert("Hello")} className="btn-primary">
+              <button onClick={handleTrailer} className="btn-primary">
                 <span>{<FaPlay />}</span>
                 Watch Trailer
               </button>
-              <button onClick={handleFav} className="btn-secondary">
-                {isFav ? <MdFavorite /> : <MdFavoriteBorder />}
-              </button>
+              <button className="btn-secondary">Play Movie</button>
             </div>
           </div>
 
@@ -298,6 +335,14 @@ const Details = () => {
           </Swiper>
         </div>
       </div>
+
+      <TrailerModel
+        modelIsOpen={modelIsOpen}
+        closeModel={() => setModelIsOpen(false)}
+        videoList={videoList}
+        isTrailerLoading={isTrailerLoading}
+        setModelIsOpen={setModelIsOpen}
+      />
     </>
   );
 };

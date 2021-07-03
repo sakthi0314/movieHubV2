@@ -14,6 +14,10 @@ import getReviewReducer from "../getReviewReducer";
 import recommededReducer from "../recommededReducer";
 import uploadProfileReducer from "../uploadProfileReducer";
 import getProfileURLReducer from "../getProfileURLReducer";
+import addFavReducer from "../addFavReducer";
+import getFavReducer from "../getFavReducer";
+import getTrailerReducer from "../getTrailarReducer";
+import getTrailerKeyReducer from "../getTrailerKeyReducer";
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
@@ -31,6 +35,10 @@ const rootReducer = combineReducers({
   recommened: recommededReducer,
   uploadProfile: uploadProfileReducer,
   getProfile: getProfileURLReducer,
+  addFav: addFavReducer,
+  getFav: getFavReducer,
+  getTrailer: getTrailerReducer,
+  trailerKey: getTrailerKeyReducer,
 });
 
 export default rootReducer;

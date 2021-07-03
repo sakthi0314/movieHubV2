@@ -6,13 +6,13 @@ const useProfile = () => {
   const [url, setUrl] = useState(null);
   const { auth } = useSelector((state) => state.firebase);
 
-  useEffect(() => {
-    const unsub = firebase
+  useEffect(async () => {
+    const unsub = await firebase
       .firestore()
       .collection("users")
       .doc(auth.uid)
       .onSnapshot((snap) => {
-        setUrl(snap.data().url);
+        setUrl(snap.data()?.url);
       });
 
     return () => unsub();
