@@ -11,7 +11,8 @@
   background-color: $white;
   border-radius: 0.2rem;
   z-index: 100;
-  height: 35rem;
+  min-height: 35rem;
+  max-height: 28rem;
   overflow-y: scroll;
 
   &__header {
@@ -25,8 +26,8 @@
 
     button {
       position: absolute;
-      top: 5%;
-      left: 4%;
+      top: 7%;
+      left: 3%;
       font-size: $font-l;
       background-color: transparent;
     }

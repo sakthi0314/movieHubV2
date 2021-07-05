@@ -164,7 +164,8 @@
     background-color: transparent;
     flex: 1;
     font-weight: map-get($font-weight, Medium);
-    font-size: $font-xsm;
+    font-size: $font-sm;
+    font-family: inherit;
 
     &:placeholder-shown {
       font-family: inherit;

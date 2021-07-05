@@ -41,6 +41,17 @@ const Navbar = () => {
     prevScrollpos = currentScrollPos;
   });
 
+  // handle Search
+  const handleSearch = (e) => {
+    // Preventing from default behavear
+    e.preventDefault();
+
+    // Dispaching Action
+
+    // Clear field
+    searchRef.current.value = "";
+  };
+
   useEffect(() => {
     searchRef.current.focus();
     // eslint-disable-next-line
@@ -137,6 +148,7 @@ const Navbar = () => {
         style={{
           display: searchMenu && "none",
         }}
+        onSubmit={handleSearch}
       >
         <span>
           <BiSearch />
