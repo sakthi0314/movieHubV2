@@ -1,0 +1,14 @@
+@import "../../Styles/mixins";
+@import "../../Styles/variables";
+
+.grid {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  & > * {
+    width: 12rem;
+    margin: 0 2rem 2rem 0;
+  }
+}

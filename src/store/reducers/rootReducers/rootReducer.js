@@ -18,6 +18,7 @@ import addFavReducer from "../addFavReducer";
 import getFavReducer from "../getFavReducer";
 import getTrailerReducer from "../getTrailarReducer";
 import getTrailerKeyReducer from "../getTrailerKeyReducer";
+import searchReducer from "../searchReducer";
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
@@ -39,6 +40,7 @@ const rootReducer = combineReducers({
   getFav: getFavReducer,
   getTrailer: getTrailerReducer,
   trailerKey: getTrailerKeyReducer,
+  searchResults: searchReducer,
 });
 
 export default rootReducer;

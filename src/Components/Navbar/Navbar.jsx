@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import Logo from "../../assets/Logo.svg";
 import classes from "./Navbar.module.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import useProfile from "../../Hooks/useProfile";
 import Avatar from "../../assets/avatar.png";
+import searchAction from "../../store/actions/searchAction";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -17,6 +18,8 @@ const Navbar = () => {
   const [navbarHide, setNavbarHide] = useState("0");
   const searchRef = useRef();
   const { auth, profile } = useSelector((state) => state.firebase);
+  const dispatch = useDispatch();
+  const history = useHistory();
   const url = useProfile();
 
   // Toggle menu
@@ -47,9 +50,12 @@ const Navbar = () => {
     e.preventDefault();
 
     // Dispaching Action
+    dispatch(searchAction(searchRef.current.value, 1));
 
-    // Clear field
-    searchRef.current.value = "";
+    // Redirecting to seach result page
+    if (searchRef.current.value.length >= 1) {
+      history.push("/search");
+    }
   };
 
   useEffect(() => {
