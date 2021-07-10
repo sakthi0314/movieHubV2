@@ -23,6 +23,7 @@ const detailReducer = (state = initailState, action) => {
     case actionTypes.REQUEST_FAILURE:
       return {
         ...state,
+        isLoading: false,
         error: action.payload,
       };
 

@@ -38,7 +38,7 @@ const TrailerModel = ({
           </header>
 
           <ul className="trailerModel__list">
-            {videoList.length >= 1 &&
+            {videoList.length >= 1 ? (
               videoList.map((video, index) => (
                 <li
                   onClick={() => {
@@ -49,7 +49,10 @@ const TrailerModel = ({
                 >
                   {index + 1}. {video.name}
                 </li>
-              ))}
+              ))
+            ) : (
+              <li>No Video Found !</li>
+            )}
           </ul>
         </div>
       )}
@@ -59,3 +62,16 @@ const TrailerModel = ({
 };
 
 export default TrailerModel;
+
+// {videoList.length >= 1 &&
+//   videoList.map((video, index) => (
+//     <li
+//       onClick={() => {
+//         setPlayer(true);
+//         dispatch(getTrailerKeyAction(video.key));
+//       }}
+//       key={video.id}
+//     >
+//       {index + 1}. {video.name}
+//     </li>
+//   ))}

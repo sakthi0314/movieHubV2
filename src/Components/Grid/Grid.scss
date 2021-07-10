@@ -8,7 +8,17 @@
   flex-wrap: wrap;
 
   & > * {
-    width: 12rem;
+    width: 14rem;
     margin: 0 2rem 2rem 0;
+
+    @include respond(mobile) {
+      width: 10rem;
+    }
+  }
+}
+
+.grid {
+  @include respond(tablet) {
+    display: none;
   }
 }

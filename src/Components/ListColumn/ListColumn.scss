@@ -1,0 +1,47 @@
+@import "../../Styles/mixins";
+@import "../../Styles/variables";
+
+.listColumn {
+  display: none;
+
+  @include respond(tablet) {
+    display: block;
+    background-color: $DarkGrey;
+    margin-bottom: 2rem;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    @include flexbox(row, space-between, center);
+
+    &__img {
+      flex: 0.2;
+      text-decoration: none;
+
+      img {
+        max-width: 100%;
+      }
+    }
+
+    &__content {
+      margin-left: 1rem;
+      flex: 0.8;
+      padding: 1rem;
+      @include flexbox(column, center, flex-start);
+
+      h1 {
+        font-size: $font-sm;
+      }
+
+      i {
+        display: block;
+        font-size: $font-xsm;
+        margin: 0.8rem 0;
+      }
+
+      p {
+        color: $lightGrey;
+        font-size: $font-xsm;
+        opacity: 0.7;
+      }
+    }
+  }
+}

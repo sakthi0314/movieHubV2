@@ -2,7 +2,7 @@ import axios from "../../Services/axios";
 import { APP_KEY } from "../../Services/request";
 import actionTypes from "../actions/actionTypes";
 
-const searchAction = (query, page) => {
+const searchAction = (query, page, queryValue) => {
   return async (dispatch) => {
     // Requesting..
     dispatch({ type: actionTypes.SEARCH_REQUEST });
@@ -12,12 +12,13 @@ const searchAction = (query, page) => {
         `/search/multi?api_key=${APP_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`
       );
 
-      console.log(data);
-
       // Get data
       dispatch({
         type: actionTypes.SEARCH_RESULTS,
-        payload: data,
+        payload: {
+          data,
+          queryValue,
+        },
       });
     } catch (error) {
       // Failed to get data

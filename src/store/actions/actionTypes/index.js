@@ -37,6 +37,7 @@ const actionTypes = {
   SEARCH_REQUEST: "SEARCH_REQUEST",
   SEARCH_RESULTS: "SEARCH_RESULTS",
   SEARCH_FAILED: "SEARCH_FAILED",
+  SET_PAGE: "SET_PAGE",
 };
 
 export default actionTypes;

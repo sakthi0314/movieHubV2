@@ -1,0 +1,7 @@
+@import "../../Styles/mixins";
+@import "../../Styles/variables";
+
+.pagination {
+  width: 100%;
+  @include flexbox(row, center, center);
+}

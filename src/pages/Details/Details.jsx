@@ -47,6 +47,10 @@ const Details = () => {
   );
   const [modelIsOpen, setModelIsOpen] = useState(false);
 
+  const cover = detail.backdrop_path
+    ? `${request.IMG_URL}/${detail.backdrop_path}`
+    : `${request.NO_IMG_LAND}`;
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -123,7 +127,7 @@ const Details = () => {
   to right,
   rgba(0, 0, 0, 1),
   rgba(0, 0, 0, 0.3)
-),url("${request.IMG_URL}/${detail.backdrop_path}")`,
+),url("${cover}")`,
         }}
       >
         <div className="header__container">

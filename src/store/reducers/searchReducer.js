@@ -2,6 +2,7 @@ import actionTypes from "../actions/actionTypes";
 
 const initialState = {
   isLoading: false,
+  queryValue: null,
   result: [],
   totalPage: null,
   totalResult: null,
@@ -20,9 +21,10 @@ const searchReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isLoading: false,
-        result: payload.results,
-        totalPage: payload.total_pages,
-        totalResult: payload.total_results,
+        result: payload.data.results,
+        totalPage: payload.data.total_pages,
+        totalResult: payload.data.total_results,
+        queryValue: payload.queryValue,
       };
 
     case actionTypes.REQUEST_FAILURE:

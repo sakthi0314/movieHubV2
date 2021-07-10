@@ -21,6 +21,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const url = useProfile();
+  const { page } = useSelector((state) => state.pageReducer);
 
   // Toggle menu
   const toggleMenuHandler = () => {
@@ -49,14 +50,26 @@ const Navbar = () => {
     // Preventing from default behavear
     e.preventDefault();
 
+    // Scroll up
+    window.scroll(0, 0);
+
     // Dispaching Action
-    dispatch(searchAction(searchRef.current.value, 1));
+    dispatch(
+      searchAction(searchRef.current.value, page, searchRef.current.value)
+    );
 
     // Redirecting to seach result page
     if (searchRef.current.value.length >= 1) {
       history.push("/search");
     }
   };
+
+  useEffect(() => {
+    // Dispaching Action
+    dispatch(searchAction(searchRef.current.value, page));
+    window.scroll(0, 0);
+    // eslint-disable-next-line
+  }, [page]);
 
   useEffect(() => {
     searchRef.current.focus();
@@ -165,6 +178,10 @@ const Navbar = () => {
           placeholder="Search for movies, Tv shows..."
           ref={searchRef}
         />
+
+        <span onClick={() => setSearchMenu(true)}>
+          <IoClose />
+        </span>
       </form>
     </header>
   );

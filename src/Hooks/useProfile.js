@@ -6,8 +6,8 @@ const useProfile = () => {
   const [url, setUrl] = useState(null);
   const { auth } = useSelector((state) => state.firebase);
 
-  useEffect(async () => {
-    const unsub = await firebase
+  useEffect(() => {
+    const unsub = firebase
       .firestore()
       .collection("users")
       .doc(auth.uid)

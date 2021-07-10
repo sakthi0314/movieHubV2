@@ -42,7 +42,7 @@ const Account = () => {
         <div className="account__columnOne">
           <div className="account__profile" id="profile">
             <img
-              src={url || Avatar}
+              src={url ? url : Avatar}
               alt="profile"
               className="account__profile--img"
             />
