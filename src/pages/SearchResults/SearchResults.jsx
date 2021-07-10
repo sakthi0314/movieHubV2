@@ -29,8 +29,8 @@ const SearchResults = () => {
   });
 
   useEffect(() => {
-    document.title = `Search Result - ${queryValue || ""}`;
-  }, [queryValue]);
+    document.title = `Search Result`;
+  }, [queryValue, page]);
 
   useEffect(() => {
     setMovieList(filtereMovie);

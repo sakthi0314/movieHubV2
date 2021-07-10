@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import RowItems from "../../../Components/RowItems/RowItems";
 import "./slider.scss";
+import { useDispatch, useSelector } from "react-redux";
+import PopularAction from "../../../store/actions/PopularAction";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -8,8 +10,6 @@ import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
-import { useDispatch, useSelector } from "react-redux";
-import PopularAction from "../../../store/actions/PopularAction";
 
 const WhatsPopular = () => {
   const { popular } = useSelector((state) => state.popular);
@@ -81,11 +81,7 @@ const WhatsPopular = () => {
           >
             {popular &&
               popular.map((el) => (
-                <SwiperSlide
-                  draggable={true}
-                  key={el.id}
-                  className="slider__slide"
-                >
+                <SwiperSlide key={el.id} className="slider__slide">
                   <RowItems
                     id={el.id}
                     title={el.title || el.orginal_name}

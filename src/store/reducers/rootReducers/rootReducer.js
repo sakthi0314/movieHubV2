@@ -20,6 +20,8 @@ import getTrailerReducer from "../getTrailarReducer";
 import getTrailerKeyReducer from "../getTrailerKeyReducer";
 import searchReducer from "../searchReducer";
 import pageReducer from "../pageReducer";
+import getPersonInfoReducer from "../getPersonInfoReducer";
+import getPersonKnownReducer from "../getPersonKnownReducer";
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
@@ -43,6 +45,8 @@ const rootReducer = combineReducers({
   trailerKey: getTrailerKeyReducer,
   searchResults: searchReducer,
   pageReducer: pageReducer,
+  personInfo: getPersonInfoReducer,
+  personKnow: getPersonKnownReducer,
 });
 
 export default rootReducer;

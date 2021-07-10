@@ -1,0 +1,109 @@
+@import "../../Styles/variables";
+@import "../../Styles/mixins";
+
+.person {
+  padding: 0 2rem;
+  margin: 10rem 0 2rem 0;
+
+  &__container {
+    max-width: 130rem;
+    margin: 0 auto;
+    @include flexbox(row, flex-start, flex-start);
+
+    @include respond(tablet) {
+      @include flexbox(column, center, flex-start);
+    }
+  }
+
+  &__info {
+    flex: 0.2;
+    padding-right: 2rem;
+
+    @include respond(tablet) {
+      padding-right: 0;
+    }
+
+    &--profile {
+      width: 30rem;
+
+      img {
+        border-radius: 0.4rem;
+      }
+    }
+
+    &--personal {
+      margin-top: 3rem;
+      @include flexbox(column, flex-start, flex-start);
+
+      li {
+        @include flexbox(column, flex-start, flex-start);
+        margin-bottom: 1rem;
+      }
+    }
+
+    &--one {
+      span {
+        font-size: $font-l;
+        text-transform: capitalize;
+      }
+    }
+
+    &--two,
+    &--three,
+    &--four,
+    &--five,
+    &--six {
+      span {
+        font-size: $font-xsm;
+
+        &:first-child {
+          color: $white;
+          font-size: $font-sm;
+          display: block;
+          margin-bottom: 0.3rem;
+        }
+
+        &:last-child {
+          font-size: $font-xsm;
+          color: $lightGrey;
+        }
+      }
+    }
+  }
+
+  &__content {
+    flex: 0.8;
+
+    &--name {
+      margin-bottom: 3rem;
+      h1 {
+        font-size: $font-l;
+        font-weight: map-get($font-weight, Medium);
+      }
+    }
+
+    &--bio {
+      h1 {
+        font-size: $font-l;
+        margin-bottom: 1rem;
+        font-weight: map-get($font-weight, Medium);
+      }
+
+      p {
+        font-size: $font-xsm;
+        color: $lightGrey;
+        max-width: 70rem;
+        width: 90%;
+      }
+    }
+
+    &--know {
+      margin: 2rem 0;
+
+      h1 {
+        font-weight: map-get($font-weight, Medium);
+        margin: 1rem 0;
+      }
+    }
+  }
+}

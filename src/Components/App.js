@@ -10,6 +10,7 @@ import Footer from "../Components/Footer/Footer";
 import Details from "../pages/Details/Details";
 import CastAndCrew from "../pages/CastAndCrew/CastAndCrew";
 import SearchResults from "../pages/SearchResults/SearchResults";
+import Person from "../pages/Person/Person";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/sign_up" component={Signup} />
         <Route path="/forgetpassword" component={ForgetPassword} />
         <Route path="/forgetpassword" component={ForgetPassword} />
+        <Route path="/person/:id" component={Person} />
         <Route path="/cast/:media_type/:id" component={CastAndCrew} />
         <Route path="/:media_type/:id" component={Details} />
         <Route path="/search" component={SearchResults} />

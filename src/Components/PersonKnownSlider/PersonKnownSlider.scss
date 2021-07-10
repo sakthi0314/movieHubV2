@@ -1,0 +1,14 @@
+@import "../../Styles/variables";
+@import "../../Styles/mixins";
+
+.personKnownSlider__content {
+  @include flexbox(row, center, center);
+}
+
+.personKnownSlider__slide {
+  width: 10rem;
+
+  @include respond(mobile) {
+    width: 8rem;
+  }
+}

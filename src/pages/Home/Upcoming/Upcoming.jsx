@@ -33,11 +33,7 @@ const Upcoming = () => {
         >
           {upcomings.length >= 1 &&
             upcomings.map((el) => (
-              <SwiperSlide
-                draggable={true}
-                key={el.id}
-                className="upcoming__slide"
-              >
+              <SwiperSlide key={el.id} className="upcoming__slide">
                 <RowItems
                   id={el.id}
                   title={el.title || el.orginal_name}

@@ -7,14 +7,15 @@ import "./CastSlider.scss";
 
 // Import Swiper styles
 import "swiper/swiper.scss";
+import { Link } from "react-router-dom";
 
 const CastSlider = ({ cast }) => {
   return (
     <Swiper slidesPerView={"auto"} spaceBetween={20} className="cast__content">
       {cast &&
         cast.map((c) => (
-          <SwiperSlide draggable={true} key={c.id} className="cast__slide">
-            <div className="cast__image">
+          <SwiperSlide key={c.id} className="cast__slide">
+            <Link className="cast__image" to={`/person/${c.id}`}>
               <LazyLoadImage
                 src={`${
                   c.profile_path
@@ -24,7 +25,7 @@ const CastSlider = ({ cast }) => {
                 effect="blur"
                 alt={c.name}
               />
-            </div>
+            </Link>
             <p>{c.name}</p>
             <i>{trancate(c.character, 10)}</i>
           </SwiperSlide>
