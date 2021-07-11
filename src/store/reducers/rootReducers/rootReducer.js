@@ -22,6 +22,7 @@ import searchReducer from "../searchReducer";
 import pageReducer from "../pageReducer";
 import getPersonInfoReducer from "../getPersonInfoReducer";
 import getPersonKnownReducer from "../getPersonKnownReducer";
+import getPersonCreditReducer from "../getPersonCreditReducer";
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
@@ -47,6 +48,7 @@ const rootReducer = combineReducers({
   pageReducer: pageReducer,
   personInfo: getPersonInfoReducer,
   personKnow: getPersonKnownReducer,
+  personCredit: getPersonCreditReducer,
 });
 
 export default rootReducer;

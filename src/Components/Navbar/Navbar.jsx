@@ -22,6 +22,7 @@ const Navbar = () => {
   const history = useHistory();
   const url = useProfile();
   const { page } = useSelector((state) => state.pageReducer);
+  const { result } = useSelector((state) => state.searchResults);
 
   // Toggle menu
   const toggleMenuHandler = () => {
@@ -31,6 +32,16 @@ const Navbar = () => {
   // Search Bar handler
   const searchBarHandler = () => {
     setSearchMenu(!searchMenu);
+  };
+
+  // recommending Searching..
+  const handleRecommed = () => {
+    dispatch(searchAction(searchRef.current.value, page));
+  };
+
+  const handleRecommedSearch = () => {
+    setSearchMenu(true);
+    history.push("/search");
   };
 
   // Scroll Down nav hide Animation
@@ -177,12 +188,25 @@ const Navbar = () => {
           name="search"
           placeholder="Search for movies, Tv shows..."
           ref={searchRef}
+          onChange={handleRecommed}
         />
 
         <span onClick={() => setSearchMenu(true)}>
           <IoClose />
         </span>
       </form>
+      <ul
+        className={classes["navbar__recommending"]}
+        style={{
+          display: searchMenu && "none",
+        }}
+      >
+        {result.map((res) => (
+          <Link to={`/search`} onClick={handleRecommedSearch}>
+            {res.title || res.name || res.original_title}
+          </Link>
+        ))}
+      </ul>
     </header>
   );
 };

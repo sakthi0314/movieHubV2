@@ -9,18 +9,10 @@
   box-sizing: inherit;
 }
 
-*::-webkit-scrollbar {
-  display: none;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
 html {
   font-size: 62.5%;
   box-sizing: border-box;
   scroll-behavior: smooth;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 
   @include respond(mobile) {
     font-size: 58.5%;

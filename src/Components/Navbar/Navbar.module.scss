@@ -139,6 +139,28 @@
       width: 4rem;
     }
   }
+
+  &__recommending {
+    background-color: $white;
+    max-height: 20rem;
+    overflow-y: scroll;
+    @include flexbox(column, flex-start, flex-start);
+
+    & > * {
+      width: 100%;
+      display: block;
+      text-decoration: none;
+      color: $DarkGrey;
+      font-weight: map-get($font-weight, Medium);
+      padding: 1rem 2rem;
+      cursor: pointer;
+      font-size: $font-xsm;
+
+      &:hover {
+        background-color: $lightGrey;
+      }
+    }
+  }
 }
 
 .searchComponent {

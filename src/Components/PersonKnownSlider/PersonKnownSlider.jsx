@@ -24,7 +24,11 @@ const PersonKnownSlider = ({ personKnowns }) => {
           >
             <RowItems
               id={personKnown.id}
-              title={personKnown.title || personKnown.orginal_name}
+              title={
+                personKnown.title ||
+                personKnown.orginal_name ||
+                personKnown.name
+              }
               date={personKnown.rpersonKnownease_date}
               poster={personKnown.poster_path}
               media_type={personKnown.media_type}

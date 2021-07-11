@@ -2,6 +2,7 @@
 @import "../../Styles/mixins";
 
 .personKnownSlider__content {
+  width: 100%;
   @include flexbox(row, center, center);
 }
 

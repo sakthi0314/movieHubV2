@@ -8,101 +8,142 @@
   &__container {
     max-width: 130rem;
     margin: 0 auto;
-    @include flexbox(row, flex-start, flex-start);
+    display: grid;
+    grid-template-columns: 25% 75%;
 
     @include respond(tablet) {
-      @include flexbox(column, center, flex-start);
+      grid-template-columns: 100%;
     }
   }
 
   &__info {
-    flex: 0.2;
-    padding-right: 2rem;
+    margin-right: 2rem;
+    @include flexbox(column, flex-start, flex-start);
 
     @include respond(tablet) {
-      padding-right: 0;
+      @include flexbox(column, flex-start, center);
     }
 
     &--profile {
-      width: 30rem;
+      width: 100%;
+
+      @include respond(tablet) {
+        width: 40%;
+      }
 
       img {
         border-radius: 0.4rem;
       }
     }
 
-    &--personal {
-      margin-top: 3rem;
-      @include flexbox(column, flex-start, flex-start);
+    &--peronal {
+      margin-top: 2rem;
 
-      li {
-        @include flexbox(column, flex-start, flex-start);
+      @include respond(tablet) {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+
+        & > *:not(:first-child) {
+          margin: 1rem;
+        }
+      }
+
+      & > :first-child {
+        margin-bottom: 2rem;
+        font-size: $font-md;
+      }
+
+      & > :last-child {
+        p {
+          margin: 0.5rem 0;
+        }
+      }
+
+      & > *:not(:first-child) {
         margin-bottom: 1rem;
+
+        h4 {
+          font-size: $font-sm;
+          font-weight: map-get($font-weight, Medium);
+          margin-bottom: 0.4rem;
+        }
+
+        p {
+          font-size: $font-xsm;
+          color: $lightGrey;
+          font-weight: map-get($font-weight, Medium);
+        }
       }
     }
 
     &--one {
-      span {
-        font-size: $font-l;
-        text-transform: capitalize;
-      }
-    }
-
-    &--two,
-    &--three,
-    &--four,
-    &--five,
-    &--six {
-      span {
-        font-size: $font-xsm;
-
-        &:first-child {
-          color: $white;
-          font-size: $font-sm;
-          display: block;
-          margin-bottom: 0.3rem;
-        }
-
-        &:last-child {
-          font-size: $font-xsm;
-          color: $lightGrey;
-        }
+      h4 {
+        font-size: $font-md;
+        font-weight: map-get($font-weight, Medium);
       }
     }
   }
 
   &__content {
-    flex: 0.8;
+    width: 100%;
 
     &--name {
-      margin-bottom: 3rem;
       h1 {
-        font-size: $font-l;
         font-weight: map-get($font-weight, Medium);
+        margin-bottom: 3rem;
+        font-size: $font-l;
       }
     }
 
     &--bio {
       h1 {
-        font-size: $font-l;
-        margin-bottom: 1rem;
+        font-size: $font-md;
+        margin-bottom: 0.6rem;
         font-weight: map-get($font-weight, Medium);
       }
 
       p {
         font-size: $font-xsm;
+        line-height: 1.4;
         color: $lightGrey;
-        max-width: 70rem;
-        width: 90%;
+        max-width: 100%;
+        text-align: left;
       }
     }
 
-    &--know {
-      margin: 2rem 0;
-
+    &--known {
       h1 {
+        font-size: $font-md;
+        margin-bottom: 0.6rem;
         font-weight: map-get($font-weight, Medium);
-        margin: 1rem 0;
+      }
+
+      margin-top: 2rem;
+    }
+
+    &--collection {
+      margin-top: 2rem;
+      border: 1px solid rgba(204, 204, 204, 0.445);
+      padding: 1rem;
+      border-radius: 0.4rem;
+
+      header {
+        @include flexbox(row, space-between, center);
+
+        select {
+          padding: 0.6rem;
+          border-radius: 0.4rem;
+          outline: none;
+          border: none;
+          background-color: $Yellow;
+        }
+
+        h1 {
+          font-size: $font-md;
+          font-weight: map-get($font-weight, Medium);
+        }
       }
     }
   }

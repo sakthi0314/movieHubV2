@@ -1,0 +1,27 @@
+@import "../../Styles/mixins";
+@import "../../Styles/variables";
+
+.tableContent {
+  &__content {
+    @include flexbox(row, flex-start, center);
+    margin: 1.5rem 0;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.445);
+    padding: 0.7rem 0;
+
+    h1 {
+      font-weight: map-get($font-weight, Medium);
+      font-size: $font-xsm;
+      margin-right: 3rem;
+    }
+
+    p {
+      font-weight: map-get($font-weight, Medium);
+      font-size: $font-xsm;
+      color: $lightGrey;
+
+      span {
+        color: $white;
+      }
+    }
+  }
+}

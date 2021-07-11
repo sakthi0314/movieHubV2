@@ -3,6 +3,7 @@ import "../../pages/CastAndCrew/CastAndCrew.scss";
 import { request } from "../../Services/request";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { Link } from "react-router-dom";
 
 const CastAndCrewList = ({ cast, type }) => {
   return (
@@ -11,7 +12,7 @@ const CastAndCrewList = ({ cast, type }) => {
         {cast &&
           cast.map((c) => (
             <li>
-              <div className="cast__img">
+              <Link to={`/person/${c.id}`} className="cast__img">
                 <LazyLoadImage
                   src={`${
                     c.profile_path
@@ -21,7 +22,7 @@ const CastAndCrewList = ({ cast, type }) => {
                   effect="blur"
                   alt={c.name}
                 />
-              </div>
+              </Link>
               <div className="cast__info">
                 <h1>{c.name}</h1>
                 <p>{type === "cast" ? c.character : c.department}</p>
