@@ -35,8 +35,8 @@
       border-radius: 50%;
       transition: all 0.2s ease;
 
-      &:hover {
-        opacity: 0.7;
+      img {
+        object-fit: contain;
       }
     }
 

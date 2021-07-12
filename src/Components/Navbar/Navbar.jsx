@@ -11,6 +11,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import useProfile from "../../Hooks/useProfile";
 import Avatar from "../../assets/avatar.png";
 import searchAction from "../../store/actions/searchAction";
+import { request } from "../../Services/request";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -60,6 +61,9 @@ const Navbar = () => {
   const handleSearch = (e) => {
     // Preventing from default behavear
     e.preventDefault();
+
+    // Hide Recommed
+    setSearchMenu(true);
 
     // Scroll up
     window.scroll(0, 0);
@@ -202,8 +206,26 @@ const Navbar = () => {
         }}
       >
         {result.map((res) => (
-          <Link to={`/search`} onClick={handleRecommedSearch}>
-            {res.title || res.name || res.original_title}
+          <Link
+            onClick={handleRecommedSearch}
+            to={`/${res.media_type}/${res.id}`}
+            className={classes["navbar__recommending--item"]}
+          >
+            <div className={classes["navbar__recommending--itemImg"]}>
+              <LazyLoadImage
+                effect="blur"
+                src={
+                  res.poster_path
+                    ? `${request.IMG_URL}/${res.poster_path}`
+                    : `${request.NO_IMG}`
+                }
+                alt={res.title || res.name || res.original_title}
+              />
+            </div>
+            <div className={classes["navbar__recommending--itemInfo"]}>
+              <h6>{res.title || res.name || res.original_title}</h6>
+              <p>{res.media_type}</p>
+            </div>
           </Link>
         ))}
       </ul>

@@ -27,9 +27,6 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 
 // Import Swiper styles
 import "swiper/swiper.scss";
-import "swiper/components/navigation/navigation.scss";
-import "swiper/components/pagination/pagination.scss";
-import "swiper/components/scrollbar/scrollbar.scss";
 
 const Details = () => {
   const { id, media_type } = useParams();
@@ -264,7 +261,7 @@ const Details = () => {
       <div className="review">
         <div className="review__container">
           <div className="review__header">
-            <h1>Review</h1>
+            <h1>Write Review</h1>
           </div>
 
           <div className="review__form">

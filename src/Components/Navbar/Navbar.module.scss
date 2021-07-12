@@ -146,18 +146,37 @@
     overflow-y: scroll;
     @include flexbox(column, flex-start, flex-start);
 
-    & > * {
-      width: 100%;
-      display: block;
+    &--item {
       text-decoration: none;
-      color: $DarkGrey;
-      font-weight: map-get($font-weight, Medium);
+      width: 100%;
       padding: 1rem 2rem;
       cursor: pointer;
-      font-size: $font-xsm;
+      @include flexbox(row, flex-start, center);
 
       &:hover {
-        background-color: $lightGrey;
+        background-color: rgba(17, 17, 17, 0.096);
+      }
+    }
+
+    &--itemImg {
+      width: 4rem;
+      margin-right: 1rem;
+
+      img {
+        border-radius: 0.4rem;
+      }
+    }
+
+    &--itemInfo {
+      h6 {
+        font-weight: map-get($font-weight, Medium);
+        font-size: $font-xsm;
+        color: $DarkGrey;
+      }
+
+      p {
+        color: $DarkGrey;
+        opacity: 0.9;
       }
     }
   }

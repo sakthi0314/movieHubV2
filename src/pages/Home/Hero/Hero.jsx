@@ -4,10 +4,14 @@ import { request } from "../../../Services/request";
 import trancate from "../../../utilities/trancate";
 import HeroCoverImageAction from "../../../store/actions/HeroCoverImageAction";
 import classes from "./Hero.module.scss";
+import SwiperCore, { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/swiper.scss";
+
+// Swiper Core
+SwiperCore.use([Autoplay]);
 
 const Hero = () => {
   const { coverImage } = useSelector((state) => state.heroImages);
@@ -24,9 +28,10 @@ const Hero = () => {
         spaceBetween={0}
         slidesPerView={1}
         autoplay={{
-          delay: 5000,
+          delay: 3000,
           disableOnInteraction: true,
         }}
+        loop={true}
         className={classes.hero}
       >
         {coverImage &&

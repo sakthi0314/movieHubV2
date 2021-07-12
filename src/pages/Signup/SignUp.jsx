@@ -31,17 +31,18 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (passwordRef.current.value !== confrimPassword.current.value) {
-      setError("Password did not match");
-    }
-
+    // Creds
     const creds = {
       userName: userNameRef.current.value,
       email: emailRef.current.value,
       password: passwordRef.current.value,
     };
 
-    dispatch(signupAction(creds));
+    if (passwordRef.current.value !== confrimPassword.current.value) {
+      setError("Password did not match");
+    } else if (passwordRef.current.value === confrimPassword.current.value) {
+      dispatch(signupAction(creds));
+    }
   };
 
   useEffect(() => {

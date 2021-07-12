@@ -34,7 +34,7 @@ const Review = ({ user, review, timestamp, uid }) => {
         <div className="reviews__info">
           <div className="reviews__header">
             <p>{user}</p>
-            <span>{moment(timestamp.toDate()).calendar()}</span>
+            <span>( {moment(timestamp.toDate()).calendar()} )</span>
           </div>
           <p>{review}</p>
         </div>

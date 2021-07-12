@@ -22,7 +22,6 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/sign_up" component={Signup} />
         <Route path="/forgetpassword" component={ForgetPassword} />
-        <Route path="/forgetpassword" component={ForgetPassword} />
         <Route path="/person/:id" component={Person} />
         <Route path="/cast/:media_type/:id" component={CastAndCrew} />
         <Route path="/:media_type/:id" component={Details} />

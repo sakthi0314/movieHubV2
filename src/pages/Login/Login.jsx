@@ -32,6 +32,7 @@ const Login = () => {
 
   useEffect(() => {
     document.title = "Moviehub - Login";
+    emailRef.current.focus();
   }, []);
 
   // Redirecting...

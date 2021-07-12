@@ -4,9 +4,9 @@
 
 .castHeader {
   padding: 0 2rem;
-  margin-top: 7rem;
   height: 15rem;
   background-color: $Yellow;
+  margin: 7rem 0 4rem 0;
 
   &__container {
     max-width: 130rem;
@@ -17,6 +17,7 @@
 
   &__movieImg {
     width: 8rem;
+    margin-top: 1rem;
 
     img {
       border-radius: 0.4rem;
@@ -48,7 +49,6 @@
 }
 
 .castAndCrew {
-  margin-top: 4rem;
   padding: 0 2rem;
 
   &__container {
@@ -74,7 +74,7 @@
     &--one {
       h1 {
         font-size: $font-l;
-        margin-bottom: 2rem;
+        margin-bottom: 0.6rem;
 
         span {
           font-weight: map-get($font-weight, Light);
