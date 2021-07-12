@@ -44,6 +44,7 @@
         justify-content: flex-start;
         align-items: center;
         flex-wrap: wrap;
+        display: none;
 
         & > *:not(:first-child) {
           margin: 1rem;
@@ -90,6 +91,11 @@
     width: 100%;
 
     &--name {
+      @include respond(tablet) {
+        text-align: center;
+        margin: 1rem 0;
+      }
+
       h1 {
         font-weight: map-get($font-weight, Medium);
         margin-bottom: 3rem;

@@ -11,6 +11,7 @@ import getPersonInfoAction from "../../store/actions/getPersonInfoAction";
 import getPersonKnownAction from "../../store/actions/getPersonKnownAction";
 import TableContent from "../../Components/TableContent/TableContent";
 import "./Person.scss";
+import CastPersonInfo from "../../Components/CastPersonInfo/CastPersonInfo";
 
 const Person = () => {
   const { person } = useSelector((state) => state.personInfo);
@@ -94,6 +95,15 @@ const Person = () => {
           <div className="person__content--name">
             <h1>{person.name}</h1>
           </div>
+
+          <CastPersonInfo
+            depart={person.known_for_department || "-"}
+            Vote={person.popularity?.toFixed(2) || "-"}
+            gender={person.gender === 2 ? "Male" : "Female" || "-"}
+            birthday={person.birthday}
+            Place={person.place_of_birth}
+            KnownAs={person.also_known_as}
+          />
 
           <div className="person__content--bio">
             <h1>Biography</h1>
