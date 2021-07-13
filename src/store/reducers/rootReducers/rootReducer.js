@@ -23,6 +23,7 @@ import pageReducer from "../pageReducer";
 import getPersonInfoReducer from "../getPersonInfoReducer";
 import getPersonKnownReducer from "../getPersonKnownReducer";
 import getPersonCreditReducer from "../getPersonCreditReducer";
+import getBackdropReducer from "../getBackdropReducer";
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
@@ -49,6 +50,7 @@ const rootReducer = combineReducers({
   personInfo: getPersonInfoReducer,
   personKnow: getPersonKnownReducer,
   personCredit: getPersonCreditReducer,
+  backdrop: getBackdropReducer,
 });
 
 export default rootReducer;

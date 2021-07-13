@@ -69,6 +69,10 @@
     top: 50%;
     transform: translateY(-50%);
 
+    @include respond(mobile) {
+      width: 20rem;
+    }
+
     img {
       border-radius: 0.2rem;
     }
@@ -114,7 +118,7 @@
     &--title {
       font-size: $font-xl;
       color: $white;
-      font-weight: map-get($font-weight, Medium);
+      font-weight: map-get($font-weight, Bold);
     }
 
     &--tagline {
@@ -307,6 +311,7 @@
       font-size: $font-md;
       font-weight: map-get($font-weight, Medium);
       padding: 1rem 0;
+      transition: all 0.2s ease;
 
       & > * {
         text-decoration: none;
@@ -314,6 +319,7 @@
 
         &:hover {
           text-decoration: underline;
+          color: $Yellow;
         }
       }
     }
@@ -381,7 +387,7 @@
 
 .recommeded {
   padding: 0 2rem;
-  margin: 2rem 0;
+  margin: 1rem 0;
 
   &__container {
     max-width: 130rem;
@@ -389,7 +395,7 @@
   }
 
   &__header {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     h1 {
       font-size: $font-l;
       font-weight: map-get($font-weight, Medium);

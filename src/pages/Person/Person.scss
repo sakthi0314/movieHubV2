@@ -97,9 +97,9 @@
       }
 
       h1 {
-        font-weight: map-get($font-weight, Medium);
+        font-weight: map-get($font-weight, Bold);
         margin-bottom: 3rem;
-        font-size: $font-l;
+        font-size: $font-xl;
       }
     }
 

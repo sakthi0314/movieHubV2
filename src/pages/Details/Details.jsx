@@ -22,6 +22,8 @@ import addFavAction from "../../store/actions/addFavAction";
 import getFavAction from "../../store/actions/getFavAction";
 import getTrailerAction from "../../store/actions/getTrailerAction";
 import TrailerModel from "../../Components/TrailerModel/TrailerModel";
+import getbackdropAction from "../../store/actions/getbackdropAction";
+import Backdrop from "../../Components/Backdrop/Backdrop";
 import "./Details.scss";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
@@ -38,7 +40,8 @@ const Details = () => {
   const { reviews, isLoading } = useSelector((state) => state.review);
   const { recommededs } = useSelector((state) => state.recommened);
   const { isFavarited } = useSelector((state) => state.addFav);
-  const { favaraites } = useSelector((state) => state.getFav);
+  // const { favaraites } = useSelector((state) => state.getFav);
+  const { backdrops } = useSelector((state) => state.backdrop);
   const { videoList, isTrailerLoading } = useSelector(
     (state) => state.getTrailer
   );
@@ -107,6 +110,7 @@ const Details = () => {
     dispatch(getReview(id));
     dispatch(recommededAction(id, media_type));
     dispatch(DetailsAction(id, media_type));
+    dispatch(getbackdropAction(id));
     // eslint-disable-next-line
   }, [id, media_type]);
 
@@ -242,6 +246,9 @@ const Details = () => {
           </div>
         </div>
       </div>
+
+      {/* Backdrops */}
+      <Backdrop backdrops={backdrops} />
 
       <div className="cast">
         <div className="cast__container">

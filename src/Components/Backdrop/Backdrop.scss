@@ -1,0 +1,47 @@
+@import "../../Styles/variables";
+@import "../../Styles/mixins";
+
+.backdrop {
+  margin: 4rem 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 5rem 0;
+
+  @include respond(mobile) {
+    padding: 3rem 0;
+  }
+
+  &__container {
+    max-width: 130rem;
+    margin: 0 auto;
+  }
+
+  &__header {
+    @include flexbox(row, space-between, center);
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: $font-ml;
+      font-weight: map-get($font-weight, Medium);
+    }
+  }
+
+  &__content {
+    @include flexbox(row, center, center);
+  }
+
+  &__slide {
+    width: 30rem;
+
+    @include respond(mobile) {
+      width: 24rem;
+    }
+  }
+
+  &--img {
+    width: 100%;
+
+    border-radius: 0.4rem;
+  }
+}
