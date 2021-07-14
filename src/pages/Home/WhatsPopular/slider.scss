@@ -17,6 +17,10 @@
     h1 {
       font-size: $font-ml;
       font-weight: map-get($font-weight, Bold);
+
+      @include respond(mobile) {
+        font-size: $font-md;
+      }
     }
   }
 
