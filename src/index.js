@@ -7,14 +7,12 @@ import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 import "./Styles/base.scss";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ReactReduxFirebaseProvider {...rrfProps}>
-        <IsAuthLoad>
-          <App />
-        </IsAuthLoad>
-      </ReactReduxFirebaseProvider>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <IsAuthLoad>
+        <App />
+      </IsAuthLoad>
+    </ReactReduxFirebaseProvider>
+  </Provider>,
   document.getElementById("root")
 );

@@ -6,7 +6,7 @@ const initialState = {
   error: null,
 };
 
-export default (state = initialState, { type, payload }) => {
+const getGenresReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case actionTypes.SEND_REQUEST:
       return { ...state, genresIsLoading: true };
@@ -27,3 +27,5 @@ export default (state = initialState, { type, payload }) => {
       return state;
   }
 };
+
+export default getGenresReducer;

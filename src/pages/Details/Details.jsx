@@ -101,7 +101,7 @@ const Details = () => {
       (detail.name && detail.name) ||
       (detail.title && detail.title) ||
       (detail.original_title && detail.original_title)
-    }`;
+    } - MovieHub`;
     // eslint-disable-next-line
   }, [detail]);
 

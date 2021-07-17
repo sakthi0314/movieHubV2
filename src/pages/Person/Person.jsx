@@ -29,10 +29,12 @@ const Person = () => {
     dispatch(getPersonInfoAction(id));
     dispatch(getPersonKnownAction(id));
     window.scroll(0, 0);
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     dispatch(getPersonCreditAction(id, type));
+    // eslint-disable-next-line
   }, [type]);
 
   return (

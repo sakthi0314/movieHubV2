@@ -6,7 +6,7 @@ const initialState = {
   error: "",
 };
 
-export default (state = initialState, { type, payload }) => {
+const getBackdropReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case actionTypes.SEND_REQUEST:
       return {
@@ -32,3 +32,5 @@ export default (state = initialState, { type, payload }) => {
       return state;
   }
 };
+
+export default getBackdropReducer;

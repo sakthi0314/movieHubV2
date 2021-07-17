@@ -16,16 +16,12 @@ const SearchResults = () => {
 
   // Filtering movie data's
   const filtereMovie = result?.filter((data) => {
-    if (data.media_type === "movie") {
-      return data;
-    }
+    return data.media_type === "movie";
   });
 
   // Filtering tv  data's
   const filtereTv = result?.filter((data) => {
-    if (data.media_type === "tv") {
-      return data;
-    }
+    return data.media_type === "tv";
   });
 
   useEffect(() => {

@@ -133,18 +133,10 @@ const Navbar = () => {
                 activeClassName="navbar__active"
                 to="/tv_shows"
               >
-                Tv Shows
+                Series
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                className={classes["navbar__link"]}
-                activeClassName="navbar__active"
-                to="/genres"
-              >
-                Genres
-              </NavLink>
-            </li>
+
             <li>
               <NavLink
                 className={classes["navbar__link"]}
@@ -154,13 +146,22 @@ const Navbar = () => {
                 People
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                className={classes["navbar__link"]}
+                activeClassName="navbar__active"
+                to="/about"
+              >
+                About
+              </NavLink>
+            </li>
           </ul>
 
           <ul className={classes["navbar__right"]}>
             <Link to="/account" className={classes["navbar__avatar"]}>
               <LazyLoadImage
                 effect="blur"
-                src={url || Avatar}
+                src={url ? url : Avatar}
                 alt={profile.userName}
               />
             </Link>

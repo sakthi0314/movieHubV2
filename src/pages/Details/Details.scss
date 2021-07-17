@@ -70,7 +70,9 @@
     transform: translateY(-50%);
 
     @include respond(mobile) {
-      width: 20rem;
+      width: 16rem;
+      top: 60%;
+      transform: translateY(-60%);
     }
 
     img {

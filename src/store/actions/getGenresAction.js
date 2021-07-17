@@ -1,5 +1,5 @@
 import actionTypes from "../actions/actionTypes";
-import { APP_KEY, request } from "../../Services/request";
+import { APP_KEY } from "../../Services/request";
 import axios from "../../Services/axios";
 
 const getGenresAction = (type) => async (dispatch) => {
@@ -13,7 +13,10 @@ const getGenresAction = (type) => async (dispatch) => {
       `https://api.themoviedb.org/3/genre/${type}/list?api_key=${APP_KEY}&language=en-US`
     );
 
-    console.log(data.genres);
+    dispatch({
+      type: actionTypes.GET_GENRES,
+      payload: data.genres,
+    });
   } catch (error) {
     //Catching error
     dispatch({

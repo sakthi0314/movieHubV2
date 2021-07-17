@@ -29,8 +29,8 @@ const Backdrop = ({ backdrops }) => {
           className="backdrop__content"
         >
           {backdrops.length >= 1 &&
-            backdrops.map((backdrop) => (
-              <SwiperSlide className="backdrop__slide">
+            backdrops.map((backdrop, key) => (
+              <SwiperSlide className="backdrop__slide" key={key}>
                 <div className="backdrop__slide--img">
                   <LazyLoadImage
                     effect="blur"
