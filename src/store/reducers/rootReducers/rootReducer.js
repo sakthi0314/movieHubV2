@@ -26,6 +26,7 @@ import getPersonCreditReducer from "../getPersonCreditReducer";
 import getBackdropReducer from "../getBackdropReducer";
 import getGenresReducer from "../getGenresReducer";
 import discoverReducer from "../discoverReducer";
+import getLanguageReducer from "../getLanguagesReducer";
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
@@ -55,6 +56,7 @@ const rootReducer = combineReducers({
   backdrop: getBackdropReducer,
   genre: getGenresReducer,
   discover: discoverReducer,
+  language: getLanguageReducer,
 });
 
 export default rootReducer;

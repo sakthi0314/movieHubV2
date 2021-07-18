@@ -25,6 +25,108 @@
       flex: 1;
       padding-right: 0;
     }
+
+    &--sort {
+      background-color: $DarkGrey;
+      border-radius: 0.4rem;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    &--sortHeader {
+      @include flexbox(row, space-between, center);
+      border-radius: 0.4rem;
+      cursor: pointer;
+      user-select: none;
+      padding: 1rem;
+      color: $DarkGrey;
+      background-color: $Yellow;
+
+      span {
+        &:last-child {
+          font-size: $font-md;
+        }
+
+        &:not(:last-child) {
+          font-size: $font-sm;
+          letter-spacing: 1px;
+          font-weight: map-get($font-weight, bold);
+        }
+      }
+    }
+
+    &--sortBody {
+      border: 1px solid transparent;
+      padding: 1rem;
+    }
+
+    &--dropdown {
+      p {
+        font-size: $font-xsm;
+        padding: 0.4em 0;
+      }
+    }
+
+    &--filtering {
+      background-color: $DarkGrey;
+      border-radius: 0.4rem;
+      width: 100%;
+    }
+
+    &--filteringHeader {
+      @include flexbox(row, space-between, center);
+      cursor: pointer;
+      user-select: none;
+      padding: 1rem;
+      color: $DarkGrey;
+      background-color: $Yellow;
+      border-radius: 0.4rem;
+
+      span {
+        &:last-child {
+          font-size: $font-md;
+        }
+
+        &:not(:last-child) {
+          letter-spacing: 1px;
+          font-size: $font-sm;
+          font-weight: map-get($font-weight, bold);
+        }
+      }
+    }
+
+    &--filteringBody {
+      padding: 0.4em 1em;
+    }
+
+    &--filteringGenre {
+      border-bottom: 1px solid rgba(179, 179, 179, 0.212);
+      padding: 1.5rem 0;
+      margin-bottom: 1rem;
+
+      p {
+        font-size: $font-sm;
+        padding: 0.1rem 0;
+      }
+    }
+
+    &--filteringLanguage {
+      border-bottom: 1px solid rgba(179, 179, 179, 0.212);
+      padding: 1.5rem 0;
+      margin-bottom: 1rem;
+
+      p {
+        font-size: $font-sm;
+        padding: 0.1rem 0;
+      }
+    }
+
+    &--votage {
+      p {
+        font-size: $font-sm;
+        padding: 0.1rem 0;
+      }
+    }
   }
 
   &__results {

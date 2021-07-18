@@ -2,23 +2,23 @@ import axios from "../../Services/axios";
 import { APP_KEY } from "../../Services/request";
 import actionTypes from "./actionTypes";
 
-const discoverAction = (creds) => async (dispatch) => {
-  // Request
+const getLanguagesAction = () => async (dispatch) => {
+  // Requsting..
   dispatch({
     type: actionTypes.SEND_REQUEST,
   });
 
   try {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/discover/${creds.type}?api_key=${APP_KEY}&language=en-US&sort_by=${creds.sort}&include_adult=false&include_video=false&page=${page}&with_genres=${creds.genre}`
+      `/configuration/languages?api_key=${APP_KEY}`
     );
-    // Sending data
+    // Sendng Reducer
     dispatch({
-      type: actionTypes.DISCOVER,
+      type: actionTypes.GET_LANGUAGES,
       payload: data,
     });
   } catch (error) {
-    // Catching Error
+    // Failure
     dispatch({
       type: actionTypes.REQUEST_FAILURE,
       payload: error.message,
@@ -26,4 +26,4 @@ const discoverAction = (creds) => async (dispatch) => {
   }
 };
 
-export default discoverAction;
+export default getLanguagesAction;

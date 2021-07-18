@@ -50,6 +50,7 @@ const actionTypes = {
   PERSON_CREDIT_FAILURE: "PERSON_MOVIE_CREDIT_FAILURE",
   GET_GENRES: "GET_GENRES",
   DISCOVER: "DISCOVER",
+  GET_LANGUAGES: "GET_LANGUAGES",
 };
 
 export default actionTypes;
