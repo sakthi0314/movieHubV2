@@ -1,5 +1,6 @@
 @import "../../Styles/mixins";
 @import "../../Styles/variables";
+@import "../../Styles/button";
 
 .movie {
   margin: 10rem 0 2rem 0;
@@ -24,6 +25,7 @@
     @include respond(tablet) {
       flex: 1;
       padding-right: 0;
+      margin-bottom: 2rem;
     }
 
     &--sort {
@@ -60,10 +62,87 @@
       padding: 1rem;
     }
 
-    &--dropdown {
+    &--dropdown,
+    &--filteringLanguage {
       p {
         font-size: $font-xsm;
         padding: 0.4em 0;
+      }
+
+      .select-box {
+        position: relative;
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+
+        .selected {
+          width: 100%;
+          padding: 0.4rem 1rem;
+          border-radius: 0.2rem;
+          cursor: pointer;
+          background-color: lighten($DarkGrey, 15%);
+          color: $lightGrey;
+          margin-bottom: 0.2rem;
+          @include flexbox(row, space-between, center);
+
+          span {
+            &:first-child {
+              font-size: $font-xsm;
+            }
+
+            &:last-child {
+              font-size: $font-md;
+            }
+          }
+        }
+
+        .search {
+          width: 90%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: $white;
+          padding: 0.5em 1em;
+          border-radius: 0.2rem;
+          margin: 1rem;
+
+          input {
+            flex: 1;
+            font-family: inherit;
+            background-color: transparent;
+            font-size: $font-xsm;
+          }
+        }
+      }
+
+      .option {
+        padding: 1.2rem;
+        cursor: pointer;
+
+        &:hover {
+          background-color: lighten($DarkGrey, 6%);
+        }
+
+        .radio {
+          display: none;
+        }
+
+        label {
+          display: block;
+          cursor: pointer;
+          font-size: $font-xsm;
+          font-weight: map-get($font-weight, Medium);
+        }
+
+        &__container {
+          background-color: lighten($DarkGrey, 15%);
+          color: $lightGrey;
+          max-height: 0;
+          display: none;
+          width: 100%;
+          transition: all 0.1s ease-in;
+          border-radius: 0.2rem;
+        }
       }
     }
 
@@ -118,13 +197,26 @@
       p {
         font-size: $font-sm;
         padding: 0.1rem 0;
+        margin-bottom: 1rem;
       }
     }
 
     &--votage {
+      border-bottom: 1px solid rgba(179, 179, 179, 0.212);
+      padding: 1.5rem 0;
+      margin-bottom: 1rem;
+
       p {
         font-size: $font-sm;
         padding: 0.1rem 0;
+      }
+    }
+
+    &--search {
+      width: 100%;
+      margin-top: 1rem;
+      button {
+        @extend .button-wide;
       }
     }
   }
@@ -137,4 +229,11 @@
       flex: 1;
     }
   }
+}
+
+// Active classes
+.option__container.activeOption {
+  min-height: 24rem;
+  display: block;
+  overflow-y: scroll;
 }

@@ -3,39 +3,83 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getGenresAction from "../../store/actions/getGenresAction";
 import sortingData from "../../utilities/sortingData";
-import { BiChevronRight, BiChevronDown } from "react-icons/bi";
-import { Chip, TextField, Slider } from "@material-ui/core";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import { BiChevronRight, BiChevronDown, BiChevronUp } from "react-icons/bi";
+import { Chip, Slider } from "@material-ui/core";
 import "./MoviePage.scss";
 import getLanguagesAction from "../../store/actions/getLanguagesAction";
+import filterLanguageAction from "../../store/actions/filterLangages";
+import discoverAction from "../../store/actions/discoverAction";
+import CustomPagination from "../../Components/CustomPagination/CustomPagination";
+import ListColumn from "../../Components/ListColumn/ListColumn";
+import Grid from "../../Components/Grid/Grid";
 
 const MoviePage = () => {
   const { genres } = useSelector((state) => state.genre);
   const dispatch = useDispatch();
   const [genre, setGenre] = useState(28);
-  const [sortIsOpen, setSortIsOpen] = useState(false);
+  const [sortIsOpen, setSortIsOpen] = useState(true);
   const [fliterIsOpen, setFilterIsOpen] = useState(false);
   const { languages } = useSelector((state) => state.language);
-  const [value, setValue] = React.useState([0, 100]);
+  const [value, setValue] = useState([0, 10]);
+  const [sortDropDownIsOpen, setSortDropDownIsOpen] = useState(false);
+  const [sortDropDownSeleted, setDropDownSelected] =
+    useState("original_title.asc");
+  const [languageSelect, setLanguageSelect] = useState("Afar");
+  const [languageDropDownIsOpen, setLanguageDropDownIsOpen] = useState(false);
+  const [filterValue, setFilterValue] = useState("");
+  const [page, setPage] = useState(1);
+  const { isLoading, result, totalPage, totalResult, queryValue } = useSelector(
+    (state) => state.discover
+  );
+  const pageState = useSelector((state) => state.pageReducer);
 
+  // Hide & Show Sortig DropDown
   const handleSortOpen = () => {
     setSortIsOpen(!sortIsOpen);
   };
 
+  // Hide & Show Filter DropDown
   const handleFilterOpen = () => {
     setFilterIsOpen(!fliterIsOpen);
   };
 
-  const handleChange = (event, newValue) => {
+  // Getting Votage Value
+  const handleSlide = (event, newValue) => {
     setValue(newValue);
   };
 
-  const valuetext = (value) => {
-    return value / 2;
+  // Hide & Show SortList DropDown
+  const handleSortList = () => {
+    setSortDropDownIsOpen(!sortDropDownIsOpen);
+  };
+
+  // Hide & Show  Languages
+  const handleLanguage = () => {
+    setLanguageDropDownIsOpen(!languageDropDownIsOpen);
+  };
+
+  // Filtering  Languages
+  const filterLanguage = (e) => {
+    setFilterValue(e.target.value);
+    dispatch(filterLanguageAction(filterValue, languages));
+  };
+
+  // handle Filter & Sort Data
+  const filterAndSortCreds = {
+    sort: sortDropDownSeleted,
+    language: languageSelect,
+    votage: value,
+    genre,
+    page: pageState.page,
+  };
+
+  const handleFilterSort = () => {
+    dispatch(discoverAction(filterAndSortCreds));
   };
 
   useEffect(() => {
     dispatch(getLanguagesAction());
+    dispatch(discoverAction(filterAndSortCreds));
     dispatch(getGenresAction("movie"));
   }, []);
 
@@ -59,15 +103,39 @@ const MoviePage = () => {
               <div className="movie__filter--dropdown">
                 <p>Sort Results By</p>
 
-                <Autocomplete
-                  id="Sort By"
-                  options={sortingData}
-                  getOptionLabel={(option) => option}
-                  style={{ width: "100%", margin: "1em 0" }}
-                  renderInput={(params) => (
-                    <TextField {...params} label="Sort By" variant="outlined" />
-                  )}
-                />
+                <div className="select-box">
+                  <div
+                    className={`option__container ${
+                      sortDropDownIsOpen && "activeOption"
+                    }`}
+                  >
+                    {sortingData.map((sort, key) => (
+                      <div className="option" key={key}>
+                        <input
+                          type="radio"
+                          name="sort"
+                          id={sort}
+                          className="radio"
+                        />
+                        <label
+                          htmlFor={sort}
+                          onClick={(e) => {
+                            setDropDownSelected(e.target.textContent);
+                            setSortDropDownIsOpen(false);
+                          }}
+                        >
+                          {sort}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="selected" onClick={handleSortList}>
+                    <span>{sortDropDownSeleted}</span>
+                    <span>
+                      {sortDropDownIsOpen ? <BiChevronUp /> : <BiChevronDown />}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -99,11 +167,12 @@ const MoviePage = () => {
                   }}
                 >
                   {genres.length > 1 &&
-                    genres.map((genre) => (
+                    genres.map((genre, key) => (
                       <Chip
+                        key={key}
                         label={genre.name}
                         color="primary"
-                        variant="outline"
+                        variant="outlined"
                         clickable
                         onClick={() => setGenre(genre.id)}
                         style={{
@@ -120,19 +189,52 @@ const MoviePage = () => {
               <div className="movie__filter--filteringLanguage">
                 <p>Language</p>
 
-                <Autocomplete
-                  id="None Selected"
-                  options={languages}
-                  getOptionLabel={(option) => option.english_name}
-                  style={{ width: "100%", margin: "1em 0" }}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="None Selected"
-                      variant="outlined"
-                    />
-                  )}
-                />
+                <div className="select-box">
+                  <div
+                    className={`option__container ${
+                      languageDropDownIsOpen && "activeOption"
+                    }`}
+                  >
+                    <form className="search">
+                      <input
+                        type="text"
+                        value={filterValue}
+                        onChange={filterLanguage}
+                        placeholder="Search..."
+                      />
+                    </form>
+                    {languages.map((language, key) => (
+                      <div className="option" key={key}>
+                        <input
+                          type="radio"
+                          name="sort"
+                          id={language.english_name}
+                          className="radio"
+                        />
+                        <label
+                          htmlFor={language.english_name}
+                          onClick={(e) => {
+                            setLanguageSelect(e.target.textContent);
+                            setLanguageDropDownIsOpen(false);
+                          }}
+                        >
+                          {language.english_name}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="selected" onClick={handleLanguage}>
+                    <span>{languageSelect}</span>
+                    <span>
+                      {languageDropDownIsOpen ? (
+                        <BiChevronUp />
+                      ) : (
+                        <BiChevronDown />
+                      )}
+                    </span>
+                  </div>
+                </div>
               </div>
 
               {/* Vote */}
@@ -141,16 +243,26 @@ const MoviePage = () => {
 
                 <Slider
                   value={value}
-                  onChange={handleChange}
+                  onChange={handleSlide}
                   valueLabelDisplay="auto"
                   aria-labelledby="range-slider"
-                  getAriaValueText={valuetext}
+                  // getAriaValueText={valuetext}
+                  min={0}
+                  max={10}
                 />
               </div>
             </div>
           </div>
+
+          <div className="movie__filter--search">
+            <button onClick={handleFilterSort}>Search</button>
+          </div>
         </div>
-        <div className="movie__results"></div>
+        <div className="movie__results">
+          <Grid result={result} isLoading={isLoading} />
+          <ListColumn result={result} isLoading={isLoading} />
+          <CustomPagination noOfPages={totalPage} />
+        </div>
       </div>
     </div>
   );

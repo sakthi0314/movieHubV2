@@ -51,6 +51,7 @@ const actionTypes = {
   GET_GENRES: "GET_GENRES",
   DISCOVER: "DISCOVER",
   GET_LANGUAGES: "GET_LANGUAGES",
+  FILTER_LANGUAGES: "FILTER_LANGUAGES",
 };
 
 export default actionTypes;

@@ -18,6 +18,18 @@ const getLanguageReducer = (state = initialState, { type, payload }) => {
         languages: payload,
       };
 
+    case actionTypes.FILTER_LANGUAGES:
+      return {
+        languagesIsLoading: false,
+        languages: state.languages.filter((language) => {
+          if (payload == "") {
+            return payload.languages;
+          } else {
+            return language.english_name.includes(payload.searchTerm);
+          }
+        }),
+      };
+
     case actionTypes.REQUEST_FAILURE:
       return {
         ...state,

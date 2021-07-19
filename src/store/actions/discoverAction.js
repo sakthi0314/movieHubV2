@@ -10,12 +10,17 @@ const discoverAction = (creds) => async (dispatch) => {
 
   try {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/discover/${creds.type}?api_key=${APP_KEY}&language=en-US&sort_by=${creds.sort}&include_adult=false&include_video=false&page=${page}&with_genres=${creds.genre}`
+      `/discover/movie?api_key=${APP_KEY}&language=${creds.language}&sort_by=${creds.sort}&include_adult=false&include_video=false&page=${creds.page}&vote_count.gte=${creds.votage[0]}&vote_count.lte=${creds.votage[1]}&with_genres=${creds.genre}`
     );
+
     // Sending data
     dispatch({
       type: actionTypes.DISCOVER,
-      payload: data,
+      payload: {
+        results: data.results,
+        totalPages: data.total_pages,
+        totalResult: data.total_results,
+      },
     });
   } catch (error) {
     // Catching Error

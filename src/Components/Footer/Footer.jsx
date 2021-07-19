@@ -70,7 +70,7 @@ const Footer = () => {
             <p>
               This web application is depand on{" "}
               <a
-                href="https://www.themoviedb.org/documentation/api"
+                href="https://developers.themoviedb.org/3/getting-started/introduction"
                 target="_blank"
                 rel="noreferrer"
               >

@@ -25,7 +25,7 @@ import getPersonKnownReducer from "../getPersonKnownReducer";
 import getPersonCreditReducer from "../getPersonCreditReducer";
 import getBackdropReducer from "../getBackdropReducer";
 import getGenresReducer from "../getGenresReducer";
-import discoverReducer from "../discoverReducer";
+import getDiscoverReducer from "../getDiscoverReducer";
 import getLanguageReducer from "../getLanguagesReducer";
 
 const rootReducer = combineReducers({
@@ -55,7 +55,7 @@ const rootReducer = combineReducers({
   personCredit: getPersonCreditReducer,
   backdrop: getBackdropReducer,
   genre: getGenresReducer,
-  discover: discoverReducer,
+  discover: getDiscoverReducer,
   language: getLanguageReducer,
 });
 

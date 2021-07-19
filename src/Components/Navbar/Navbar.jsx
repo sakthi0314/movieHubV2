@@ -206,8 +206,9 @@ const Navbar = () => {
           display: searchMenu && "none",
         }}
       >
-        {result.map((res) => (
+        {result.map((res, key) => (
           <Link
+            key={key}
             onClick={handleRecommedSearch}
             to={`/${res.media_type}/${res.id}`}
             className={classes["navbar__recommending--item"]}

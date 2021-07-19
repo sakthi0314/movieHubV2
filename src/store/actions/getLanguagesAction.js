@@ -12,6 +12,7 @@ const getLanguagesAction = () => async (dispatch) => {
     const { data } = await axios.get(
       `/configuration/languages?api_key=${APP_KEY}`
     );
+
     // Sendng Reducer
     dispatch({
       type: actionTypes.GET_LANGUAGES,
