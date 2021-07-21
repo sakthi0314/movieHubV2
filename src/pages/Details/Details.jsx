@@ -18,8 +18,6 @@ import createReview from "../../store/actions/createReview";
 import recommededAction from "../../store/actions/recommededAction";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RowItems from "../../Components/RowItems/RowItems";
-import addFavAction from "../../store/actions/addFavAction";
-import getFavAction from "../../store/actions/getFavAction";
 import getTrailerAction from "../../store/actions/getTrailerAction";
 import TrailerModel from "../../Components/TrailerModel/TrailerModel";
 import getbackdropAction from "../../store/actions/getbackdropAction";
@@ -29,6 +27,9 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 
 // Import Swiper styles
 import "swiper/swiper.scss";
+import addFavariteAction from "../../store/actions/addFavariteAction";
+import getfavaritesAction from "../../store/actions/getfavariteAction";
+import removeFavariteAction from "../../store/actions/removeFavariteAction";
 
 const Details = () => {
   const { id, media_type } = useParams();
@@ -39,13 +40,12 @@ const Details = () => {
   const { profile, auth } = useSelector((state) => state.firebase);
   const { reviews, isLoading } = useSelector((state) => state.review);
   const { recommededs } = useSelector((state) => state.recommened);
-  const { isFavarited } = useSelector((state) => state.addFav);
-  // const { favaraites } = useSelector((state) => state.getFav);
   const { backdrops } = useSelector((state) => state.backdrop);
   const { videoList, isTrailerLoading } = useSelector(
     (state) => state.getTrailer
   );
   const [modelIsOpen, setModelIsOpen] = useState(false);
+  const { favarites } = useSelector((state) => state.getfavarites);
 
   const cover = detail.backdrop_path
     ? `${request.IMG_URL}/${detail.backdrop_path}`
@@ -71,17 +71,16 @@ const Details = () => {
 
   // Add Favarite
   const handleFav = () => {
-    // MovieCreds for send favarite to db
-    const movieCreds = {
-      userId: auth.uid,
+    const creds = {
+      uid: auth.uid,
       movieID: id,
-      imgURL: detail.poster_path,
       title: detail.title || detail.name || detail.original_title,
-      movieType: media_type,
-      isFav: isFavarited,
-      createdTime: new Date(),
+      media_type: media_type,
+      poster: detail.poster_path,
     };
-    dispatch(addFavAction(movieCreds));
+
+    // Adding Favarite to firebase
+    dispatch(addFavariteAction(creds));
   };
 
   // PlayTrailer
@@ -92,7 +91,7 @@ const Details = () => {
 
   useEffect(() => {
     window.scroll(0, 0);
-    dispatch(getFavAction(auth.uid));
+    dispatch(getfavaritesAction(auth.uid));
     // eslint-disable-next-line
   }, []);
 
@@ -163,11 +162,17 @@ const Details = () => {
               <button
                 className="info__rowone--fav"
                 id="favarite"
+                onClick={() => dispatch(removeFavariteAction(id))}
+              >
+                <BsBookmarksFill />
+              </button>
+
+              <button
+                className="info__rowone--fav"
+                id="favarite"
                 onClick={handleFav}
               >
-                <span>
-                  {isFavarited ? <BsBookmarksFill /> : <BsBookmarks />}
-                </span>
+                <BsBookmarks />
               </button>
             </div>
             <i className="info__rowone--tagline"> {detail.tagline}</i>

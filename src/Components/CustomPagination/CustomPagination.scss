@@ -4,4 +4,5 @@
 .pagination {
   width: 100%;
   @include flexbox(row, center, center);
+  margin: 3em 0;
 }

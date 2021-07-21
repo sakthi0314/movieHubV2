@@ -14,8 +14,6 @@ import getReviewReducer from "../getReviewReducer";
 import recommededReducer from "../recommededReducer";
 import uploadProfileReducer from "../uploadProfileReducer";
 import getProfileURLReducer from "../getProfileURLReducer";
-import addFavReducer from "../addFavReducer";
-import getFavReducer from "../getFavReducer";
 import getTrailerReducer from "../getTrailarReducer";
 import getTrailerKeyReducer from "../getTrailerKeyReducer";
 import searchReducer from "../searchReducer";
@@ -27,6 +25,9 @@ import getBackdropReducer from "../getBackdropReducer";
 import getGenresReducer from "../getGenresReducer";
 import getDiscoverReducer from "../getDiscoverReducer";
 import getLanguageReducer from "../getLanguagesReducer";
+import getPopularPersonReducer from "../getPopularPersonReducer";
+import getfavaritesReducer from "../getFavaritesReducer";
+import addFavariteReducer from "../addFavariteReducer";
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
@@ -44,8 +45,6 @@ const rootReducer = combineReducers({
   recommened: recommededReducer,
   uploadProfile: uploadProfileReducer,
   getProfile: getProfileURLReducer,
-  addFav: addFavReducer,
-  getFav: getFavReducer,
   getTrailer: getTrailerReducer,
   trailerKey: getTrailerKeyReducer,
   searchResults: searchReducer,
@@ -57,6 +56,9 @@ const rootReducer = combineReducers({
   genre: getGenresReducer,
   discover: getDiscoverReducer,
   language: getLanguageReducer,
+  popularPerson: getPopularPersonReducer,
+  addFavarite: addFavariteReducer,
+  getfavarites: getfavaritesReducer,
 });
 
 export default rootReducer;

@@ -20,13 +20,13 @@ const getReview = (movieId) => {
         snapshots.forEach((document) => {
           reviews.push({ ...document.data() });
         });
-
-        // Failure to get...
+        // send to Reducer
         dispatch({
           type: actionTypes.GET_REVIEW,
           payload: reviews,
         });
       })
+      // Failure to get...
       .catch((err) =>
         dispatch({ type: actionTypes.REQUEST_FAILURE, payload: err.message })
       );

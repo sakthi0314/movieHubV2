@@ -121,7 +121,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 className={classes["navbar__link"]}
-                activeClassName="navbar__active"
+                activeClassName={classes["navbar__active"]}
                 to="/movies"
               >
                 Movies
@@ -130,7 +130,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 className={classes["navbar__link"]}
-                activeClassName="navbar__active"
+                activeClassName={classes["navbar__active"]}
                 to="/series"
               >
                 Series
@@ -140,7 +140,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 className={classes["navbar__link"]}
-                activeClassName="navbar__active"
+                activeClassName={classes["navbar__active"]}
                 to="/people"
               >
                 People
@@ -149,7 +149,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 className={classes["navbar__link"]}
-                activeClassName="navbar__active"
+                activeClassName={classes["navbar__active"]}
                 to="/about"
               >
                 About

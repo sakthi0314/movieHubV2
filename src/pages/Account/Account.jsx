@@ -8,6 +8,7 @@ import updateProfileAction from "../../store/actions/updateProfileAction";
 import Avatar from "../../assets/avatar.png";
 import useProfile from "../../Hooks/useProfile";
 import LoadingSpinnder from "../../Components/LoadingSpiner/LoadingSpiner";
+import getfavaritesAction from "../../store/actions/getfavariteAction";
 
 const Account = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const Account = () => {
   useEffect(() => {
     document.title = "Moviehub - Account";
     window.scroll(0, 0);
+    dispatch(getfavaritesAction(auth.uid));
     // eslint-disable-next-line
   }, []);
 

@@ -1,0 +1,48 @@
+@import "../../Styles/variables";
+@import "../../Styles/mixins";
+
+.popularPerson {
+  margin-top: 8em;
+  padding: 0 2rem;
+
+  &__container {
+    max-width: 130rem;
+    margin: 0 auto;
+
+    h1 {
+      font-size: $font-l;
+      padding: 2rem 0;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
+    grid-gap: 2em;
+
+    &--link {
+      text-decoration: none;
+      color: $white;
+    }
+
+    &--name {
+      margin-top: 0.9rem;
+      h6 {
+        font-size: $font-sm;
+        margin-bottom: 0.3rem;
+        font-weight: map-get($font-weight, Medium);
+      }
+
+      p {
+        font-size: $font-xsm;
+        opacity: 0.8;
+      }
+    }
+
+    &--img {
+      img {
+        border-radius: 0.4rem;
+      }
+    }
+  }
+}

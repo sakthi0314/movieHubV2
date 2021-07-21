@@ -109,6 +109,7 @@
 
   &__active {
     color: $Yellow;
+    font-weight: map-get($font-weight, bold);
   }
 
   &__right {

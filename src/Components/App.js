@@ -16,6 +16,7 @@ import { ThemeProvider } from "@material-ui/core";
 import theme from "../theme/theme";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 import SeriesPage from "../pages/SeriesPage/SeriesPage";
+import PersonPage from "../pages/PersonPage/PersonPage";
 
 function App() {
   // App First Render
@@ -36,6 +37,7 @@ function App() {
             <Route path="/forgetpassword" component={ForgetPassword} />
             <Route path="/movies" component={MoviePage} />
             <Route path="/series" component={SeriesPage} />
+            <Route path="/people" component={PersonPage} />
             <Route path="/person/:id" component={Person} />
             <Route path="/cast/:media_type/:id" component={CastAndCrew} />
             <Route path="/:media_type/:id" component={Details} />

@@ -14,6 +14,21 @@ html {
   box-sizing: border-box;
   scroll-behavior: smooth;
 
+  // Scroll Bar
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $DarkGrey;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(rgba($Yellow, 1), rgba($Yellow, 0.6));
+    border-radius: 1rem;
+    height: 10rem;
+  }
+
   @include respond(mobile) {
     font-size: 58.5%;
   }
