@@ -10,8 +10,8 @@ const ListColumn = ({ result }) => {
   return (
     <>
       {result.length >= 1 &&
-        result.map((res) => (
-          <div className="listColumn">
+        result.map((res, key) => (
+          <div className="listColumn" key={key}>
             <Link
               to={`/${res.media_type}/${res.id}`}
               className="listColumn__img"

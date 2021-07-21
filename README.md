@@ -2,4 +2,12 @@
 
 ## REACT APP WITH FIREBASE AND REDUX
 
-> Feature's
+### FEATURE
+
+> Movie & Tv Shows
+
+> Details
+
+> Cast and Crew
+
+> Play Trailer

@@ -33,6 +33,7 @@ const Backdrop = ({ backdrops }) => {
               <SwiperSlide className="backdrop__slide" key={key}>
                 <div className="backdrop__slide--img">
                   <LazyLoadImage
+                    placeholderSrc={request.NO_IMG}
                     effect="blur"
                     alt={backdrop.aspect_ratio}
                     src={`${request.IMG_URL}/${backdrop.file_path}`}

@@ -131,7 +131,7 @@ const Navbar = () => {
               <NavLink
                 className={classes["navbar__link"]}
                 activeClassName="navbar__active"
-                to="/tv_shows"
+                to="/series"
               >
                 Series
               </NavLink>

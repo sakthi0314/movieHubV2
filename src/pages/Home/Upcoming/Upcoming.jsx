@@ -14,6 +14,7 @@ const Upcoming = () => {
 
   useEffect(() => {
     dispatch(upcomingAction());
+
     // eslint-disable-next-line
   }, []);
 

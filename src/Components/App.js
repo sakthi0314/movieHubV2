@@ -14,6 +14,8 @@ import Person from "../pages/Person/Person";
 import MoviePage from "../pages/MoviePage/MoviePage";
 import { ThemeProvider } from "@material-ui/core";
 import theme from "../theme/theme";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
+import SeriesPage from "../pages/SeriesPage/SeriesPage";
 
 function App() {
   // App First Render
@@ -22,24 +24,27 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Router>
-        <Navbar />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/account" component={Account} />
-          <Route path="/login" component={Login} />
-          <Route path="/sign_up" component={Signup} />
-          <Route path="/forgetpassword" component={ForgetPassword} />
-          <Route path="/movies" component={MoviePage} />
-          <Route path="/person/:id" component={Person} />
-          <Route path="/cast/:media_type/:id" component={CastAndCrew} />
-          <Route path="/:media_type/:id" component={Details} />
-          <Route path="/search" component={SearchResults} />
-        </Switch>
-        <Footer />
-      </Router>
-    </ThemeProvider>
+    <LazyLoadComponent>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/account" component={Account} />
+            <Route path="/login" component={Login} />
+            <Route path="/sign_up" component={Signup} />
+            <Route path="/forgetpassword" component={ForgetPassword} />
+            <Route path="/movies" component={MoviePage} />
+            <Route path="/series" component={SeriesPage} />
+            <Route path="/person/:id" component={Person} />
+            <Route path="/cast/:media_type/:id" component={CastAndCrew} />
+            <Route path="/:media_type/:id" component={Details} />
+            <Route path="/search" component={SearchResults} />
+          </Switch>
+          <Footer />
+        </Router>
+      </ThemeProvider>
+    </LazyLoadComponent>
   );
 }
 

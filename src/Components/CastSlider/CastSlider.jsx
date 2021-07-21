@@ -17,6 +17,7 @@ const CastSlider = ({ cast }) => {
           <SwiperSlide key={c.id} className="cast__slide">
             <Link className="cast__image" to={`/person/${c.id}`}>
               <LazyLoadImage
+                placeholderSrc={request.NO_IMG}
                 src={`${
                   c.profile_path
                     ? `${request.IMG_URL}/${c.profile_path}`

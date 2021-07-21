@@ -137,6 +137,7 @@ const Details = () => {
               src={`${request.IMG_URL}/${detail.poster_path}`}
               effect="blur"
               alt={detail.id}
+              placeholderSrc={request.NO_IMG}
             />
           </div>
 

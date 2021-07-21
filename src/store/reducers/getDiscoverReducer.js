@@ -14,12 +14,15 @@ const getDiscoverReducer = (state = initialState, { type, payload }) => {
       return { ...state, discoverIsLoading: true };
 
     case actionTypes.DISCOVER:
-      console.log(payload);
-
       return {
         ...state,
         discoverIsLoading: false,
-        result: payload.results,
+        result: payload.results.map((res) => {
+          return {
+            ...res,
+            media_type: payload.type,
+          };
+        }),
         totalPage: payload.totalPages,
         totalResult: payload.totalResult,
       };

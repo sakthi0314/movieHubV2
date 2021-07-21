@@ -4,6 +4,7 @@ import Grid from "../../Components/Grid/Grid";
 import CustomPagination from "../../Components/CustomPagination/CustomPagination";
 import "./SearchResults.scss";
 import ListColumn from "../../Components/ListColumn/ListColumn";
+import noResult from "../../assets/noResult.svg";
 
 const SearchResults = () => {
   const { isLoading, result, totalPage, totalResult, queryValue } = useSelector(
@@ -54,10 +55,24 @@ const SearchResults = () => {
           </div>
         </div>
         <div className="searchResult__columnTwo">
-          {result.length === 0 && <h1>No Result</h1>}
           <Grid result={result} isLoading={isLoading} />
           <ListColumn result={result} isLoading={isLoading} />
-          <CustomPagination noOfPages={totalPage} />
+          {result.length >= 1 && <CustomPagination noOfPages={totalPage} />}
+          {result.length === 0 && (
+            <div
+              style={{
+                display: "grid",
+                placeItems: "center",
+              }}
+            >
+              <img
+                style={{ marginTop: ".4em" }}
+                src={noResult}
+                alt="no result found"
+              />
+              <h1>No Result Found</h1>
+            </div>
+          )}
         </div>
       </div>
     </div>

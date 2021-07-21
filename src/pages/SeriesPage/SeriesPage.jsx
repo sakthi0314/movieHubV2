@@ -5,6 +5,7 @@ import getGenresAction from "../../store/actions/getGenresAction";
 import sortingData from "../../utilities/sortingData";
 import { BiChevronRight, BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { Chip, Slider } from "@material-ui/core";
+import "../MoviePage/MoviePage.scss";
 import getLanguagesAction from "../../store/actions/getLanguagesAction";
 import filterLanguageAction from "../../store/actions/filterLangages";
 import discoverAction from "../../store/actions/discoverAction";
@@ -12,29 +13,28 @@ import CustomPagination from "../../Components/CustomPagination/CustomPagination
 import ListColumn from "../../Components/ListColumn/ListColumn";
 import Grid from "../../Components/Grid/Grid";
 import noResult from "../../assets/noResult.svg";
-import "./MoviePage.scss";
 
-const MoviePage = () => {
+const SeriesPage = () => {
   const { genres } = useSelector((state) => state.genre);
-  const { languages } = useSelector((state) => state.language);
-  const { isLoading, result, totalPage } = useSelector(
-    (state) => state.discover
-  );
-  const [genre, setGenre] = useState(28);
+  const dispatch = useDispatch();
+  const [genre, setGenre] = useState(10759);
   const [sortIsOpen, setSortIsOpen] = useState(true);
   const [fliterIsOpen, setFilterIsOpen] = useState(false);
+  const { languages } = useSelector((state) => state.language);
   const [votage, setvotage] = useState([0, 10]);
   const [sortDropDownIsOpen, setSortDropDownIsOpen] = useState(false);
   const [sortDropDownSeleted, setDropDownSelected] =
     useState("popularity.desc");
   const [languageSelect, setLanguageSelect] = useState("English");
   const [languageCode, setLanguageCode] = useState("en");
-  const [runTime, setRunTime] = useState([0, 360]);
   const [languageDropDownIsOpen, setLanguageDropDownIsOpen] = useState(false);
   const [filterValue, setFilterValue] = useState("");
   const [isFiltered, setIsFilter] = useState(false);
+  const { isLoading, result, totalPage } = useSelector(
+    (state) => state.discover
+  );
   const { page } = useSelector((state) => state.pageReducer);
-  const dispatch = useDispatch();
+  const [runTime, setRunTime] = useState([0, 360]);
 
   // Hide & Show Sortig DropDown
   const handleSortOpen = () => {
@@ -78,7 +78,7 @@ const MoviePage = () => {
   const handleFilterSort = () => {
     dispatch(
       discoverAction(
-        "movie",
+        "tv",
         languageCode,
         sortDropDownSeleted,
         page,
@@ -93,10 +93,10 @@ const MoviePage = () => {
 
   useEffect(() => {
     dispatch(getLanguagesAction());
-    dispatch(getGenresAction("movie"));
+    dispatch(getGenresAction("tv"));
     dispatch(
       discoverAction(
-        "movie",
+        "tv",
         languageCode,
         sortDropDownSeleted,
         page,
@@ -110,7 +110,7 @@ const MoviePage = () => {
   useEffect(() => {
     dispatch(
       discoverAction(
-        "movie",
+        "tv",
         languageCode,
         sortDropDownSeleted,
         page,
@@ -259,6 +259,7 @@ const MoviePage = () => {
                             setLanguageSelect(e.target.textContent);
                             setLanguageCode(language.iso_639_1);
                             setLanguageDropDownIsOpen(false);
+                            setIsFilter(true);
                           }}
                         >
                           {language.english_name}
@@ -346,4 +347,4 @@ const MoviePage = () => {
   );
 };
 
-export default MoviePage;
+export default SeriesPage;

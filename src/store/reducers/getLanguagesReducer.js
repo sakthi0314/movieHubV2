@@ -22,7 +22,7 @@ const getLanguageReducer = (state = initialState, { type, payload }) => {
       return {
         languagesIsLoading: false,
         languages: state.languages.filter((language) => {
-          if (payload == "") {
+          if (payload === "") {
             return payload.languages;
           } else {
             return language.english_name.includes(payload.searchTerm);
