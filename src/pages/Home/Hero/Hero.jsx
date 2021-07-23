@@ -1,60 +1,73 @@
 import React, { useEffect } from "react";
+import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { request } from "../../../Services/request";
-import trancate from "../../../utilities/trancate";
-import HeroCoverImageAction from "../../../store/actions/HeroCoverImageAction";
-import classes from "./Hero.module.scss";
-import SwiperCore, { Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/swiper.scss";
-
-// Swiper Core
-SwiperCore.use([Autoplay]);
+import randomAction from "../../../store/actions/randomAction";
+import searchAction from "../../../store/actions/searchAction";
+import "./Hero.scss";
 
 const Hero = () => {
-  const { coverImage } = useSelector((state) => state.heroImages);
+  const { randomData } = useSelector((state) => state.random);
+  const { page } = useSelector((state) => state.pageReducer);
+  const searchRef = useRef();
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  // Random Background Image
+  const cover = randomData.backdrop_path
+    ? `${request.IMG_URL}/${randomData.backdrop_path}`
+    : `${request.NO_IMG_LAND}`;
+
+  const handleSubmit = (e) => {
+    // Prevent Default behaviour
+    e.preventDefault();
+
+    // Dispaching Action
+    dispatch(
+      searchAction(searchRef.current.value, page, searchRef.current.value)
+    );
+
+    // Redirecting to seach result page
+    if (searchRef.current.value.length >= 1) {
+      history.push("/search");
+    }
+  };
 
   useEffect(() => {
-    dispatch(HeroCoverImageAction());
+    dispatch(randomAction());
     // eslint-disable-next-line
   }, []);
 
   return (
-    <>
-      <Swiper
-        spaceBetween={0}
-        slidesPerView={1}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: true,
-        }}
-        loop={true}
-        className={classes.hero}
-      >
-        {coverImage &&
-          coverImage.map((el) => (
-            <SwiperSlide className={classes["hero__container"]} key={el.id}>
-              <div
-                className={classes["hero__cover"]}
-                style={{
-                  backgroundImage: ` linear-gradient(
-                to right,
-                rgba(245, 197, 24, 1),
-                rgba(245, 197, 24, 0.3)
-              ),url("${request.IMG_URL}/${el.backdrop_path}")`,
-                }}
-              ></div>
-              <div className={classes["hero__content"]}>
-                <h1>{el.title || el.original_name}</h1>
-                <p>{trancate(el.overview, 180)}</p>
-              </div>
-            </SwiperSlide>
-          ))}
-      </Swiper>
-    </>
+    <header
+      className="hero"
+      style={{
+        backgroundImage: `linear-gradient(
+to right,
+rgba(0, 0, 0, 1),
+rgba(0, 0, 0, 0.3)
+),url("${cover}")`,
+      }}
+    >
+      <div className="hero__container">
+        <div className="hero__content">
+          <h1>Welcome.</h1>
+          <h4>
+            Millions of movies, TV shows and people to discover. Explore now.
+          </h4>
+
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Search for a movie, tv show, person..."
+              ref={searchRef}
+            />
+            <button>Search</button>
+          </form>
+        </div>
+      </div>
+    </header>
   );
 };
 

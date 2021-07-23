@@ -2,6 +2,7 @@ import actionTypes from "../actions/actionTypes";
 
 const initialState = {
   addFavariteIsLoading: false,
+  docID: null,
   error: null,
 };
 
@@ -14,6 +15,13 @@ const addFavariteReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         addFavariteIsLoading: false,
+        docID: payload,
+      };
+
+    case actionTypes.REMOVE_TO_FAV:
+      return {
+        ...state,
+        docID: null,
       };
 
     case actionTypes.REQUEST_FAILURE:

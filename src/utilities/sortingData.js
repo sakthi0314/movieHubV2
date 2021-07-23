@@ -13,7 +13,6 @@ const sortingData = [
   "vote_average.desc",
   "vote_count.asc",
   "vote_count.desc",
-  ,
 ];
 
 export default sortingData;

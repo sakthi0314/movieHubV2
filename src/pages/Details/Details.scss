@@ -12,7 +12,7 @@
   position: relative;
 
   @include respond(mobile) {
-    height: 70vh;
+    height: 40vh;
   }
 
   &__container {
@@ -70,9 +70,8 @@
     transform: translateY(-50%);
 
     @include respond(mobile) {
-      width: 16rem;
-      top: 60%;
-      transform: translateY(-60%);
+      width: 12rem;
+      top: 66%;
     }
 
     img {
@@ -133,10 +132,10 @@
     }
 
     &--desc {
-      font-size: $font-xsm;
+      font-size: $font-sm;
       color: $lightGrey;
       max-width: 100%;
-      line-height: 1.6rem;
+      line-height: 2rem;
       opacity: 0.7;
     }
 
@@ -225,7 +224,6 @@
       h1 {
         font-size: $font-sm;
         font-weight: map-get($font-weight, Medium);
-        // margin: 1rem 0;
       }
 
       p {

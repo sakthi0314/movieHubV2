@@ -50,29 +50,31 @@ const WhatsPopular = () => {
     <>
       <div className="slider">
         <div className="slider__container">
-          <div className="slider__header">
-            <h1>What's Popular</h1>
+          {popular.length >= 1 && (
+            <div className="slider__header">
+              <h1>What's Popular</h1>
 
-            <div className="slider__tab">
-              <ul className="slider__tab--list">
-                <li className="slider__tab--item active" onClick={slideOne}>
-                  <span className="popular">Popular</span>
-                </li>
+              <div className="slider__tab">
+                <ul className="slider__tab--list">
+                  <li className="slider__tab--item active" onClick={slideOne}>
+                    <span className="popular">Popular</span>
+                  </li>
 
-                <li className="slider__tab--item">
-                  <span className="now_playing" onClick={slideTwo}>
-                    Now Playing
-                  </span>
-                </li>
+                  <li className="slider__tab--item">
+                    <span className="now_playing" onClick={slideTwo}>
+                      Now Playing
+                    </span>
+                  </li>
 
-                <li className="slider__tab--item">
-                  <span className="top_rated" onClick={slideThree}>
-                    Top Rated
-                  </span>
-                </li>
-              </ul>
+                  <li className="slider__tab--item">
+                    <span className="top_rated" onClick={slideThree}>
+                      Top Rated
+                    </span>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
+          )}
 
           <Swiper
             slidesPerView={"auto"}

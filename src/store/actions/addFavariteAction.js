@@ -17,11 +17,12 @@ const addFavariteAction =
         media_type: creds.media_type,
         poster: creds.poster,
       })
-      .then(() =>
+      .then((doc) => {
         disptach({
           type: actionTypes.ADD_TO_FAV,
-        })
-      )
+          payload: doc.id,
+        });
+      })
       .catch((error) =>
         disptach({ type: actionTypes.REQUEST_FAILURE, payload: error.message })
       );

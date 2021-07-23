@@ -1,0 +1,56 @@
+@import "../../../Styles/variables";
+@import "../../../Styles/mixins";
+
+.hero {
+  margin-top: 8rem;
+  padding: 0 2rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &__container {
+    max-width: 130rem;
+    height: 36rem;
+    margin: 0 auto;
+    @include flexbox(column, center, flex-start);
+  }
+
+  &__content {
+    h1 {
+      font-size: $font-xl;
+    }
+
+    h4 {
+      font-size: $font-ml;
+      margin: 0.7rem 0 4rem 0;
+    }
+
+    form {
+      @include flexbox(row, center, center);
+
+      input {
+        width: 100%;
+        padding: 1.4rem 2rem;
+        border-radius: 4rem;
+        background-color: $white;
+        font-family: inherit;
+        font-size: $font-sm;
+      }
+
+      button {
+        padding: 1.6rem 3rem;
+        border-radius: 4rem;
+        background-color: $Yellow;
+        margin-left: -6rem;
+        font-weight: map-get($font-weight, bold);
+        font-family: inherit;
+        transition: all 0.2s ease;
+
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+}

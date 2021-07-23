@@ -7,7 +7,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import CastSlider from "../../Components/CastSlider/CastSlider";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { AiOutlineSend } from "react-icons/ai";
-import { BsBookmarks, BsBookmarksFill } from "react-icons/bs";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { FaPlay } from "react-icons/fa";
 import Rating from "react-rating";
 import castAction from "../../store/actions/castAction";
@@ -32,11 +32,13 @@ import getfavaritesAction from "../../store/actions/getfavariteAction";
 import removeFavariteAction from "../../store/actions/removeFavariteAction";
 
 const Details = () => {
-  const { id, media_type } = useParams();
+  // Local state
+  const [modelIsOpen, setModelIsOpen] = useState(false);
+
+  // Globe state
   const { detail } = useSelector((state) => state.detail);
   const { casts } = useSelector((state) => state.cast);
-  const dispatch = useDispatch();
-  const reviewRef = useRef();
+  const { favarites } = useSelector((state) => state.getfavarites);
   const { profile, auth } = useSelector((state) => state.firebase);
   const { reviews, isLoading } = useSelector((state) => state.review);
   const { recommededs } = useSelector((state) => state.recommened);
@@ -44,13 +46,23 @@ const Details = () => {
   const { videoList, isTrailerLoading } = useSelector(
     (state) => state.getTrailer
   );
-  const [modelIsOpen, setModelIsOpen] = useState(false);
-  const { favarites } = useSelector((state) => state.getfavarites);
+  const { docID } = useSelector((state) => state.addFavarite);
 
+  // Getting Params
+  const { id, media_type } = useParams();
+
+  // Dispatch Function
+  const dispatch = useDispatch();
+
+  // Reference For Review Input
+  const reviewRef = useRef();
+
+  // Backdrop Image
   const cover = detail.backdrop_path
     ? `${request.IMG_URL}/${detail.backdrop_path}`
     : `${request.NO_IMG_LAND}`;
 
+  // Creating New Review
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -65,7 +77,11 @@ const Details = () => {
 
     // Creating New Review
     dispatch(createReview(review));
+
+    // Getting Reviews
     dispatch(getReview(id));
+
+    // Clear field after submit
     reviewRef.current.value = "";
   };
 
@@ -89,11 +105,17 @@ const Details = () => {
     dispatch(getTrailerAction(media_type, id));
   };
 
+  // Manulating Favarite
+  const isFavarited = favarites.some((favarite) => favarite.movieID === id);
+
   useEffect(() => {
     window.scroll(0, 0);
-    dispatch(getfavaritesAction(auth.uid));
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    dispatch(getfavaritesAction(auth.uid));
+  }, [docID]);
 
   useEffect(() => {
     document.title = `${
@@ -159,21 +181,23 @@ const Details = () => {
                 {detail.title || detail.name || detail.original_title}
               </h1>
 
-              <button
-                className="info__rowone--fav"
-                id="favarite"
-                onClick={() => dispatch(removeFavariteAction(id))}
-              >
-                <BsBookmarksFill />
-              </button>
-
-              <button
-                className="info__rowone--fav"
-                id="favarite"
-                onClick={handleFav}
-              >
-                <BsBookmarks />
-              </button>
+              {isFavarited ? (
+                <button
+                  className="info__rowone--fav"
+                  id="favarite"
+                  onClick={() => dispatch(removeFavariteAction(docID))}
+                >
+                  <AiFillHeart />
+                </button>
+              ) : (
+                <button
+                  className="info__rowone--fav"
+                  id="favarite"
+                  onClick={handleFav}
+                >
+                  <AiOutlineHeart />
+                </button>
+              )}
             </div>
             <i className="info__rowone--tagline"> {detail.tagline}</i>
             <h4>Overview</h4>

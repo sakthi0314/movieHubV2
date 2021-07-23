@@ -105,6 +105,7 @@ const MoviePage = () => {
         runTime
       )
     );
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -119,6 +120,7 @@ const MoviePage = () => {
         runTime
       )
     );
+    // eslint-disable-next-line
   }, [page]);
 
   return (

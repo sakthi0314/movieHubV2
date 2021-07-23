@@ -16,7 +16,7 @@ html {
 
   // Scroll Bar
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 10px;
   }
 
   &::-webkit-scrollbar-track {
@@ -29,8 +29,12 @@ html {
     height: 10rem;
   }
 
+  @include respond(tablet) {
+    font-size: 50.17%;
+  }
+
   @include respond(mobile) {
-    font-size: 58.5%;
+    font-size: 45.62%;
   }
 }
 

@@ -5,6 +5,7 @@ import pageAction from "../../store/actions/pageAction";
 import { useDispatch } from "react-redux";
 
 const CustomPagination = ({ noOfPages }) => {
+  // Dispatch Function
   const dispatch = useDispatch();
 
   return (

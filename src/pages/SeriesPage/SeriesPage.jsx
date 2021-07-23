@@ -105,6 +105,7 @@ const SeriesPage = () => {
         runTime
       )
     );
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -119,6 +120,7 @@ const SeriesPage = () => {
         runTime
       )
     );
+    // eslint-disable-next-line
   }, [page]);
 
   return (

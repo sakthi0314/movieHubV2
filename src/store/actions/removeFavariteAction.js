@@ -1,7 +1,7 @@
 import actionTypes from "./actionTypes";
 
 const removeFavariteAction =
-  (movieID) =>
+  (docID) =>
   (disptach, getState, { getFirebase }) => {
     const firestore = getFirebase().firestore();
 
@@ -10,15 +10,17 @@ const removeFavariteAction =
 
     firestore
       .collection("favaraites")
-      .where("movieId", "==", movieID)
-      .get()
-      .then((snapshots) => {
-        const targetItem = [];
-
-        snapshots.forEach((document) => {
-          targetItem.push({ ...document.data() });
+      .doc(docID)
+      .delete()
+      .then(() => {
+        disptach({
+          type: actionTypes.REMOVE_TO_FAV,
+          payload: docID,
         });
-      });
+      })
+      .catch((error) =>
+        disptach({ type: actionTypes.REQUEST_FAILURE, payload: error.message })
+      );
   };
 
 export default removeFavariteAction;

@@ -2,18 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Grid from "../../Components/Grid/Grid";
 import CustomPagination from "../../Components/CustomPagination/CustomPagination";
-import "./SearchResults.scss";
 import ListColumn from "../../Components/ListColumn/ListColumn";
 import noResult from "../../assets/noResult.svg";
+import { Redirect } from "react-router-dom";
+import "./SearchResults.scss";
 
 const SearchResults = () => {
+  //  Local State
+  const [movieList, setMovieList] = useState([]);
+  const [tvShowList, setTvShowList] = useState([]);
+
+  // Globe State
   const { isLoading, result, totalPage, totalResult, queryValue } = useSelector(
     (state) => state.searchResults
   );
   const { page } = useSelector((state) => state.pageReducer);
-
-  const [movieList, setMovieList] = useState([]);
-  const [tvShowList, setTvShowList] = useState([]);
 
   // Filtering movie data's
   const filtereMovie = result?.filter((data) => {
@@ -26,13 +29,20 @@ const SearchResults = () => {
   });
 
   useEffect(() => {
-    document.title = `Search Result`;
+    document.title = `Search Result - ${queryValue}`;
+    // eslint-disable-next-line
   }, [queryValue, page]);
 
   useEffect(() => {
     setMovieList(filtereMovie);
     setTvShowList(filtereTv);
+    // eslint-disable-next-line
   }, [result]);
+
+  // Route Guard
+  if (result.length <= 0) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div className="searchResult">
@@ -57,7 +67,7 @@ const SearchResults = () => {
         <div className="searchResult__columnTwo">
           <Grid result={result} isLoading={isLoading} />
           <ListColumn result={result} isLoading={isLoading} />
-          {result.length >= 1 && <CustomPagination noOfPages={totalPage} />}
+          {totalPage > 1 && <CustomPagination noOfPages={totalPage} />}
           {result.length === 0 && (
             <div
               style={{

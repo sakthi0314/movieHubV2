@@ -42,23 +42,25 @@ const Trendings = () => {
     <>
       <div className="slider" style={{ marginTop: "4rem" }}>
         <div className="slider__container">
-          <div className="slider__header">
-            <h1>Trendings</h1>
+          {trendings.length >= 1 && (
+            <div className="slider__header">
+              <h1>Trendings</h1>
 
-            <div className="slider__tab">
-              <ul className="slider__tab--list">
-                <li className="slider__tab--item active" onClick={slideOne}>
-                  <span className="popular">Movies</span>
-                </li>
+              <div className="slider__tab">
+                <ul className="slider__tab--list">
+                  <li className="slider__tab--item active" onClick={slideOne}>
+                    <span className="popular">Movies</span>
+                  </li>
 
-                <li className="slider__tab--item">
-                  <span className="now_playing" onClick={slideTwo}>
-                    Tv Series
-                  </span>
-                </li>
-              </ul>
+                  <li className="slider__tab--item">
+                    <span className="now_playing" onClick={slideTwo}>
+                      Tv Series
+                    </span>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
+          )}
 
           <Swiper
             slidesPerView={"auto"}

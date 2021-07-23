@@ -3,7 +3,7 @@ import actionTypes from "../actions/actionTypes";
 const initailState = {
   isLoading: false,
   randomData: {},
-  error: "",
+  error: null,
 };
 
 const randomReducer = (state = initailState, action) => {
