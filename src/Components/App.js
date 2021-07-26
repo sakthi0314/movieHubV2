@@ -43,7 +43,7 @@ function App() {
             <Route path="/:media_type/:id" component={Details} />
             <Route path="/search" component={SearchResults} />
           </Switch>
-          <Footer />
+          {/* <Footer /> */}
         </Router>
       </ThemeProvider>
     </LazyLoadComponent>

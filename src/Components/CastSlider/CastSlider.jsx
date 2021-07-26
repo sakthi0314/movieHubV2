@@ -13,8 +13,8 @@ const CastSlider = ({ cast }) => {
   return (
     <Swiper slidesPerView={"auto"} spaceBetween={20} className="cast__content">
       {cast &&
-        cast.map((c) => (
-          <SwiperSlide key={c.id} className="cast__slide">
+        cast.map((c, key) => (
+          <SwiperSlide key={c.id} className="cast__slide" key={key}>
             <Link className="cast__image" to={`/person/${c.id}`}>
               <LazyLoadImage
                 placeholderSrc={request.NO_IMG}

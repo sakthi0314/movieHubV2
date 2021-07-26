@@ -46,7 +46,9 @@ const Details = () => {
   const { videoList, isTrailerLoading } = useSelector(
     (state) => state.getTrailer
   );
-  const { docID } = useSelector((state) => state.addFavarite);
+  const { docID, addFavariteIsLoading } = useSelector(
+    (state) => state.addFavarite
+  );
 
   // Getting Params
   const { id, media_type } = useParams();
@@ -99,6 +101,11 @@ const Details = () => {
     dispatch(addFavariteAction(creds));
   };
 
+  // Remove Favarite
+  const removeFavarite = () => {
+    dispatch(removeFavariteAction(docID));
+  };
+
   // PlayTrailer
   const handleTrailer = () => {
     setModelIsOpen(true);
@@ -107,6 +114,8 @@ const Details = () => {
 
   // Manulating Favarite
   const isFavarited = favarites.some((favarite) => favarite.movieID === id);
+
+  console.log(isFavarited);
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -141,7 +150,11 @@ const Details = () => {
   }
 
   return (
-    <>
+    <div
+      style={{
+        opacity: addFavariteIsLoading ? "0.3" : "1",
+      }}
+    >
       <header
         className="header"
         style={{
@@ -185,7 +198,7 @@ const Details = () => {
                 <button
                   className="info__rowone--fav"
                   id="favarite"
-                  onClick={() => dispatch(removeFavariteAction(docID))}
+                  onClick={removeFavarite}
                 >
                   <AiFillHeart />
                 </button>
@@ -381,7 +394,7 @@ const Details = () => {
         isTrailerLoading={isTrailerLoading}
         setModelIsOpen={setModelIsOpen}
       />
-    </>
+    </div>
   );
 };
 

@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import useProfile from "../../Hooks/useProfile";
-import Avatar from "../../assets/avatar.png";
 import searchAction from "../../store/actions/searchAction";
 import { request } from "../../Services/request";
 
@@ -159,11 +158,7 @@ const Navbar = () => {
 
           <ul className={classes["navbar__right"]}>
             <Link to="/account" className={classes["navbar__avatar"]}>
-              <LazyLoadImage
-                effect="blur"
-                src={url ? url : Avatar}
-                alt={profile.userName}
-              />
+              <LazyLoadImage effect="blur" src={url} alt={profile.userName} />
             </Link>
 
             <li>

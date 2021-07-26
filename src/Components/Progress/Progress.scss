@@ -1,0 +1,9 @@
+@import "../../Styles/mixins";
+@import "../../Styles/variables";
+
+.progress {
+  &__item {
+    height: 8rem;
+    width: 8rem;
+  }
+}

@@ -4,6 +4,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import classes from "../Login/Login.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { signupAction } from "../../store/actions/authAction";
+import url from "../../assets/avatar.png";
 
 const Signup = () => {
   const [isHide, setIshide] = useState(true);
@@ -36,6 +37,8 @@ const Signup = () => {
       userName: userNameRef.current.value,
       email: emailRef.current.value,
       password: passwordRef.current.value,
+      url: "https://i1.wp.com/lzraic.lv/wp-content/uploads/2017/03/profile.jpg",
+      reviewCount: 0,
     };
 
     if (passwordRef.current.value !== confrimPassword.current.value) {

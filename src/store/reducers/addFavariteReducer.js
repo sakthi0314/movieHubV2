@@ -8,7 +8,7 @@ const initialState = {
 
 const addFavariteReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case actionTypes.SEND_REQUEST:
+    case actionTypes.REQ_TO_FAV:
       return { ...state, addFavariteIsLoading: true };
 
     case actionTypes.ADD_TO_FAV:
@@ -18,10 +18,17 @@ const addFavariteReducer = (state = initialState, { type, payload }) => {
         docID: payload,
       };
 
+    case actionTypes.REQ_TO_REMOVE_FAV:
+      return {
+        ...state,
+        addFavariteIsLoading: true,
+      };
+
     case actionTypes.REMOVE_TO_FAV:
       return {
         ...state,
         docID: null,
+        addFavariteIsLoading: false,
       };
 
     case actionTypes.REQUEST_FAILURE:

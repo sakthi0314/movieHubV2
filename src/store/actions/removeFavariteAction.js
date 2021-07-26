@@ -6,7 +6,7 @@ const removeFavariteAction =
     const firestore = getFirebase().firestore();
 
     // Send request
-    disptach({ type: actionTypes.SEND_REQUEST });
+    disptach({ type: actionTypes.REQ_TO_REMOVE_FAV });
 
     firestore
       .collection("favaraites")

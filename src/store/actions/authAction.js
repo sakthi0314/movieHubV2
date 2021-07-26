@@ -44,6 +44,8 @@ const signupAction = (creds) => {
         return firestore.collection("users").doc(res.user.uid).set({
           userName: creds.userName,
           initial: creds.userName[0],
+          url: creds.url,
+          reviewCount: creds.reviewCount,
         });
       })
       .then(() => {

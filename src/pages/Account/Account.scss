@@ -13,9 +13,7 @@
     max-width: 130rem;
     margin: 0 auto;
     height: 20rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    @include flexbox(row, flex-start, center);
   }
 
   &__profile {
@@ -55,9 +53,23 @@
       overflow: hidden;
       border-radius: 50%;
     }
+  }
 
-    &--info {
-      margin-left: 2rem;
+  &__info {
+    margin-left: 6rem;
+    @include flexbox(row, center, center);
+
+    & > :not(:last-child) {
+      margin-right: 2rem;
+    }
+
+    &--name {
+    }
+
+    &--review {
+    }
+
+    &--favarites {
     }
   }
 }

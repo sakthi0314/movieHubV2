@@ -5,12 +5,12 @@ import { logoutAction } from "../../store/actions/authAction";
 import "./Account.scss";
 import { MdPhotoCamera } from "react-icons/md";
 import updateProfileAction from "../../store/actions/updateProfileAction";
-import Avatar from "../../assets/avatar.png";
 import useProfile from "../../Hooks/useProfile";
 import LoadingSpinnder from "../../Components/LoadingSpiner/LoadingSpiner";
 import getfavaritesAction from "../../store/actions/getfavariteAction";
 import { request } from "../../Services/request";
 import randomAction from "../../store/actions/randomAction";
+import Progress from "../../Components/Progress/Progress";
 
 const Account = () => {
   // Globe State
@@ -60,13 +60,17 @@ const Account = () => {
     <header
       className="accountHeader"
       style={{
-        backgroundImage: `url(${cover})`,
+        backgroundImage: `linear-gradient(
+          to top,
+          rgba(0, 0, 0, 1),
+          rgba(0, 0, 0, 0.3)
+        ),url(${cover})`,
       }}
     >
       <div className="accountHeader__container">
         <div className="accountHeader__profile">
           <div className="accountHeader__profile--img">
-            <img src={url ? url : Avatar} alt="profile" />
+            <img src={url} alt="profile" />
           </div>
 
           <input
@@ -80,8 +84,16 @@ const Account = () => {
           </label>
         </div>
 
-        <div className="accountHeader__profile--info">
-          <h1>{profile.userName}</h1>
+        <div className="accountHeader__info">
+          <div className="accountHeader__info--name">
+            <h1>Sakthivel</h1>
+          </div>
+          <div className="accountHeader__info--review">
+            <Progress type={"Total Reviews"} value={0.66} percentage={0.66} />
+          </div>
+          <div className="accountHeader__info--favarites">
+            <Progress type={"Favarited"} value={0.66} percentage={0.66} />
+          </div>
         </div>
       </div>
     </header>
@@ -89,6 +101,9 @@ const Account = () => {
 };
 
 export default Account;
+{
+  /* <button onClick={handleSubmit}>Logout</button> */
+}
 
 // import React, { useEffect } from "react";
 // import { useDispatch, useSelector } from "react-redux";
