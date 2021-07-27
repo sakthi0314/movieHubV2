@@ -14,6 +14,10 @@
     margin: 0 auto;
     height: 20rem;
     @include flexbox(row, flex-start, center);
+
+    @include respond(mobile) {
+      @include flexbox(row, center, center);
+    }
   }
 
   &__profile {
@@ -57,19 +61,43 @@
 
   &__info {
     margin-left: 6rem;
-    @include flexbox(row, center, center);
+    @include flexbox(column, flex-start, flex-start);
 
-    & > :not(:last-child) {
-      margin-right: 2rem;
+    &--score {
+      @include flexbox(row, flex-start, center);
     }
 
     &--name {
+      margin-bottom: 1em;
+      h1 {
+        font-size: $font-xl;
+        font-weight: map-get($font-weight, bold);
+      }
     }
 
     &--review {
+      margin-right: 2.3rem;
     }
+  }
+}
 
-    &--favarites {
+.accountFav {
+  padding: 0 2rem;
+
+  &__container {
+    max-width: 130rem;
+    margin: 0 auto;
+    @include flexbox(column, flex-start, flex-start);
+  }
+
+  &__header {
+    width: 100%;
+    &--tab {
+      width: 50%;
     }
+  }
+
+  &__content {
+    margin-top: 2em;
   }
 }

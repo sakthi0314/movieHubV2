@@ -27,6 +27,7 @@ import getLanguageReducer from "../getLanguagesReducer";
 import getPopularPersonReducer from "../getPopularPersonReducer";
 import getfavaritesReducer from "../getFavaritesReducer";
 import addFavariteReducer from "../addFavariteReducer";
+import getAllReviewReducer from "../getAllReviewReducer";
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
@@ -57,6 +58,7 @@ const rootReducer = combineReducers({
   popularPerson: getPopularPersonReducer,
   addFavarite: addFavariteReducer,
   getfavarites: getfavaritesReducer,
+  getAllReview: getAllReviewReducer,
 });
 
 export default rootReducer;

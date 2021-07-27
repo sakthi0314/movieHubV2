@@ -37,7 +37,7 @@ export const rrfProps = {
 // Preventing from freaking route
 export const IsAuthLoad = ({ children }) => {
   const { auth } = useSelector((state) => state.firebase);
-  if (!isLoaded(auth)) return <LoadingSpiner />;
+  if (!isLoaded(auth)) return <LoadingSpiner bg={"#111"} />;
   return children;
 };
 

@@ -91,10 +91,10 @@ const Details = () => {
   const handleFav = () => {
     const creds = {
       uid: auth.uid,
-      movieID: id,
+      id: id,
       title: detail.title || detail.name || detail.original_title,
       media_type: media_type,
-      poster: detail.poster_path,
+      poster_path: detail.poster_path,
     };
 
     // Adding Favarite to firebase
@@ -113,7 +113,7 @@ const Details = () => {
   };
 
   // Manulating Favarite
-  const isFavarited = favarites.some((favarite) => favarite.movieID === id);
+  const isFavarited = favarites.some((favarite) => favarite.id === id);
 
   console.log(isFavarited);
 

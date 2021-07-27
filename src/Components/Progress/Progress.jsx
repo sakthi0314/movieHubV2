@@ -3,7 +3,7 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import "./Progress.scss";
 
-const Progress = ({ percentage, value }) => {
+const Progress = ({ percentage, value, type }) => {
   return (
     <div className="progress">
       <div className="progress__item">
@@ -11,14 +11,16 @@ const Progress = ({ percentage, value }) => {
           styles={buildStyles({
             pathColor: `rgb(245, 197, 24)`,
             textColor: `rgb(245, 197, 24)`,
-            trailColor: "#111",
+            trailColor: "rgb(18, 18, 18)",
           })}
           value={percentage}
           maxValue={1}
           text={`${value * 100}%`}
         />
       </div>
-      <div className="progress__info"></div>
+      <div className="progress__info">
+        <p>{type}</p>
+      </div>
     </div>
   );
 };

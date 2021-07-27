@@ -12,10 +12,10 @@ const addFavariteAction =
       .collection("favaraites")
       .add({
         uid: creds.uid,
-        movieID: creds.movieID,
+        id: creds.id,
         title: creds.title,
         media_type: creds.media_type,
-        poster: creds.poster,
+        poster_path: creds.poster_path,
       })
       .then((doc) => {
         disptach({

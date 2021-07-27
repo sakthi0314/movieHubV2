@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "react-spinners/PulseLoader";
 
-const LoadingSpiner = () => {
+const LoadingSpiner = ({ bg }) => {
   return (
     <div
       style={{
@@ -9,7 +9,7 @@ const LoadingSpiner = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "rgb(0, 0, 0)",
+        backgroundColor: bg,
       }}
     >
       <Loader color="rgb(245, 197, 24)" size={20} margin={2} loading={true} />
