@@ -15,8 +15,8 @@ const Hero = () => {
   const history = useHistory();
 
   // Random Background Image
-  const cover = randomData.backdrop_path
-    ? `${request.IMG_URL}/${randomData.backdrop_path}`
+  const cover = randomData?.backdrop_path
+    ? `${request.IMG_URL}/${randomData?.backdrop_path}`
     : `${request.NO_IMG_LAND}`;
 
   const handleSubmit = (e) => {

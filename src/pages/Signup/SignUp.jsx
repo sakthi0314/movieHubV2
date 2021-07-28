@@ -4,7 +4,6 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import classes from "../Login/Login.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { signupAction } from "../../store/actions/authAction";
-import url from "../../assets/avatar.png";
 
 const Signup = () => {
   const [isHide, setIshide] = useState(true);

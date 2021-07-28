@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, NavLink, useHistory } from "react-router-dom";
-import { BiSearch } from "react-icons/bi";
+import { Link, NavLink, Redirect, useHistory } from "react-router-dom";
+import { BiSearch, BiLogOutCircle } from "react-icons/bi";
 import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import Logo from "../../assets/Logo.svg";
@@ -11,6 +11,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import useProfile from "../../Hooks/useProfile";
 import searchAction from "../../store/actions/searchAction";
 import { request } from "../../Services/request";
+import { logoutAction } from "../../store/actions/authAction";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -39,9 +40,12 @@ const Navbar = () => {
     dispatch(searchAction(searchRef.current.value, page));
   };
 
+  // Redirecting to search page
   const handleRecommedSearch = () => {
-    setSearchMenu(true);
-    history.push("/search");
+    if (searchRef.current.value.length > 1) {
+      setSearchMenu(true);
+      history.push("/search");
+    }
   };
 
   // Scroll Down nav hide Animation
@@ -55,6 +59,12 @@ const Navbar = () => {
     }
     prevScrollpos = currentScrollPos;
   });
+
+  // Logout
+  const logoutHandler = () => {
+    dispatch(logoutAction());
+    return <Redirect to="/login" />;
+  };
 
   // handle Search
   const handleSearch = (e) => {
@@ -167,6 +177,14 @@ const Navbar = () => {
                 onClick={searchBarHandler}
               >
                 <BiSearch />
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={logoutHandler}
+                className={classes["navbar__search--logout"]}
+              >
+                <BiLogOutCircle />
               </button>
             </li>
           </ul>

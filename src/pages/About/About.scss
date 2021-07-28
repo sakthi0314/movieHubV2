@@ -1,0 +1,85 @@
+@import "../../Styles/variables";
+@import "../../Styles/mixins";
+
+.about {
+  &__header {
+    height: 30rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  &__container {
+    padding: 0 2rem;
+    max-width: 130rem;
+    margin: 0 auto;
+  }
+
+  &__content {
+    margin: 2rem 0;
+    display: grid;
+    place-items: center;
+
+    &--title {
+      display: inline-block;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      h1 {
+        font-size: $font-xl;
+        color: $white;
+        font-weight: map-get($font-weight, bold);
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          height: 3px;
+          width: 20%;
+          background-color: $white;
+          bottom: 0;
+        }
+      }
+    }
+
+    &--desc {
+      margin-top: 1rem;
+      max-width: 60rem;
+      width: 100%;
+      text-align: center;
+      p {
+        font-size: $font-sm;
+      }
+    }
+  }
+
+  &__stack {
+    margin: 4rem 0 4rem 0;
+    display: grid;
+    place-items: center;
+
+    &--icons {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 2rem;
+      width: 100%;
+
+      li {
+        font-size: 8rem;
+
+        &:nth-child(1) {
+          color: rgb(24, 129, 216);
+        }
+        &:nth-child(2) {
+          color: rgb(247, 201, 51);
+        }
+        &:nth-child(3) {
+          color: rgb(255, 97, 255);
+        }
+      }
+    }
+  }
+}

@@ -14,8 +14,8 @@
     h4 {
       width: 100%;
       color: $white;
-      font-size: $font-xsm;
-      font-weight: map-get($font-weight, Medium);
+      font-size: $font-sm;
+      font-weight: map-get($font-weight, Bold);
       margin-top: 0.6rem;
 
       @media (max-width: 484px) {

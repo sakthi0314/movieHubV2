@@ -11,7 +11,7 @@ const Grid = ({ result }) => {
             key={res.id}
             id={res.id}
             media_type={res.media_type}
-            date={res.release_date}
+            date={res.release_date || res.first_air_date}
             title={res.title || res.name || res.original_title}
             poster={res.poster_path}
           />

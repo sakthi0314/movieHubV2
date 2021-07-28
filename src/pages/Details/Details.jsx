@@ -103,7 +103,7 @@ const Details = () => {
 
   // Remove Favarite
   const removeFavarite = () => {
-    dispatch(removeFavariteAction(docID));
+    dispatch(removeFavariteAction(id));
   };
 
   // PlayTrailer
@@ -124,6 +124,7 @@ const Details = () => {
 
   useEffect(() => {
     dispatch(getfavaritesAction(auth.uid));
+    // eslint-disable-next-line
   }, [docID]);
 
   useEffect(() => {
@@ -220,7 +221,16 @@ const Details = () => {
                 <span>{<FaPlay />}</span>
                 Watch Trailer
               </button>
-              <button className="btn-secondary">Play Movie</button>
+              <button
+                className="btn-secondary"
+                onClick={() =>
+                  alert(
+                    "OC la padam pakurathula evloo asaiyaa. Poi vera velaiya paruuga"
+                  )
+                }
+              >
+                Play Movie
+              </button>
             </div>
           </div>
 

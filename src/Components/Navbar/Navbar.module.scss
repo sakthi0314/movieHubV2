@@ -124,6 +124,17 @@
     margin-bottom: -0.5rem;
     cursor: pointer;
 
+    &--logout {
+      margin-left: 1rem;
+      display: block;
+      background-color: transparent;
+      font-size: 3rem;
+      color: $white;
+      margin-bottom: -0.5rem;
+      cursor: pointer;
+      color: $Yellow;
+    }
+
     &:active,
     &:focus {
       outline: none;
