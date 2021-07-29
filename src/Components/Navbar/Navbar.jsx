@@ -12,7 +12,6 @@ import useProfile from "../../Hooks/useProfile";
 import searchAction from "../../store/actions/searchAction";
 import { request } from "../../Services/request";
 import { logoutAction } from "../../store/actions/authAction";
-import Avatar from "../../assets/avatar.png";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -171,7 +170,7 @@ const Navbar = () => {
 
           <ul className={classes["navbar__right"]}>
             <Link to="/account" className={classes["navbar__avatar"]}>
-              <img src={url ? url : Avatar} alt={profile.userName} />
+              <img src={url} alt={profile.userName} />
             </Link>
 
             <li>

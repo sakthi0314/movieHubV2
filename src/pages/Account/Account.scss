@@ -35,8 +35,8 @@
     }
 
     @include respond(mobile) {
-      width: 8rem;
-      height: 8rem;
+      width: 12rem;
+      height: 12rem;
     }
 
     &--img {
