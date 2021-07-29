@@ -4,8 +4,8 @@ import "./TableContent.scss";
 const TableContent = ({ credits }) => {
   return (
     <div className="tableContent">
-      {credits.map((credit) => (
-        <div className="tableContent__content">
+      {credits.map((credit, key) => (
+        <div className="tableContent__content" key={key}>
           <h1>
             {credit.release_date || credit.first_air_date || "Not Yet Mention"}
           </h1>

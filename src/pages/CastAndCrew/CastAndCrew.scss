@@ -25,10 +25,14 @@
   }
 
   &__info {
-    margin-left: 2vw;
+    margin-left: 2rem;
     h1 {
       font-size: $font-xl;
       color: $DarkGrey;
+
+      @include respond(mobile) {
+        font-size: $font-md;
+      }
     }
 
     p {

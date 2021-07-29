@@ -10,8 +10,8 @@ const CastAndCrewList = ({ cast, type }) => {
     <>
       <ul>
         {cast &&
-          cast.map((c) => (
-            <li>
+          cast.map((c, key) => (
+            <li key={key}>
               <Link to={`/person/${c.id}`} className="cast__img">
                 <LazyLoadImage
                   src={`${
@@ -25,8 +25,9 @@ const CastAndCrewList = ({ cast, type }) => {
               </Link>
               <div className="cast__info">
                 <h1>{c.name}</h1>
-                <p>{type === "cast" ? c.character : c.department}</p>
+                <span>{type === "cast" ? c.character : c.department}</span>
               </div>
+              cas
             </li>
           ))}
       </ul>

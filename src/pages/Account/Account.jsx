@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router";
-import { logoutAction } from "../../store/actions/authAction";
 import "./Account.scss";
 import { MdPhotoCamera } from "react-icons/md";
 import updateProfileAction from "../../store/actions/updateProfileAction";

@@ -35,7 +35,9 @@ const CastPersonInfo = ({ depart, Vote, gender, birthday, Place, KnownAs }) => {
 
       <li>
         <h4>Also Known As</h4>
-        {KnownAs ? KnownAs.map((as) => <p>{as || "-"}</p>) : null}
+        {KnownAs
+          ? KnownAs.map((as, key) => <p key={key}>{as || "-"}</p>)
+          : null}
       </li>
     </ul>
   );

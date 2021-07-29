@@ -88,7 +88,9 @@ const Person = () => {
             <li className="person__info--seven">
               <h4>Also Known As</h4>
               {person.also_known_as
-                ? person.also_known_as.map((as) => <p>{as || "-"}</p>)
+                ? person.also_known_as.map((as, key) => (
+                    <p key={key}>{as || "-"}</p>
+                  ))
                 : null}
             </li>
           </ul>

@@ -1,7 +1,7 @@
 import NO_IMG from "../assets/NO_IMG.svg";
 import NO_IMG_LAND from "../assets/NO_IMG_LAND.svg";
 
-export const APP_KEY = process.env.REACT_APP_TMDB_KEY;
+export const APP_KEY = "10221c5cc680130fcc056d961d3bc0f9";
 
 export const request = {
   NO_IMG,

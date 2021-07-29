@@ -14,12 +14,8 @@ html {
   box-sizing: border-box;
   scroll-behavior: smooth;
 
-  @include respond(tablet) {
-    font-size: 50.17%;
-  }
-
   @include respond(mobile) {
-    font-size: 45.62%;
+    font-size: 52.5%;
   }
 }
 

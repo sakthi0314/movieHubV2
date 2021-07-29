@@ -12,6 +12,7 @@ import useProfile from "../../Hooks/useProfile";
 import searchAction from "../../store/actions/searchAction";
 import { request } from "../../Services/request";
 import { logoutAction } from "../../store/actions/authAction";
+import Avatar from "../../assets/avatar.png";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -35,9 +36,11 @@ const Navbar = () => {
     setSearchMenu(!searchMenu);
   };
 
-  // recommending Searching..
+  // recommending Searching...
   const handleRecommed = () => {
-    dispatch(searchAction(searchRef.current.value, page));
+    if (searchRef.current.value.length > 1) {
+      dispatch(searchAction(searchRef.current.value, page));
+    }
   };
 
   // Redirecting to search page
@@ -168,7 +171,7 @@ const Navbar = () => {
 
           <ul className={classes["navbar__right"]}>
             <Link to="/account" className={classes["navbar__avatar"]}>
-              <LazyLoadImage effect="blur" src={url} alt={profile.userName} />
+              <img src={url ? url : Avatar} alt={profile.userName} />
             </Link>
 
             <li>

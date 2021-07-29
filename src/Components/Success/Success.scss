@@ -1,0 +1,37 @@
+@import "../../Styles/mixins";
+@import "../../Styles/button";
+@import "../../Styles/variables";
+
+.success {
+  padding: 2rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15555;
+
+  &__container {
+    width: 40rem;
+    margin: 0 auto;
+    background-color: $white;
+    border-radius: 0.4rem;
+    padding: 2rem 4rem;
+    @include flexbox(column, center, center);
+
+    h1 {
+      color: $DarkGrey;
+      text-align: center;
+      font-size: $font-md;
+    }
+
+    button {
+      @extend .button-wide;
+      margin-top: 2rem;
+    }
+  }
+
+  &__icon {
+    font-size: 4rem;
+    color: red;
+  }
+}

@@ -20,6 +20,7 @@ const About = () => {
 
   useEffect(() => {
     dispatch(randomAction());
+    // eslint-disable-next-line
   }, []);
 
   return (

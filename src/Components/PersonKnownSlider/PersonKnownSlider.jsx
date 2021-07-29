@@ -17,11 +17,8 @@ const PersonKnownSlider = ({ personKnowns }) => {
       className="personKnownSlider__content"
     >
       {personKnowns.length >= 1 &&
-        personKnowns.map((personKnown) => (
-          <SwiperSlide
-            className="personKnownSlider__slide"
-            key={personKnown.id}
-          >
+        personKnowns.map((personKnown, key) => (
+          <SwiperSlide className="personKnownSlider__slide" key={key}>
             <RowItems
               id={personKnown.id}
               title={

@@ -4,10 +4,14 @@
 
 .accountHeader {
   padding: 0 2rem;
-  margin-top: 8rem;
+  margin: 8rem 0 0 0;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  @include respond(tablet) {
+    margin-bottom: 10rem;
+  }
 
   &__container {
     max-width: 130rem;
@@ -15,8 +19,8 @@
     height: 20rem;
     @include flexbox(row, flex-start, center);
 
-    @include respond(mobile) {
-      @include flexbox(row, center, center);
+    @include respond(tablet) {
+      @include flexbox(column, center, center);
     }
   }
 
@@ -25,6 +29,20 @@
     width: 14rem;
     border-radius: 50%;
     position: relative;
+
+    @include respond(tablet) {
+      margin-top: 10rem;
+    }
+
+    @include respond(mobile) {
+      width: 8rem;
+      height: 8rem;
+    }
+
+    &--img {
+      width: 100%;
+      height: 100%;
+    }
 
     &--file {
       position: absolute;
@@ -63,6 +81,11 @@
     margin-left: 6rem;
     @include flexbox(column, flex-start, flex-start);
 
+    @include respond(tablet) {
+      margin-left: 0;
+      @include flexbox(column, flex-start, center);
+    }
+
     &--score {
       @include flexbox(row, flex-start, center);
     }
@@ -72,6 +95,10 @@
       h1 {
         font-size: $font-xl;
         font-weight: map-get($font-weight, bold);
+
+        @include respond(mobile) {
+          font-size: $font-l;
+        }
       }
     }
 

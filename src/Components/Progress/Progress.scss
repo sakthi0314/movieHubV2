@@ -4,9 +4,18 @@
 .progress {
   @include flexbox(row, center, center);
 
+  @include respond(mobile) {
+    flex-direction: column;
+  }
+
   &__item {
     height: 8rem;
     width: 8rem;
+
+    @include respond(mobile) {
+      width: 5rem;
+      height: 5rem;
+    }
   }
 
   &__info {
