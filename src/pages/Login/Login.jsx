@@ -7,9 +7,10 @@ import { loginAction } from "../../store/actions/authAction";
 
 const Login = () => {
   const [isHide, setIshide] = useState(true);
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const [emailValue, setEmailValue] = useState("demo123@gmail.com");
+  const [passwordValue, setPasswordValue] = useState("123456");
   const dispatch = useDispatch();
+  const emailRef = useRef();
   const { authError } = useSelector((state) => state.auth);
   const { auth } = useSelector((state) => state.firebase);
 
@@ -23,8 +24,8 @@ const Login = () => {
     e.preventDefault();
 
     const creds = {
-      email: emailRef.current.value,
-      password: passwordRef.current.value,
+      email: emailValue,
+      password: passwordValue,
     };
 
     dispatch(loginAction(creds));
@@ -52,14 +53,21 @@ const Login = () => {
             <h1>Login user</h1>
           </div>
           <div className={classes["login__input"]}>
-            <input type="text" placeholder="Enter your email" ref={emailRef} />
+            <input
+              type="text"
+              placeholder="Enter your email"
+              ref={emailRef}
+              value={emailValue}
+              onChange={(e) => setEmailValue(e.target.value)}
+            />
           </div>
 
           <div className={classes["login__input"]}>
             <input
               type={isHide ? "password" : "text"}
               placeholder="password"
-              ref={passwordRef}
+              value={passwordValue}
+              onChange={(e) => setPasswordValue(e.target.value)}
             />
             <span onClick={handleHidePassword}>
               {isHide ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
