@@ -8,10 +8,10 @@ import classes from "./Navbar.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import useProfile from "../../Hooks/useProfile";
 import searchAction from "../../store/actions/searchAction";
 import { request } from "../../Services/request";
 import { logoutAction } from "../../store/actions/authAction";
+import getUserProfile from "../../store/actions/getUserProfile";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -21,9 +21,9 @@ const Navbar = () => {
   const { auth, profile } = useSelector((state) => state.firebase);
   const dispatch = useDispatch();
   const history = useHistory();
-  const url = useProfile();
   const { page } = useSelector((state) => state.pageReducer);
   const { result } = useSelector((state) => state.searchResults);
+  const { url } = useSelector((state) => state.profileURL);
 
   // Toggle menu
   const toggleMenuHandler = () => {
@@ -99,6 +99,11 @@ const Navbar = () => {
 
   useEffect(() => {
     searchRef.current.focus();
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    dispatch(getUserProfile(auth.uid));
     // eslint-disable-next-line
   }, []);
 

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router";
-import "./Account.scss";
 import { MdPhotoCamera } from "react-icons/md";
 import updateProfileAction from "../../store/actions/updateProfileAction";
-import useProfile from "../../Hooks/useProfile";
 import LoadingSpinnder from "../../Components/LoadingSpiner/LoadingSpiner";
 import getfavaritesAction from "../../store/actions/getfavariteAction";
 import { request } from "../../Services/request";
@@ -14,6 +12,8 @@ import { Tab, Tabs } from "@material-ui/core";
 import Grid from "../../Components/Grid/Grid";
 import ListColumn from "../../Components/ListColumn/ListColumn";
 import getAllReview from "../../store/actions/getAllReview";
+import getUserProfile from "../../store/actions/getUserProfile";
+import "./Account.scss";
 
 const Account = () => {
   // Local State
@@ -25,17 +25,15 @@ const Account = () => {
   const { auth, profile } = useSelector((state) => state.firebase);
   const { favarites } = useSelector((state) => state.getfavarites);
   const { percentage } = useSelector((state) => state.getAllReview);
+  const { url } = useSelector((state) => state.profileURL);
 
   // Backdrop Image
-  const cover = randomData?.backdrop_path
-    ? `${request.IMG_URL}/${randomData?.backdrop_path}`
+  const cover = randomData.backdrop_path
+    ? `${request.IMG_URL}/${randomData.backdrop_path}`
     : `${request.NO_IMG_LAND}`;
 
   // Dispatch
   const dispatch = useDispatch();
-
-  // Custom Hook for getting Profile URL
-  const url = useProfile();
 
   // calculating Favarite to Percentage
   let filterPercentage = favarites.length / 100;
@@ -66,6 +64,11 @@ const Account = () => {
     dispatch(getfavaritesAction(auth.uid));
     dispatch(randomAction());
     dispatch(getAllReview(auth.uid));
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    dispatch(getUserProfile(auth.uid));
     // eslint-disable-next-line
   }, []);
 

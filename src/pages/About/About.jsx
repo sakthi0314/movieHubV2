@@ -14,8 +14,8 @@ const About = () => {
   const dispatch = useDispatch();
 
   // Backdrop Image
-  const cover = randomData?.backdrop_path
-    ? `${request.IMG_URL}/${randomData?.backdrop_path}`
+  const cover = randomData.backdrop_path
+    ? `${request.IMG_URL}/${randomData.backdrop_path}`
     : `${request.NO_IMG_LAND}`;
 
   useEffect(() => {
