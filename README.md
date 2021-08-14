@@ -1,6 +1,6 @@
 # Welcome to Moviehub
 
-<img src="./images/moviehub_homepage.png">
+<img src="https://raw.githubusercontent.com/sakthi0314/movieHubV2/main/Images/moviehub_homepage.png">
 
 ### One second You can't see this Home Page without login 😅.
 
