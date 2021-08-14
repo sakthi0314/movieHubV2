@@ -6,7 +6,7 @@
 
 <br/>
 
-## My favorite search engine is [Preview](https://moviehub-2021.netlify.app/).
+## You can visit here to [Preview](https://moviehub-2021.netlify.app/).
 
 <br/>
 
