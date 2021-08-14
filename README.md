@@ -1,12 +1,12 @@
 # Welcome to Moviehub
 
-<img src="./images/moviehub_homepage.png">
+<img src="https://raw.githubusercontent.com/sakthi0314/movieHubV2/main/Images/moviehub_homepage.png">
 
 ### One second You can't see this Home Page without login 😅.
 
 <br/>
 
-## My favorite search engine is [Preview](https://moviehub-2021.netlify.app/).
+## You can visit here to [Preview](https://moviehub-2021.netlify.app/).
 
 <br/>
 
