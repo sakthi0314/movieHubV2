@@ -147,7 +147,7 @@ const Details = () => {
   useEffect(() => {
     dispatch(getReview(id));
     // eslint-disable-next-line
-  }, [id, media_type]);
+  }, [id, media_type, reviews]);
 
   // Routing guard
   if (!auth.uid) {

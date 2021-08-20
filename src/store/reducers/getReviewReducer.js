@@ -3,6 +3,7 @@ import actionTypes from "../actions/actionTypes";
 const initailState = {
   isLoading: false,
   reviews: [],
+  liked: false,
   error: "",
 };
 
@@ -26,6 +27,12 @@ const getReviewReducer = (state = initailState, action) => {
         ...state,
         error: action.payload,
         isLoading: false,
+      };
+
+    case actionTypes.ADD_LIKE:
+      return {
+        ...state,
+        isLoading: true,
       };
 
     default:

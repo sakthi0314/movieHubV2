@@ -10,18 +10,7 @@ import "swiper/swiper.scss";
 
 const Backdrop = ({ backdrops }) => {
   return (
-    <div
-      className="backdrop"
-      style={{
-        backgroundImage: ` linear-gradient(
-    to right,
-    rgba(245, 197, 24, 1),
-    rgba(245, 197, 24, 0.3)
-  ),url("${request.IMG_URL}/${
-          backdrops[Math.floor(Math.random() * backdrops.length - 1)]?.file_path
-        }")`,
-      }}
-    >
+    <div className="backdrop">
       <div className="backdrop__container">
         <Swiper
           slidesPerView={"auto"}

@@ -7,6 +7,7 @@
   background-position: center;
   background-repeat: no-repeat;
   padding: 5rem 0;
+  background-color: $Yellow;
 
   @include respond(mobile) {
     padding: 3rem 0;
