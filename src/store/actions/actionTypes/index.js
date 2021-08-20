@@ -57,6 +57,8 @@ const actionTypes = {
   REQ_USER_PROFILE: "REQ_USER_PROFILE",
   USER_PROFILE: "USER_PROFILE",
   FAILED_USER_PROFILE: "FAILED_USER_PROFILE",
+  ADD_LIKE: "ADD_LIKE",
+  DISLIKE: "DISLiKE",
 };
 
 export default actionTypes;

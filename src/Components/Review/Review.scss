@@ -5,6 +5,24 @@
   @include flexbox(row, flex-start, flex-start);
   margin-bottom: 4rem;
 
+  &__like {
+    margin-top: 2rem;
+
+    button {
+      background-color: transparent;
+      font-size: 1.5rem;
+      color: #fff;
+
+      span {
+        font-size: 1.5rem;
+      }
+
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
+  }
+
   &__img {
     img {
       border-radius: 50%;
@@ -26,7 +44,7 @@
     p {
       text-transform: capitalize;
       &:first-child {
-        font-size: $font-xsm;
+        font-size: $font-sm;
         margin-bottom: 0.3rem;
       }
       &:last-child {
@@ -36,7 +54,7 @@
         max-width: 60rem;
         width: 100%;
         line-height: 1.4;
-        font-size: $font-xsm;
+        font-size: $font-md;
       }
     }
   }

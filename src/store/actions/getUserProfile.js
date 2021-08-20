@@ -3,7 +3,7 @@ import actionTypes from "./actionTypes";
 const getUserProfile =
   (uid) =>
   (disptach, getState, { getFirebase }) => {
-    const firestore = getFirebase().firestore();
+    const firestore = getFirebase();
 
     // req to db
     disptach({ type: actionTypes.REQ_USER_PROFILE });
@@ -15,7 +15,7 @@ const getUserProfile =
         .onSnapshot((snap) => {
           disptach({
             type: actionTypes.USER_PROFILE,
-            payload: snap.data().url,
+            payload: snap.data()?.url,
           });
         });
     } catch (error) {

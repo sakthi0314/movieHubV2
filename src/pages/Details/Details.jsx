@@ -22,8 +22,8 @@ import getTrailerAction from "../../store/actions/getTrailerAction";
 import TrailerModel from "../../Components/TrailerModel/TrailerModel";
 import getbackdropAction from "../../store/actions/getbackdropAction";
 import Backdrop from "../../Components/Backdrop/Backdrop";
-import "./Details.scss";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import "./Details.scss";
 
 // Import Swiper styles
 import "swiper/swiper.scss";
@@ -75,6 +75,8 @@ const Details = () => {
       userId: auth.uid,
       timestamp: new Date(),
       movieId: id,
+      likeCount: 0,
+      dislike: 0,
     };
 
     // Creating New Review
@@ -112,10 +114,8 @@ const Details = () => {
     dispatch(getTrailerAction(media_type, id));
   };
 
-  // Manulating Favarite
+  // Manulating Favarite ...
   const isFavarited = favarites.some((favarite) => favarite.id === id);
-
-  console.log(isFavarited);
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -138,11 +138,14 @@ const Details = () => {
 
   useEffect(() => {
     dispatch(castAction(id, media_type));
-    dispatch(getReview(id));
     dispatch(recommededAction(id, media_type));
     dispatch(DetailsAction(id, media_type));
     dispatch(getbackdropAction(id));
     // eslint-disable-next-line
+  }, [id, media_type]);
+
+  useEffect(() => {
+    dispatch(getReview(id));
   }, [id, media_type]);
 
   // Routing guard
@@ -325,12 +328,7 @@ const Details = () => {
           </div>
 
           <div className="review__form">
-            <form
-              onSubmit={handleSubmit}
-              style={{
-                opacity: isLoading && ".4",
-              }}
-            >
+            <form onSubmit={handleSubmit}>
               <div className="review__form--input">
                 <input
                   type="text"
@@ -346,14 +344,18 @@ const Details = () => {
           </div>
 
           <ul className="review__list">
-            {reviews.map((review, id) => (
+            {reviews.map((review, key) => (
               <Review
-                key={id}
+                key={key}
                 uid={review.userId}
                 profile={review?.profilePicture}
                 user={review.displayName}
                 review={review.reviewContent}
                 timestamp={review.timestamp}
+                likeCount={review.likeCount}
+                dislike={review.dislike}
+                movieId={id}
+                reviewItem={review}
               />
             ))}
           </ul>

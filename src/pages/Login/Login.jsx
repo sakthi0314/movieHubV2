@@ -7,7 +7,7 @@ import { loginAction } from "../../store/actions/authAction";
 
 const Login = () => {
   const [isHide, setIshide] = useState(true);
-  const [emailValue, setEmailValue] = useState("demo123@gmail.com");
+  const [emailValue, setEmailValue] = useState("demoacc@gmail.com");
   const [passwordValue, setPasswordValue] = useState("123456");
   const dispatch = useDispatch();
   const emailRef = useRef();

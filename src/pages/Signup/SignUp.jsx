@@ -37,7 +37,6 @@ const Signup = () => {
       email: emailRef.current.value,
       password: passwordRef.current.value,
       url: "https://i1.wp.com/lzraic.lv/wp-content/uploads/2017/03/profile.jpg",
-      reviewCount: 0,
     };
 
     if (passwordRef.current.value !== confrimPassword.current.value) {
