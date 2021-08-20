@@ -13,10 +13,8 @@ const addLikeAction =
       .then((querySnapshot) => {
         querySnapshot.forEach(function (doc) {
           doc.ref.update({ likeCount: doc.data().likeCount + 1 });
+          dispatch({ type: actionTypes.ADD_LIKE, payload: doc.data().movieId });
         });
-      })
-      .then(() => {
-        dispatch({ type: actionTypes.ADD_LIKE });
       });
   };
 

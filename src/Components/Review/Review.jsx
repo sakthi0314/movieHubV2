@@ -21,7 +21,6 @@ const Review = ({
   movieId,
   likeCount,
   dislike,
-  reviewItem,
 }) => {
   const [profile, setProfile] = useState(null);
   const dispatch = useDispatch();
@@ -40,21 +39,18 @@ const Review = ({
   // Handle Like
   const handleAddLike = () => {
     dispatch(addLikeAction(movieId, auth.uid));
+    dispatch(getReview(movieId));
   };
 
   const handleDislike = () => {
     dispatch(dislikeAction(movieId, auth.uid));
+    dispatch(getReview(movieId));
   };
 
   useEffect(() => {
     getProfile();
     // eslint-disable-next-line
   }, []);
-
-  useEffect(() => {
-    dispatch(getReview(movieId));
-    // eslint-disable-next-line
-  }, [reviewItem]);
 
   return (
     <>
