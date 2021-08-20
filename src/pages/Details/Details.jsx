@@ -146,6 +146,7 @@ const Details = () => {
 
   useEffect(() => {
     dispatch(getReview(id));
+    // eslint-disable-next-line
   }, [id, media_type]);
 
   // Routing guard
