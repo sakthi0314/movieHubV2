@@ -3,12 +3,7 @@ import moment from "moment";
 import firebase from "../../config/fbConfig";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import {
-  AiOutlineLike,
-  AiOutlineDislike,
-  AiTwotoneDislike,
-  AiTwotoneLike,
-} from "react-icons/ai";
+import { AiOutlineLike, AiOutlineDislike, AiTwotoneLike } from "react-icons/ai";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import Avatar from "../../assets/avatar.png";
 import "./Review.scss";
@@ -58,6 +53,7 @@ const Review = ({
 
   useEffect(() => {
     dispatch(getReview(movieId));
+    // eslint-disable-next-line
   }, [reviewItem]);
 
   return (
